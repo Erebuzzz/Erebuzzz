@@ -4,7 +4,8 @@
 
 🚀 Quantitative Research Consultant @ WorldQuant Brain · Pre-final year Engineering Science @ IISER Bhopal · Systems + AI + Crypto-native engineering.
 
-[View the animated portfolio](./site/) · [Update statuses via form](./status-form/)
+[View the animated portfolio](./docs/) · [Update statuses via form](./docs/status-form/)
+Pages setup: branch `main`, folder `/docs`.
 
 <img src="https://img.shields.io/badge/Focus-Real_time_Systems-00e6ff?style=flat" alt="Real time systems" />
 <img src="https://img.shields.io/badge/Edge-Zero_Knowledge_Security-7a5af5?style=flat" alt="Zero knowledge" />
