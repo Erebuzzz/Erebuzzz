@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Erebuzzz Status Updater</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1021;
+      --panel: rgba(20, 26, 46, 0.85);
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #e6f0ff;
+      --muted: #9cb4d9;
+      --cyan: #00e6ff;
+      --purple: #7a5af5;
+      --teal: #00c2a8;
+      --danger: #ff5c8a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 230, 255, 0.12), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(122, 90, 245, 0.16), transparent 35%),
+                  linear-gradient(160deg, #0b1021 0%, #0d1229 50%, #0b1021 100%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 64px;
+    }
+    .card {
+      width: min(960px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(12px);
+      padding: 28px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: 0.2px;
+      color: var(--cyan);
+    }
+    p { color: var(--muted); margin: 0 0 16px; line-height: 1.5; }
+    .field { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; color: #dce6ff; }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-size: 15px;
+    }
+    input:focus, select:focus { outline: 1px solid var(--cyan); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .status-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .status-card h3 { margin: 0 0 6px; font-size: 16px; color: #f2f4ff; }
+    .actions { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    button.primary {
+      background: linear-gradient(120deg, var(--cyan), var(--purple));
+      color: #0b1021;
+      box-shadow: 0 10px 30px rgba(0, 230, 255, 0.24);
+    }
+    button.secondary { background: rgba(255, 255, 255, 0.06); color: var(--text); border: 1px solid var(--border); }
+    button:active { transform: translateY(1px); box-shadow: none; }
+    .status { font-family: 'JetBrains Mono', monospace; color: var(--muted); font-size: 13px; }
+    .status strong { color: var(--cyan); }
+    .note { font-size: 13px; color: var(--muted); }
+    .success { color: #4ade80; }
+    .error { color: var(--danger); }
+    a { color: var(--cyan); }
+    @media (max-width: 640px) { body { padding: 16px 12px; } .card { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Status PR Form</h1>
+    <p>Update the status table inside `README.md` (between the markers) and open a PR. Your token stays in this page (not stored).</p>
+
+    <div class="field">
+      <label for="token">GitHub token (repo:write scope, fine-grained)</label>
+      <input id="token" type="password" placeholder="ghp_..." autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="branch">Branch suffix (optional)</label>
+      <input id="branch" type="text" placeholder="status-update" />
+    </div>
+
+    <div class="grid" id="project-grid"></div>
+
+    <div class="actions">
+      <button class="primary" id="submit">Open PR</button>
+      <button class="secondary" id="reset">Reset selections</button>
+      <span class="status" id="status">Idle</span>
+    </div>
+    <p class="note">Heads-up: provide a token with access to this repo only. The form will: 1) read README, 2) replace the table, 3) create a branch + commit, 4) open a PR.</p>
+  </div>
+
+  <script>
+    const owner = 'Erebuzzz';
+    const repo = 'Erebuzzz';
+
+    const projects = [
+      { id: 'ScribeAI', live: 'https://scribe-ai-zeta.vercel.app', repo: 'https://github.com/Erebuzzz/ScribeAI', status: 'Live' },
+      { id: 'PathOptix', live: 'https://pathoptix-intelligent-real-time-nav.netlify.app', repo: 'https://github.com/Erebuzzz/PathOptix-Intelligent-Real-Time-Navigation-Engine', status: 'Paused' },
+      { id: 'Cryptopad', live: 'https://cryptopad-beta.vercel.app', repo: 'https://github.com/Erebuzzz/Cryptopad', status: 'Ongoing' },
+      { id: 'AI Code Plagiarism Detector', live: 'https://code-plagiarism-detector.vercel.app', repo: 'https://github.com/Erebuzzz/Code-Plagiarism-Detector', status: 'Live' },
+      { id: 'Humor Identification Model', live: '', repo: 'https://github.com/Erebuzzz/Humor-Identification-Model', status: 'Archived' },
+      { id: 'Hybrid Movie Recommendation System', live: 'https://movie-recommendation-system-tmdb-hybrid.streamlit.app', repo: 'https://github.com/Erebuzzz/Movie-Recommendation-System', status: 'Paused' },
+      { id: 'TextLexiq', live: '', repo: 'https://github.com/Erebuzzz/TextLexiq', status: 'Ongoing' },
+    ];
+
+    const statusMap = {
+      Live: '🟢 Live',
+      Ongoing: '🟡 Ongoing',
+      Paused: '🟣 Paused',
+      Archived: '🔴 Archived',
+    };
+
+    const grid = document.getElementById('project-grid');
+    projects.forEach((p, idx) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'status-card';
+      wrap.innerHTML = `
+        <h3>${p.id}</h3>
+        <div class="field">
+          <label for="sel-${idx}">Status</label>
+          <select id="sel-${idx}" data-id="${p.id}">
+            ${Object.keys(statusMap).map(s => `<option value="${s}" ${p.status === s ? 'selected' : ''}>${statusMap[s]}</option>`).join('')}
+          </select>
+        </div>
+      `;
+      grid.appendChild(wrap);
+    });
+
+    function setStatus(msg, kind = 'info') {
+      const el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status ' + (kind === 'error' ? 'error' : kind === 'success' ? 'success' : '');
+    }
+
+    function encodeBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let binary = '';
+      bytes.forEach(b => { binary += String.fromCharCode(b); });
+      return btoa(binary);
+    }
+
+    async function gh(path, method = 'GET', body) {
+      const token = document.getElementById('token').value.trim();
+      if (!token) throw new Error('Token missing');
+      const res = await fetch(`https://api.github.com${path}`, {
+        method,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json',
+        },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`GitHub ${res.status}: ${text}`);
+      }
+      return res.json();
+    }
+
+    function buildTable() {
+      const rows = projects.map((p, idx) => {
+        const sel = document.getElementById(`sel-${idx}`);
+        const status = statusMap[sel.value] || statusMap.Live;
+        const liveLink = p.live ? `[Demo](${p.live})` : '—';
+        const repoLink = `[${p.repo.split('github.com/')[1]}](${p.repo})`;
+        return `| ${p.id} | ${status} | ${liveLink} | ${repoLink} |`;
+      });
+      return `| Project | Status | Live | Repo |\n| --- | --- | --- | --- |\n${rows.join('\n')}`;
+    }
+
+    function replaceTable(content, table) {
+      const block = `<!-- PROJECT_STATUS_START -->\n${table}\n<!-- PROJECT_STATUS_END -->`;
+      const updated = content.replace(/<!-- PROJECT_STATUS_START -->[\s\S]*?<!-- PROJECT_STATUS_END -->/m, block);
+      if (updated === content) throw new Error('Markers not found in README');
+      return updated;
+    }
+
+    async function handleSubmit() {
+      try {
+        setStatus('Working…');
+        const branchSuffix = (document.getElementById('branch').value || 'status-update').replace(/\s+/g, '-');
+        const branch = `status-${Date.now()}-${branchSuffix}`;
+
+        // 1) read refs
+        const mainRef = await gh(`/repos/${owner}/${repo}/git/ref/heads/main`);
+        // 2) create branch
+        await gh(`/repos/${owner}/${repo}/git/refs`, 'POST', { ref: `refs/heads/${branch}`, sha: mainRef.object.sha });
+
+        // 3) read README
+        const readme = await gh(`/repos/${owner}/${repo}/contents/README.md?ref=${branch}`);
+        const decoded = atob(readme.content.replace(/\n/g, ''));
+
+        // 4) build new table + replace
+        const table = buildTable();
+        const updated = replaceTable(decoded, table);
+
+        // 5) commit to new branch
+        await gh(`/repos/${owner}/${repo}/contents/README.md`, 'PUT', {
+          message: 'chore: update project statuses via form',
+          content: encodeBase64(updated),
+          sha: readme.sha,
+          branch,
+        });
+
+        // 6) open PR
+        const pr = await gh(`/repos/${owner}/${repo}/pulls`, 'POST', {
+          title: 'Update project statuses (form)',
+          head: branch,
+          base: 'main',
+          body: 'Automated update from status form.',
+        });
+
+        setStatus(`Success → PR #${pr.number}: ${pr.html_url}`, 'success');
+      } catch (err) {
+        setStatus(err.message, 'error');
+        console.error(err);
+      }
+    }
+
+    document.getElementById('submit').addEventListener('click', (e) => {
+      e.preventDefault();
+      handleSubmit();
+    });
+    document.getElementById('reset').addEventListener('click', (e) => {
+      e.preventDefault();
+      grid.querySelectorAll('select').forEach((sel, idx) => { sel.value = projects[idx].status; });
+      setStatus('Selections reset');
+    });
+  </script>
+</body>
+</html>
