@@ -99,7 +99,10 @@ Scans for malicious patterns and poor practices in AI-generated code. Because tr
 **Stack:** `Python` · `AST Analysis` · `Security Rules Engine`
 
 [![Repo](https://img.shields.io/badge/→_repo-CodeShield-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/CodeShield)
-&nbsp;![Stars](https://img.shields.io/github/stars/Erebuzzz/CodeShield?style=flat-square&color=00e6ff&label=⭐)
+&nbsp;![Stars](https://img.shields.io/github/stars/Erebuzzz/CodeShield?style=flat-square&color=00e6ff&label=⭐) &nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://codeshield-five.vercel.app)
+ &nbsp;[![PyPI version](https://img.shields.io/pypi/v/codeshield-ai.svg?style=flat-square)](https://pypi.org/project/codeshield-ai)
+ &nbsp;[![npm version](https://img.shields.io/npm/v/codeshield-mcp?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/codeshield-mcp)
+
 
 </td>
 <td width="50%" valign="top">
@@ -112,7 +115,7 @@ Client-side AES-256 + HMAC encryption, burn-after-read, timed expiry on ephemera
 **Stack:** `Next.js` · `TypeScript` · `AES-256` · `HMAC` · `Zeabur Edge`
 
 [![Repo](https://img.shields.io/badge/→_repo-Cryptopad-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/Cryptopad)
-&nbsp;[![Live](https://img.shields.io/badge/→_live-demo-00c2a8?style=flat-square)](https://cryptopad-beta.vercel.app)
+&nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://cryptopad-beta.vercel.app)
 
 </td>
 </tr>
@@ -139,7 +142,7 @@ Dual-channel audio via WebRTC → streaming backend queue → Google Gemini for 
 **Stack:** `Next.js` · `TypeScript` · `Socket.io` · `Gemini API` · `PostgreSQL`
 
 [![Repo](https://img.shields.io/badge/→_repo-ScribeAI-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/ScribeAI)
-&nbsp;[![Live](https://img.shields.io/badge/→_live-demo-00c2a8?style=flat-square)](https://scribe-ai-zeta.vercel.app)
+&nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://scribe-ai-zeta.vercel.app)
 
 </td>
 </tr>
