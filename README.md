@@ -42,22 +42,29 @@ Part-time I also sit as a **Quantitative Research Consultant** at WorldQuant. Th
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![HTML/CSS](https://img.shields.io/badge/HTML%2FCSS-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
 ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
+![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square\&logo=c\&logoColor=black)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square\&logo=postgresql\&logoColor=white)
 
 **`Web & backend`**
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Appwrite](https://img.shields.io/badge/Appwrite-FD366E?style=flat-square&logo=appwrite&logoColor=white)
 ![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Celery](https://img.shields.io/badge/Celery-37814A?style=flat-square\&logo=celery\&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square\&logo=redis\&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square\&logo=docker\&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square\&logo=linux\&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square\&logo=git\&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square\&logo=postgresql\&logoColor=white)
 
 **`Quant`**
 
+![Alpha Research](https://img.shields.io/badge/Alpha%20Research-1F2937?style=flat-square)
 ![Alpha Generation](https://img.shields.io/badge/Alpha_Generation-7a5af5?style=flat-square)
 ![Signal Processing](https://img.shields.io/badge/Signal_Processing-00e6ff?style=flat-square)
 ![Risk Modeling](https://img.shields.io/badge/Risk_Modeling-00c2a8?style=flat-square)
@@ -70,12 +77,22 @@ Part-time I also sit as a **Quantitative Research Consultant** at WorldQuant. Th
 ![tree-sitter](https://img.shields.io/badge/tree--sitter-058F0B?style=flat-square)
 ![MCP](https://img.shields.io/badge/MCP-000000?style=flat-square)
 ![LLM Agents](https://img.shields.io/badge/LLM_Agents-412991?style=flat-square&logo=openai&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square\&logo=scikit-learn\&logoColor=white)
 
 **`Robotics / systems`**
 
 ![ROS2](https://img.shields.io/badge/ROS2-22314E?style=flat-square&logo=ros&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![MuJoCo](https://img.shields.io/badge/MuJoCo-4B5563?style=flat-square)
 ![LQR-MPC](https://img.shields.io/badge/LQR--MPC-22314E?style=flat-square)
+![MATLAB/SIMULINK](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
+![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-76B900?style=flat-square\&logo=nvidia\&logoColor=white)
+
+**`Embedded Systems`**
+
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square\&logo=arduino\&logoColor=white)
+![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=flat-square\&logo=espressif\&logoColor=white)
+![Verilog](https://img.shields.io/badge/Verilog-1E88E5?style=flat-square)
+![FPGA](https://img.shields.io/badge/FPGA-6B7280?style=flat-square)
 
 </div>
 
