@@ -22,7 +22,7 @@ Final-year **Electronics and Communication Engineering** at **IISER Bhopal** (BS
 
 WorldQuant Brain so far: **60+ alphas**. IQC 2025 Stage 1: **India #29 / Global #119**. The rest of the week is me convincing Python, TypeScript, and the occasional robot that the mess was intentional.
 
-I also started **[Unstable Kernel](https://github.com/Unstable-Kernel)**. Less a company, more a student-budget lab that keeps growing extra limbs. Docs live at [unstable-kernel.github.io/docs](https://unstable-kernel.github.io/docs).
+**[Unstable Kernel](https://github.com/Unstable-Kernel)** is the foundational lab I run for robotics, autonomy, and AI-assisted engineering tooling. MIRAGE lives here. Student-budget, public-by-default where possible, still assembling the stack rather than pretending it is a finished company or platform. Docs: [unstable-kernel.github.io/docs](https://unstable-kernel.github.io/docs).
 
 **My repositories?** A chaotic museum of:
 - AI tools I built because the idea would not shut up
@@ -43,31 +43,24 @@ I also started **[Unstable Kernel](https://github.com/Unstable-Kernel)**. Less a
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
-**`AI / ML / Deep Learning`**
+**`AI / agents`**
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![BERT](https://img.shields.io/badge/BERT-FF6F00?style=flat-square&logo=huggingface&logoColor=white)
 ![LLM Agents](https://img.shields.io/badge/LLM_Agents-412991?style=flat-square&logo=openai&logoColor=white)
-![Computer Vision](https://img.shields.io/badge/Computer_Vision-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
-![NLP](https://img.shields.io/badge/NLP-00A67E?style=flat-square)
+![MCP](https://img.shields.io/badge/MCP-000000?style=flat-square)
 
-**`Web & Backend`**
+**`Web & backend`**
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
-![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socketdotio&logoColor=white)
 ![Appwrite](https://img.shields.io/badge/Appwrite-FD366E?style=flat-square&logo=appwrite&logoColor=white)
 ![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-**`Quantitative Finance`**
+**`Quant`**
 
 ![Alpha Generation](https://img.shields.io/badge/Alpha_Generation-7a5af5?style=flat-square)
 ![Signal Processing](https://img.shields.io/badge/Signal_Processing-00e6ff?style=flat-square)
@@ -75,14 +68,10 @@ I also started **[Unstable Kernel](https://github.com/Unstable-Kernel)**. Less a
 ![Systematic Trading](https://img.shields.io/badge/Systematic_Trading-FF6B6B?style=flat-square)
 ![WorldQuant Brain](https://img.shields.io/badge/WorldQuant_Brain-1a1a2e?style=flat-square)
 
-**`Systems & Tools`**
+**`Systems`**
 
 ![ROS2](https://img.shields.io/badge/ROS2-22314E?style=flat-square&logo=ros&logoColor=white)
-![AES-256](https://img.shields.io/badge/AES--256-00e6ff?style=flat-square&logo=letsencrypt&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
 </div>
 
@@ -126,6 +115,35 @@ A local-first verification layer that parses AI output, builds program graphs, a
 <tr>
 <td width="50%" valign="top">
 
+### 🟢 `Skill` &nbsp; Pixasso
+> *Public Agent Skill. Not an app. Intentional art direction instead of generic AI UI defaults.*
+
+Multidisciplinary design research → Design Genome → Task DAG → critique/ship. Install it, then let the agent actually pick a direction.
+
+```bash
+npx skills add Erebuzzz/pixasso
+```
+
+[![Repo](https://img.shields.io/badge/→_repo-pixasso-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/pixasso)
+
+</td>
+<td width="50%" valign="top">
+
+### 🟢 `Live` &nbsp; SimWeaver
+> *Multi-agent robotics simulation engineer. EIR → simulate → evaluate → diagnose → iterate.*
+
+Natural-language robotics intent gets compiled into an Engineering Intermediate Representation, then a loop of simulate / evaluate / diagnose / iterate. Control room is live. Not a finished autonomy stack.
+
+**Stack:** `Python` · `FastAPI` · `EIR` · `multi-agent`
+
+[![Repo](https://img.shields.io/badge/→_repo-SimWeaver-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/SimWeaver)
+&nbsp;[![Live](https://img.shields.io/badge/Live-simweaver.vercel.app-000000?style=flat-square&logo=vercel&logoColor=white)](https://simweaver.vercel.app)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
 ### 🟢 `Live` &nbsp; Confluxa
 > *Platform infra with named realms, Realtime, LiveToast, and Bifrost.*
 
@@ -141,7 +159,7 @@ The live Next.js + Appwrite layer that other experiments keep pinballing into. R
 ### 🟡 `Foundation` &nbsp; MIRAGE
 > *An engineering compiler foundation. Not a finished platform. Do not let the acronym fool you.*
 
-[Unstable Kernel](https://github.com/Unstable-Kernel) work-in-progress: turn messy engineering knowledge into a versioned Engineering Intermediate Representation, then reason over it with replaceable model/runtime adapters. EIR validation, provenance, policy-gated execution contracts are real. Simulators, hardware loops, and "the robot just does the thing" are still roadmap.
+Unstable Kernel work-in-progress: turn messy engineering knowledge into a versioned Engineering Intermediate Representation, then reason over it with replaceable model/runtime adapters. EIR validation, provenance, policy-gated execution contracts are real. Simulators, hardware loops, and "the robot just does the thing" are still roadmap.
 
 **Stack:** `Python` · `EIR` · `CLI` · `provider adapters`
 
@@ -168,14 +186,13 @@ Differential-drive navigation research with Agolika BM. Current method: LQR for 
 <tr>
 <td width="50%" valign="top">
 
-### 💤 `Idle backends` &nbsp; also on the shelf
-> *Built, shipped, then the free-tier dragons ate the servers.*
+### 🟡 `Demo FE` &nbsp; Merge
+> *Shared YouTube Music playlists from two listeners' taste. Front-end is up. Backend is idle.*
 
-- **[Merge](https://github.com/Erebuzzz/merge-ytm)** : shared YouTube Music playlists from two listeners' taste
-- **[SignalThief](https://github.com/Erebuzzz/SignalThief)** : local-first media workflow (web control plane, desktop worker)
-- **[AsciiRaw](https://github.com/Erebuzzz/ascii-raw)** : browser canvas ASCII camera with a slightly unhinged HUD
+Paste playlists or connect accounts, blend shared taste / compatible picks / discoveries. Demo lives at [merge.erebuzzz.tech](http://merge.erebuzzz.tech). The blender behind it is currently napping.
 
-Secondary, still around: **[Cryptopad](https://github.com/Erebuzzz/Cryptopad)** (client-side AES-256 notes) and **[ScribeAI](https://github.com/Erebuzzz/ScribeAI)** (Gemini meeting transcription).
+[![Repo](https://img.shields.io/badge/→_repo-merge--ytm-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/merge-ytm)
+&nbsp;[![Demo](https://img.shields.io/badge/Demo-merge.erebuzzz.tech-000000?style=flat-square)](http://merge.erebuzzz.tech)
 
 </td>
 <td width="50%" valign="top">
@@ -186,7 +203,21 @@ Secondary, still around: **[Cryptopad](https://github.com/Erebuzzz/Cryptopad)** 
 
 [![X](https://img.shields.io/badge/X-@erebuzzz-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/erebuzzz)
 
+[![Instagram](https://img.shields.io/badge/Instagram-artem.enies-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/artem.enies)
+
 [![Email](https://img.shields.io/badge/Email-kshitiz23kumar-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kshitiz23kumar@gmail.com)
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+
+### 💤 `Idle backends` &nbsp; still on the shelf
+
+- **[SignalThief](https://github.com/Erebuzzz/signalthief)** : local-first media workflow (web control plane, desktop worker)
+- **[AsciiRaw](https://github.com/Erebuzzz/ascii-raw)** : browser canvas ASCII camera with a slightly unhinged HUD
+
+Secondary, still around: **[Cryptopad](https://github.com/Erebuzzz/Cryptopad)** (client-side AES-256 notes) and **[ScribeAI](https://github.com/Erebuzzz/ScribeAI)** (Gemini meeting transcription).
 
 </td>
 </tr>
