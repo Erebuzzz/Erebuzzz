@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=1000&color=00E6FF&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=80&lines=%F0%9F%92%80+Erebuzzz+%E2%80%94+Kshitiz+Kumar+Sinha;I+break+things.+I+automate+the+cleanup." alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&duration=3000&pause=1000&color=00E6FF&center=true&vCenter=true&multiline=true&repeat=true&width=720&height=90&lines=%F0%9F%92%80+Erebuzzz+%2F+Kshitiz+Kumar+Sinha;I+break+things.+I+automate+the+cleanup." alt="Typing SVG" />
 
 <br/>
 
@@ -8,8 +8,9 @@
 ⚡ "I break things, automate the cleanup, then pretend it was all part of the plan."
 ```
 
-<img src="https://img.shields.io/badge/Quantitative_Research_Consultant-WorldQuant_Brain-7a5af5?style=for-the-badge&labelColor=0b1021" />
-<img src="https://img.shields.io/badge/Prefinal_Year-ECE_Major-00e6ff?style=for-the-badge&labelColor=0b1021" />
+<img src="https://img.shields.io/badge/QR_Consultant-WorldQuant-7a5af5?style=for-the-badge&labelColor=0b1021" />
+<img src="https://img.shields.io/badge/Final_Year-ECE_@_IISER_Bhopal-00e6ff?style=for-the-badge&labelColor=0b1021" />
+<img src="https://img.shields.io/badge/Unstable_Kernel-Founder-ff4d6d?style=for-the-badge&labelColor=0b1021" />
 
 </div>
 
@@ -17,17 +18,19 @@
 
 ## `> whoami`
 
-I'm a prefinal year **Electronics and Communication Engineering** major who somehow wandered into building AI tools, quant trading experiments, and systems projects that should honestly not work as well as they do. Yet here they are, living rent free on the internet like **feral code-goblins**.
+Final-year **Electronics and Communication Engineering** at **IISER Bhopal** (BS Engineering Science, CPI 7.25/10, graduating April 2027). I bounce between systems work, AI tooling, and robotics/controls, plus a part-time seat as a **Quantitative Research Consultant** at WorldQuant.
 
-I some of my time at **WorldQuant Brain**, generating alpha signals like a sleep-deprived oracle yelling numbers into the void. The other half is me convincing Python to stop behaving like an emotionally unstable pet.
+WorldQuant Brain so far: **60+ alphas**. IQC 2025 Stage 1: **India #29 / Global #119**. The rest of the week is me convincing Python, TypeScript, and the occasional robot that the mess was intentional.
+
+I also started **[Unstable Kernel](https://github.com/Unstable-Kernel)**. Less a company, more a student-budget lab that keeps growing extra limbs. Docs live at [unstable-kernel.github.io/docs](https://unstable-kernel.github.io/docs).
 
 **My repositories?** A chaotic museum of:
-- 🧠 AI tools I built at 3 AM because the idea scratched my brain
-- 📊 Quant research stuff that probably made my laptop reconsider its life choices
-- ⚙️ Systems projects that went from *"this will be a small project"* to *"why is this a whole ecosystem"*
-- 🧪 Random experiments that accidentally turned into fully functioning applications
+- AI tools I built because the idea would not shut up
+- Quant experiments that made my laptop consider unionizing
+- Systems projects that started as "small" and grew a whole circulatory system
+- Robotics/controls work that is mostly math arguing with physics
 
-> *If you want to collaborate, build something ridiculous, or just scream about bugs together — feel free to reach out. My socials are somewhere on my profile like hidden side quests.*
+> If you want to collaborate, build something ridiculous, or scream about a bug at 2 AM, ping me. Socials are below, not hidden behind a lore quest this time.
 
 ---
 
@@ -61,6 +64,8 @@ I some of my time at **WorldQuant Brain**, generating alpha signals like a sleep
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socketdotio&logoColor=white)
+![Appwrite](https://img.shields.io/badge/Appwrite-FD366E?style=flat-square&logo=appwrite&logoColor=white)
+![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
 
 **`Quantitative Finance`**
 
@@ -91,70 +96,70 @@ I some of my time at **WorldQuant Brain**, generating alpha signals like a sleep
 <tr>
 <td width="50%" valign="top">
 
-### 🟢 `Live` &nbsp; CodeShield
-> *Secure, intelligent coding assistant — a firewall for your code generation workflow.*
+### 🟢 `Live` &nbsp; SynCine
+> *Control plane vs media plane. Appwrite talks. WebRTC carries the movie.*
 
-Scans for malicious patterns and poor practices in AI-generated code. Because trusting LLM output without a safety net is just speedrunning CVEs.
+Collaborative watch rooms without a media server bill. Signaling, rooms, and chat sit on Appwrite. Video moves peer to peer over WebRTC (screen/tab, local file sync, or YouTube cinema sync). Hosted on Confluxa because of course it is.
 
-**Stack:** `Python` · `AST Analysis` · `Security Rules Engine`
+**Stack:** `TypeScript` · `Vite` · `WebRTC` · `Appwrite`
 
-[![Repo](https://img.shields.io/badge/→_repo-CodeShield-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/CodeShield)
-&nbsp;![Stars](https://img.shields.io/github/stars/Erebuzzz/CodeShield?style=flat-square&color=00e6ff&label=⭐) &nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://codeshield-five.vercel.app)
- &nbsp;[![PyPI version](https://img.shields.io/pypi/v/codeshield-ai.svg?style=flat-square)](https://pypi.org/project/codeshield-ai)
- &nbsp;[![npm version](https://img.shields.io/npm/v/codeshield-mcp?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/codeshield-mcp)
-
+[![Repo](https://img.shields.io/badge/→_repo-SynCine-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/SynCine)
+&nbsp;[![Live](https://img.shields.io/badge/Live-syncine.confluxa.app-000000?style=flat-square)](https://syncine.confluxa.app)
 
 </td>
 <td width="50%" valign="top">
 
-### 🟢 `Live` &nbsp; Cryptopad
-> *Zero-knowledge text sharing. Server never sees your data. Ever.*
+### 🟢 `Live` &nbsp; CodeShield
+> *CFG, DFG, and taint graphs for AI-generated code. Trust the graph, not the vibes.*
 
-Client-side AES-256 + HMAC encryption, burn-after-read, timed expiry on ephemeral edge storage. Privacy paranoia turned into a product.
+A local-first verification layer that parses AI output, builds program graphs, and hunts the usual betrayal set: shell injection, taint flows, secrets, eval nonsense. Python package, MCP server, docs site. Because "it compiled" is not a security review.
 
-**Stack:** `Next.js` · `TypeScript` · `AES-256` · `HMAC` · `Zeabur Edge`
+**Stack:** `Python` · `tree-sitter` · `CFG/DFG/taint` · `MCP`
 
-[![Repo](https://img.shields.io/badge/→_repo-Cryptopad-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/Cryptopad)
-&nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://cryptopad-beta.vercel.app)
+[![Repo](https://img.shields.io/badge/→_repo-CodeShield-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/CodeShield)
+&nbsp;[![Docs](https://img.shields.io/badge/Docs-codeshield--five.vercel.app-000000?style=flat-square&logo=vercel&logoColor=white)](https://codeshield-five.vercel.app)
+&nbsp;[![PyPI](https://img.shields.io/pypi/v/codeshield-ai.svg?style=flat-square)](https://pypi.org/project/codeshield-ai/)
+&nbsp;[![npm](https://img.shields.io/npm/v/codeshield-mcp?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/codeshield-mcp)
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 🟡 `Ongoing` &nbsp; TextLexiq
-> *Smart document companion with on-device AI. Offline. Private. Fast.*
+### 🟢 `Live` &nbsp; Confluxa
+> *Platform infra with named realms, Realtime, LiveToast, and Bifrost.*
 
-OCR images & papers, convert to PDF/Word/LaTeX, summarize, QA, extract insights — all powered by on-device inference. Your documents don't leave your phone.
+The live Next.js + Appwrite layer that other experiments keep pinballing into. Realtime plumbing, toast fabric, named realms, Bifrost in the middle. Repo is private. The site is not.
 
-**Stack:** `Kotlin` · `On-device ML` · `OCR` · `Android`
+**Stack:** `Next.js` · `Appwrite Realtime` · `LiveToast` · `Bifrost`
 
-[![Repo](https://img.shields.io/badge/→_repo-TextLexiq-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/TextLexiq)
+[![Live](https://img.shields.io/badge/Live-confluxa.app-000000?style=flat-square)](https://www.confluxa.app)
 
 </td>
 <td width="50%" valign="top">
 
-### 🟢 `Live` &nbsp; ScribeAI
-> *Real-time meeting transcription that actually works.*
+### 🟡 `Foundation` &nbsp; MIRAGE
+> *An engineering compiler foundation. Not a finished platform. Do not let the acronym fool you.*
 
-Dual-channel audio via WebRTC → streaming backend queue → Google Gemini for live transcription & summarization. Session persistence + secure auth. Built so you can stop pretending you took notes.
+[Unstable Kernel](https://github.com/Unstable-Kernel) work-in-progress: turn messy engineering knowledge into a versioned Engineering Intermediate Representation, then reason over it with replaceable model/runtime adapters. EIR validation, provenance, policy-gated execution contracts are real. Simulators, hardware loops, and "the robot just does the thing" are still roadmap.
 
-**Stack:** `Next.js` · `TypeScript` · `Socket.io` · `Gemini API` · `PostgreSQL`
+**Stack:** `Python` · `EIR` · `CLI` · `provider adapters`
 
-[![Repo](https://img.shields.io/badge/→_repo-ScribeAI-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/ScribeAI)
-&nbsp;[![Live](https://img.shields.io/badge/Live-000000?style=flat-square&logo=vercel&logoColor=white)](https://scribe-ai-zeta.vercel.app)
+[![Repo](https://img.shields.io/badge/→_repo-MIRAGE-7a5af5?style=flat-square&logo=github)](https://github.com/Unstable-Kernel/MIRAGE)
+&nbsp;[![Docs](https://img.shields.io/badge/Docs-unstable--kernel.github.io-000000?style=flat-square)](https://unstable-kernel.github.io/docs)
+&nbsp;[![Org](https://img.shields.io/badge/Org-Unstable_Kernel-ff4d6d?style=flat-square&logo=github)](https://github.com/Unstable-Kernel)
 
 </td>
 </tr>
 <tr>
 <td colspan="2" valign="top">
 
-### 🟡 `Ongoing` &nbsp; Risk-Aware Hybrid LQR-MPC Navigation
-> *Making robots not crash into things — with math.*
+### 🟡 `Ongoing` &nbsp; Risk-Aware Hybrid LQR-MPC
+> *LQR drives. A risk predictor watches the rollout. Adaptive MPC only jumps in when the future looks unsafe.*
 
-Two-phase hybrid controller: LQR for trajectory tracking (figure-8 paths) + MPC for obstacle avoidance with safety constraints. DARE-based gain computation + CVXPY optimization. Started as a "small project." It is no longer a small project.
+Differential-drive navigation research with Agolika BM. Current method: LQR for nominal tracking, rollout-based risk prediction, then an adaptive MPC safety filter (and a backup command if the solver chokes). The older blended LQR-MPC controller is still in the tree as a baseline, not the claim.
 
-**Stack:** `Python` · `ROS2` · `CVXPY` · `SciPy` · `Gazebo` · `Control Theory`
+**Stack:** `Python` · `ROS2` · `LQR` · `Adaptive MPC` · `Gazebo`
 
 [![Repo](https://img.shields.io/badge/→_repo-LQR--MPC--Navigation-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/Risk-Aware-Hybrid-LQR-MPC-Navigation-for-Autonomous-Systems)
 
@@ -163,23 +168,23 @@ Two-phase hybrid controller: LQR for trajectory tracking (figure-8 paths) + MPC 
 <tr>
 <td width="50%" valign="top">
 
-### 🔧 `Early Stage` &nbsp; Trajectory
-> *A game that's currently just a very ambitious design document.*
+### 💤 `Idle backends` &nbsp; also on the shelf
+> *Built, shipped, then the free-tier dragons ate the servers.*
 
-Game design in progress — because apparently building AI tools, quant signals, and autonomous navigation systems wasn't enough chaos.
+- **[Merge](https://github.com/Erebuzzz/merge-ytm)** : shared YouTube Music playlists from two listeners' taste
+- **[SignalThief](https://github.com/Erebuzzz/SignalThief)** : local-first media workflow (web control plane, desktop worker)
+- **[AsciiRaw](https://github.com/Erebuzzz/ascii-raw)** : browser canvas ASCII camera with a slightly unhinged HUD
 
-[![Repo](https://img.shields.io/badge/→_repo-Trajectory-7a5af5?style=flat-square&logo=github)](https://github.com/Erebuzzz/Trajectory)
+Secondary, still around: **[Cryptopad](https://github.com/Erebuzzz/Cryptopad)** (client-side AES-256 notes) and **[ScribeAI](https://github.com/Erebuzzz/ScribeAI)** (Gemini meeting transcription).
 
 </td>
 <td width="50%" valign="top">
 
 ### 📡 `Find me`
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-kksinha23-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/kksinha23)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-kksinha23-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kksinha23)
 
 [![X](https://img.shields.io/badge/X-@erebuzzz-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/erebuzzz)
-
-[![Instagram](https://img.shields.io/badge/Instagram-artem.enies-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/artem.enies)
 
 [![Email](https://img.shields.io/badge/Email-kshitiz23kumar-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kshitiz23kumar@gmail.com)
 
@@ -193,7 +198,7 @@ Game design in progress — because apparently building AI tools, quant signals,
 
 ```
 Welcome to the chaos.
-Fork something before it forks you. 🍴
+Fork something before it forks you.
 ```
 
 <img src="https://komarev.com/ghpvc/?username=Erebuzzz&style=flat-square&color=7a5af5&label=profile+lurkers" alt="Profile views" />
