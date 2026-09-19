@@ -56,6 +56,14 @@ Part-time I also sit as a **Quantitative Research Consultant** at WorldQuant. Th
 ![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
+**`Quant`**
+
+![Alpha Generation](https://img.shields.io/badge/Alpha_Generation-7a5af5?style=flat-square)
+![Signal Processing](https://img.shields.io/badge/Signal_Processing-00e6ff?style=flat-square)
+![Risk Modeling](https://img.shields.io/badge/Risk_Modeling-00c2a8?style=flat-square)
+![Systematic Trading](https://img.shields.io/badge/Systematic_Trading-FF6B6B?style=flat-square)
+![WorldQuant Brain](https://img.shields.io/badge/WorldQuant_Brain-1a1a2e?style=flat-square)
+
 **`AI / tooling`**
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)

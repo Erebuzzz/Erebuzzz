@@ -14,11 +14,16 @@ GitHub only renders `README.md` from the default branch on the profile. A PR upd
 
 ## What changed (this pass)
 
-- Deleted WorldQuant alpha/IQC stats line and the quant museum bullet
+Final owner clarification for PR #2:
+
+- Keep header QR Consultant / WorldQuant badge
+- Keep whoami part-time **Quantitative Research Consultant** at WorldQuant
+- Restore a **Quant** skills subsection (Alpha Generation, Signal Processing, Risk Modeling, Systematic Trading, WorldQuant Brain). No numeric claims on those badges
+- Do **not** mention 60+ alphas or IQC 2025 Stage 1 India #29 / Global #119
+- Do **not** include the museum bullet about quant experiments
 - No CPI / GPA anywhere
-- `whoami` now centers on building software, tools, and robotics; ECE @ IISER Bhopal + April 2027 stays; WorldQuant is a brief part-time mention plus the header badge
-- Museum bullets: AI/tools, systems/software products, robotics/controls
-- Rebuilt Skills badges from public-repo evidence; removed the entire Quant skills group
+- Rest of whoami still leans software, tools, and robotics
+- Non-Quant skills stay evidence-based from public repos
 - Featured builds, socials, Unstable Kernel blurb, Pixasso, SimWeaver, Merge left in place
 
 ## Hard constraints (still apply)
@@ -28,7 +33,7 @@ GitHub only renders `README.md` from the default branch on the profile. A PR upd
 - Do not invent metrics, stars, or unlisted projects
 - Graduation is **April 2027**, not May
 - Degree: IISER Bhopal, BS Engineering Science, ECE
-- WorldQuant: QR Consultant, header badge and/or a short part-time mention only. Do **not** put alpha counts, IQC ranks, CPI, or GPA in the README
+- WorldQuant: keep the header QR Consultant badge and the part-time Quantitative Research Consultant sentence. Keep a Quant skills group with label-only badges. Do **not** put alpha counts, IQC ranks, CPI, or GPA in the README. Do **not** restore the "quant experiments / laptop unionizing" museum bullet
 - Skills badges must be technologies actually used in public repos, not aspirational
 - Avoid corporate filler ("passionate about", "perfectly aligns")
 - Do not change `CNAME` or Pages config
@@ -51,7 +56,7 @@ AI / tooling: PyTorch (ML repos such as Humor-Identification, PathOptix), tree-s
 
 Robotics / systems: ROS2, Docker, LQR-MPC
 
-Do **not** restore Alpha Generation / WorldQuant Brain / Systematic Trading skill badges.
+Quant (label badges only, no numbers): Alpha Generation, Signal Processing, Risk Modeling, Systematic Trading, WorldQuant Brain.
 
 ## Featured builds (priority)
 
@@ -83,4 +88,4 @@ Project blurbs were checked against public READMEs for SynCine (`Readme.md`), Co
 1. Merge the PR so https://github.com/Erebuzzz shows the new README (only if the owner asks)
 2. If live URLs rot, update badges only after confirming the new URL
 3. Do not promote TextLexiq/Trajectory back into the main grid unless they become core again
-4. Do not reintroduce quant skill badges or IQC/alpha stats
+4. Do not reintroduce IQC/alpha stats, CPI, or the quant museum bullet. Quant skill badges and the WorldQuant seat are intentional.
