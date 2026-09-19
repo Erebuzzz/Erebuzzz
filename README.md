@@ -18,7 +18,7 @@
 
 ## `> whoami`
 
-Final-year **Electronics and Communication Engineering** at **IISER Bhopal** (BS Engineering Science, CPI 7.25/10, graduating April 2027). I bounce between systems work, AI tooling, and robotics/controls, plus a part-time seat as a **Quantitative Research Consultant** at WorldQuant.
+Final-year **Electronics and Communication Engineering** at **IISER Bhopal**. I bounce between systems work, AI tooling, and robotics/controls, plus a part-time seat as a **Quantitative Research Consultant** at WorldQuant.
 
 WorldQuant Brain so far: **60+ alphas**. IQC 2025 Stage 1: **India #29 / Global #119**. The rest of the week is me convincing Python, TypeScript, and the occasional robot that the mess was intentional.
 
