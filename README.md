@@ -18,16 +18,15 @@
 
 ## `> whoami`
 
-Final-year **Electronics and Communication Engineering** at **IISER Bhopal**. I bounce between systems work, AI tooling, and robotics/controls, plus a part-time seat as a **Quantitative Research Consultant** at WorldQuant.
+Final-year **Electronics and Communication Engineering** at **IISER Bhopal**, graduating April 2027. Most of my time goes into building software, tools, and robotics: products that ship, agent skills, and control stacks that should honestly not work as well as they do.
 
-WorldQuant Brain so far: **60+ alphas**. IQC 2025 Stage 1: **India #29 / Global #119**. The rest of the week is me convincing Python, TypeScript, and the occasional robot that the mess was intentional.
+Part-time I also sit as a **Quantitative Research Consultant** at WorldQuant. The rest of the week is Python, TypeScript, and the occasional robot pretending the mess was intentional.
 
 **[Unstable Kernel](https://github.com/Unstable-Kernel)** is the foundational lab I run for robotics, autonomy, and AI-assisted engineering tooling. MIRAGE lives here. Student-budget, public-by-default where possible, still assembling the stack rather than pretending it is a finished company or platform. Docs: [unstable-kernel.github.io/docs](https://unstable-kernel.github.io/docs).
 
 **My repositories?** A chaotic museum of:
 - AI tools I built because the idea would not shut up
-- Quant experiments that made my laptop consider unionizing
-- Systems projects that started as "small" and grew a whole circulatory system
+- Systems and software products that started as "small" and grew a whole circulatory system
 - Robotics/controls work that is mostly math arguing with physics
 
 > If you want to collaborate, build something ridiculous, or scream about a bug at 2 AM, ping me. Socials are below, not hidden behind a lore quest this time.
@@ -43,35 +42,32 @@ WorldQuant Brain so far: **60+ alphas**. IQC 2025 Stage 1: **India #29 / Global 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-
-**`AI / agents`**
-
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![LLM Agents](https://img.shields.io/badge/LLM_Agents-412991?style=flat-square&logo=openai&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-000000?style=flat-square)
+![HTML/CSS](https://img.shields.io/badge/HTML%2FCSS-E34F26?style=flat-square&logo=html5&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
 
 **`Web & backend`**
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Appwrite](https://img.shields.io/badge/Appwrite-FD366E?style=flat-square&logo=appwrite&logoColor=white)
 ![WebRTC](https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-**`Quant`**
+**`AI / tooling`**
 
-![Alpha Generation](https://img.shields.io/badge/Alpha_Generation-7a5af5?style=flat-square)
-![Signal Processing](https://img.shields.io/badge/Signal_Processing-00e6ff?style=flat-square)
-![Risk Modeling](https://img.shields.io/badge/Risk_Modeling-00c2a8?style=flat-square)
-![Systematic Trading](https://img.shields.io/badge/Systematic_Trading-FF6B6B?style=flat-square)
-![WorldQuant Brain](https://img.shields.io/badge/WorldQuant_Brain-1a1a2e?style=flat-square)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![tree-sitter](https://img.shields.io/badge/tree--sitter-058F0B?style=flat-square)
+![MCP](https://img.shields.io/badge/MCP-000000?style=flat-square)
+![LLM Agents](https://img.shields.io/badge/LLM_Agents-412991?style=flat-square&logo=openai&logoColor=white)
 
-**`Systems`**
+**`Robotics / systems`**
 
 ![ROS2](https://img.shields.io/badge/ROS2-22314E?style=flat-square&logo=ros&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![LQR-MPC](https://img.shields.io/badge/LQR--MPC-22314E?style=flat-square)
 
 </div>
 
