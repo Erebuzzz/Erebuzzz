@@ -6,6 +6,16 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          three: ['three'],
+          anime: ['animejs'],
+          icons: ['lucide-react']
+        }
+      }
+    }
   }
 });
