@@ -259,7 +259,7 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
           <div className="space-y-1.5 text-xs font-mono text-text-muted">
             <p className="text-ember-600 dark:text-ember-400 font-semibold">Communication Channels:</p>
             <p>Email: <a href="mailto:kshitiz23kumar@gmail.com" className="text-text hover:underline">kshitiz23kumar@gmail.com</a></p>
-            <p>Discord: <span className="text-text font-semibold">erebus.0</span> (ID: 1206267175267074049)</p>
+            <p>Discord: <a href="https://discord.com/users/1206267175267074049" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">discord.com/users/1206267175267074049 &#8599;</a> (User: <span className="text-text font-semibold">erebus.0</span>)</p>
             <p>Cal.com Quickmeet: <a href="https://cal.com/kksinha/quickmeet" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">cal.com/kksinha/quickmeet &#8599;</a></p>
             <p>GitHub: <a href="https://github.com/Erebuzzz" target="_blank" rel="noreferrer" className="text-text hover:underline">github.com/Erebuzzz &#8599;</a></p>
             <p>Unstable Kernel Lab: <a href="https://unstable-kernel.github.io/docs" target="_blank" rel="noreferrer" className="text-text hover:underline">unstable-kernel.github.io/docs &#8599;</a></p>
