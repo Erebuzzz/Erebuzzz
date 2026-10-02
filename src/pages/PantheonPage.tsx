@@ -1,6 +1,7 @@
 import React from 'react';
 import { LaborsHUD } from '../components/LaborsHUD';
 import { PantheonGrid } from '../components/PantheonGrid';
+import { GithubContributionCalendar } from '../components/GithubContributionCalendar';
 import { TerminalHUD } from '../components/TerminalHUD';
 
 interface PantheonPageProps {
@@ -10,6 +11,7 @@ interface PantheonPageProps {
   onUnlockBadge: (id: string, label: string) => void;
   terminalPrefill: string | null;
   onClearPrefill: () => void;
+  theme?: 'dark' | 'light';
 }
 
 export const PantheonPage: React.FC<PantheonPageProps> = ({
@@ -18,7 +20,8 @@ export const PantheonPage: React.FC<PantheonPageProps> = ({
   onOpenTerminalCmd,
   onUnlockBadge,
   terminalPrefill,
-  onClearPrefill
+  onClearPrefill,
+  theme = 'dark'
 }) => {
   return (
     <div className="space-y-12 animate-in fade-in duration-300">
@@ -30,6 +33,9 @@ export const PantheonPage: React.FC<PantheonPageProps> = ({
         onOpenTerminalCmd={onOpenTerminalCmd}
         onUnlockBadge={onUnlockBadge}
       />
+
+      {/* GitHub Contribution Chronicle & Telemetry Matrix */}
+      <GithubContributionCalendar theme={theme} />
 
       {/* Pantheon Constellation Matrix */}
       <PantheonGrid

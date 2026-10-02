@@ -210,6 +210,7 @@ export const App: React.FC = () => {
               onUnlockBadge={handleUnlockBadge}
               terminalPrefill={terminalPrefill}
               onClearPrefill={() => setTerminalPrefill(null)}
+              theme={theme}
             />
           )}
 
