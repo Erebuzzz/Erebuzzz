@@ -1,0 +1,5 @@
+# Agent Brain and Developer Context (Never commit)
+brain/
+design-genome.yaml
+.DS_Store
+*.log

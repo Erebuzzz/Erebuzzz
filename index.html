@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erebuzzz | Kshitiz Kumar Sinha - Robotics, AI Systems & Engineering</title>
+  <meta name="description" content="Personal portfolio and systems lab of Kshitiz Kumar Sinha (Erebuzzz). Autonomous systems, multi-agent AI, robotics control stacks, and quantitative research.">
+  <link rel="canonical" href="https://erebuzzz.me/">
+
+  <meta property="og:title" content="Erebuzzz | Kshitiz Kumar Sinha">
+  <meta property="og:description" content="Autonomous systems, multi-agent AI, robotics control stacks, and quantitative research.">
+  <meta property="og:url" content="https://erebuzzz.me/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@erebuzzz">
+
+  <!-- Dynamic SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307090e'/%3E%3Cpath d='M8 7h16v3H11v6h12v3H11v6h13v3H8V7z' fill='%2300e6ff'/%3E%3Ccircle cx='25' cy='25' r='3' fill='%237a5af5'/%3E%3C/svg%3E">
+
+  <!-- Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0d1117;
+      --surface-elevated: #131923;
+      --surface-hover: #17202e;
+      --border: #1e293b;
+      --border-bright: #334155;
+      --text: #f3f4f6;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --cyan: #00e6ff;
+      --cyan-glow: rgba(0, 230, 255, 0.15);
+      --violet: #7a5af5;
+      --violet-glow: rgba(122, 90, 245, 0.15);
+      --rose: #ff4d6d;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Technical grid pattern background */
+    .bg-grid {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(0, 230, 255, 0.08) 0%, rgba(122, 90, 245, 0.05) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Container constraints */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Glass and technical borders */
+    .tech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .tech-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    .tech-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+
+    .tech-pill:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Status indicators */
+    .badge-live {
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-protocol {
+      color: var(--cyan);
+      background: rgba(0, 230, 255, 0.1);
+      border: 1px solid rgba(0, 230, 255, 0.3);
+    }
+
+    .badge-research {
+      color: var(--violet);
+      background: rgba(122, 90, 245, 0.12);
+      border: 1px solid rgba(122, 90, 245, 0.3);
+    }
+
+    .badge-lab {
+      color: var(--rose);
+      background: rgba(255, 77, 109, 0.12);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+    }
+
+    /* Pulse dot */
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulseAnimation 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes pulseAnimation {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--cyan);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #05070a;
+      border: 1px solid var(--cyan);
+    }
+
+    .btn-primary:hover {
+      background: #5cf1ff;
+      border-color: #5cf1ff;
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.45rem 0.85rem;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--surface-hover);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    /* Interactive modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 6px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    /* Interactive canvas */
+    #heroCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* Responsive grid layouts */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-bright);
+    }
+  </style>
+</head>
+<body class="bg-grid">
+
+  <!-- Ambient background glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="#" class="font-display" style="text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.6rem;">
+        <span style="color: var(--cyan); font-family: 'JetBrains Mono'; font-weight: 600;">[EK]</span>
+        <span>EREBUZZZ</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 0.3rem 0.75rem; border-radius: 4px; border: 1px solid var(--border);">
+          <span class="pulse-dot"></span>
+          <span>IISER BHOPAL '27</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#builds" class="nav-link">Builds</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#lab" class="nav-link">Lab</a></li>
+          <li><a href="#terminal" class="nav-link">Terminal</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <a href="https://github.com/Erebuzzz" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; font-family: 'JetBrains Mono';">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section style="position: relative; padding: 5rem 0 3.5rem; border-bottom: 1px solid var(--border); min-height: 480px; display: flex; align-items: center;">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="container" style="width: 100%;">
+      <!-- Terminal prompt line -->
+      <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(0, 230, 255, 0.05); border: 1px solid rgba(0, 230, 255, 0.2); padding: 0.35rem 0.85rem; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.85rem; color: var(--cyan); margin-bottom: 1.5rem;">
+        <span style="opacity: 0.7;">$</span>
+        <span>whoami --verbose</span>
+      </div>
+
+      <h1 class="font-display" style="font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.15; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.02em;">
+        I break things, automate the cleanup, <br/>
+        <span style="background: linear-gradient(90deg, var(--cyan) 0%, var(--violet) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          then pretend it was all part of the plan.
+        </span>
+      </h1>
+
+      <p style="font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--text-muted); max-width: 780px; margin-bottom: 2rem;">
+        Final-year <strong>Electronics and Communication Engineering</strong> at <strong>IISER Bhopal</strong> (graduating April 2027).
+        Building autonomous systems, multi-agent AI tooling, and robotics control stacks.
+        Part-time <strong>Quantitative Research Consultant</strong> at WorldQuant. Founder of <strong>Unstable Kernel</strong>.
+      </p>
+
+      <!-- Action buttons -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; margin-bottom: 2.75rem;">
+        <a href="#builds" class="btn btn-primary">
+          Explore Flagship Builds &rarr;
+        </a>
+        <a href="https://unstable-kernel.github.io/docs" target="_blank" rel="noopener noreferrer" class="btn btn-outline font-mono">
+          Unstable Kernel Docs
+        </a>
+        <a href="https://github.com/Erebuzzz" target="_blank" rel="noopener noreferrer" class="btn btn-outline font-mono">
+          github.com/Erebuzzz
+        </a>
+      </div>
+
+      <!-- Quick Telemetry Bar -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; border-top: 1px solid var(--border); padding-top: 1.75rem;">
+        <div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Primary Stack</div>
+          <div class="font-mono" style="font-size: 0.95rem; color: var(--text); font-weight: 500;">Python &middot; TypeScript &middot; ROS2 &middot; C/Rust</div>
+        </div>
+        <div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Quantitative Research</div>
+          <div class="font-mono" style="font-size: 0.95rem; color: var(--cyan); font-weight: 500;">WorldQuant Consultant</div>
+        </div>
+        <div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Autonomy &amp; Systems Lab</div>
+          <div class="font-mono" style="font-size: 0.95rem; color: var(--violet); font-weight: 500;">Unstable Kernel / MIRAGE</div>
+        </div>
+        <div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Location &amp; Cohort</div>
+          <div class="font-mono" style="font-size: 0.95rem; color: var(--text); font-weight: 500;">IISER Bhopal &middot; Class of 2027</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Builds Section -->
+  <section id="builds" style="padding: 4.5rem 0; border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; md-flex-direction: row; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; gap: 1rem;">
+        <div>
+          <div class="font-mono" style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.3rem;">SYSTEM ARCHITECTURE &amp; REPOSITORIES</div>
+          <h2 class="font-display" style="font-size: 2.2rem; font-weight: 700;">Featured Engineering Builds</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+            Verified production platforms, robotics control loops, security engines, and agent architectures.
+          </p>
+        </div>
+
+        <!-- Search input -->
+        <div style="width: 100%; max-width: 340px;">
+          <input type="text" id="projectSearch" placeholder="Filter by stack or keyword (e.g. ROS2, WebRTC, MCP)..." 
+            style="width: 100%; background: var(--surface); border: 1px solid var(--border); padding: 0.6rem 0.9rem; border-radius: 4px; color: var(--text); font-family: 'JetBrains Mono'; font-size: 0.8rem; outline: none; transition: border-color 0.15s ease;">
+        </div>
+      </div>
+
+      <!-- Filter buttons -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.25rem;">
+        <button class="filter-btn active" data-filter="all">All Systems [14]</button>
+        <button class="filter-btn" data-filter="flagship">Flagship / Live</button>
+        <button class="filter-btn" data-filter="robotics">Robotics &amp; Autonomy</button>
+        <button class="filter-btn" data-filter="agents">AI Agents &amp; Tooling</button>
+        <button class="filter-btn" data-filter="quant">Quant &amp; Protocols</button>
+        <button class="filter-btn" data-filter="infra">Platform Infra</button>
+      </div>
+
+      <!-- Bento Grid of Projects -->
+      <div class="bento-grid" id="projectsGrid">
+
+        <!-- 1. Muninn -->
+        <article class="tech-card" data-category="flagship agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> Live Architecture
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Cloudflare + Next.js 15</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Muninn</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            A living memory companion for technical work: captures continuous conversations, extracts verifiable atomic claims, builds a relational knowledge graph, and resurfaces unfinished or stale tasks.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Cloudflare Workers</span>
+            <span class="tech-pill">Neon pgvector</span>
+            <span class="tech-pill">AssemblyAI</span>
+            <span class="tech-pill">Android APK</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/Muninn" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              GitHub &rarr;
+            </a>
+            <button onclick="openModal('muninn')" class="tech-pill" style="cursor: pointer; background: transparent;">
+              Architecture Spec
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. NORN / creance -->
+        <article class="tech-card" data-category="flagship quant" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-protocol">Protocol Engine</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Arbitrum Stylus + EVM</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">NORN (creance)</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Autonomous machine-to-machine financial clearing and multilateral netting protocol. Features bilateral and multilateral cycle cancellation, EIP-712 / x402 obligations, and the Arena mission-control cockpit.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Stylus (Rust)</span>
+            <span class="tech-pill">Solidity</span>
+            <span class="tech-pill">Foundry</span>
+            <span class="tech-pill">EIP-712 / x402</span>
+            <span class="tech-pill">Arena UI</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <button onclick="openModal('norn')" class="tech-pill" style="cursor: pointer; color: var(--cyan); border-color: rgba(0, 230, 255, 0.3); background: transparent;">
+              Protocol Blueprint &rarr;
+            </button>
+            <span class="font-mono" style="font-size: 0.72rem; color: var(--text-dim);">Private Repo</span>
+          </div>
+        </article>
+
+        <!-- 3. Universal Autonomous Triage and Upkeep (UATU) -->
+        <article class="tech-card" data-category="flagship agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> Live Platform
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">AWS CDK + Bedrock</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">UATU</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Autonomous repository triage and auto-remediation system. Dispatches sandboxed static audits and Amazon Bedrock Nova Micro reasoning to formulate verified fixes and open clean automated pull requests.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">AWS Lambda</span>
+            <span class="tech-pill">DynamoDB</span>
+            <span class="tech-pill">SQS</span>
+            <span class="tech-pill">Bedrock Nova</span>
+            <span class="tech-pill">TypeScript</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://uatu-beta.vercel.app" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3);">
+              Live App &rarr;
+            </a>
+            <a href="https://github.com/Erebuzzz/Universal-Autonomous-Triage-and-Upkeep" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              GitHub
+            </a>
+            <button onclick="openModal('uatu')" class="tech-pill" style="cursor: pointer; background: transparent;">
+              Specs
+            </button>
+          </div>
+        </article>
+
+        <!-- 4. SynCine -->
+        <article class="tech-card" data-category="flagship infra" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> Live
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">WebRTC + Appwrite</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">SynCine</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Collaborative watch rooms without a media server bill. Signaling, rooms, and chat sit on Appwrite. Video moves peer-to-peer over WebRTC (screen/tab, local file sync, or YouTube cinema sync). Hosted on Confluxa.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Vite</span>
+            <span class="tech-pill">WebRTC</span>
+            <span class="tech-pill">Appwrite</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://syncine.confluxa.app" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3);">
+              Live Watch Room &rarr;
+            </a>
+            <a href="https://github.com/Erebuzzz/SynCine" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. CodeShield -->
+        <article class="tech-card" data-category="flagship agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> PyPI &amp; npm
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">CFG / DFG / Taint</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">CodeShield</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            A local-first verification firewall for AI-generated code. Parses ASTs into CFG, DFG, and taint graphs using tree-sitter to intercept prompt leaks, eval vulnerabilities, and shell injections before compile time.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">tree-sitter</span>
+            <span class="tech-pill">MCP Server</span>
+            <span class="tech-pill">FastAPI</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://codeshield-five.vercel.app" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              Docs &rarr;
+            </a>
+            <a href="https://github.com/Erebuzzz/CodeShield" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              GitHub
+            </a>
+            <a href="https://pypi.org/project/codeshield-ai/" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              PyPI
+            </a>
+            <a href="https://www.npmjs.com/package/codeshield-mcp" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              npm
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. SimWeaver -->
+        <article class="tech-card" data-category="flagship robotics agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> Live Lab
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">EIR &middot; FastAPI</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">SimWeaver</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Multi-agent robotics simulation engineer. Compiles natural-language robotics intent into an Engineering Intermediate Representation (EIR), then runs a continuous simulate, evaluate, diagnose, and iterate loop.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">EIR</span>
+            <span class="tech-pill">Multi-Agent</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://simweaver.vercel.app" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3);">
+              Control Room &rarr;
+            </a>
+            <a href="https://github.com/Erebuzzz/SimWeaver" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. MIRAGE (Unstable Kernel) -->
+        <article class="tech-card" data-category="flagship robotics" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-lab">Foundation Lab</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Unstable Kernel</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">MIRAGE</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            An engineering compiler foundation. Turns chaotic engineering specifications into a typed, versioned Engineering Intermediate Representation (EIR) with provenance graphs and policy-gated execution contracts.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">EIR Compiler</span>
+            <span class="tech-pill">CLI</span>
+            <span class="tech-pill">Adapters</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://unstable-kernel.github.io/docs" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--rose); border-color: rgba(255, 77, 109, 0.3);">
+              Lab Docs &rarr;
+            </a>
+            <a href="https://github.com/Unstable-Kernel/MIRAGE" target="_blank" rel="noopener noreferrer" class="tech-pill">
+              GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. Risk-Aware Hybrid LQR-MPC Navigation -->
+        <article class="tech-card" data-category="robotics" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-research">Research Control Stack</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">ROS2 + Gazebo</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Risk-Aware LQR-MPC</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Differential-drive navigation research with Agolika BM. Combines high-speed nominal tracking via LQR with a rollout-based risk predictor that triggers an adaptive MPC safety filter only when danger is projected.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">ROS2</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">LQR</span>
+            <span class="tech-pill">Adaptive MPC</span>
+            <span class="tech-pill">Gazebo</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/Risk-Aware-Hybrid-LQR-MPC-Navigation-for-Autonomous-Systems" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--violet); border-color: rgba(122, 90, 245, 0.3);">
+              GitHub Repository &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 9. SSL_n_F_DSGFA (IEEE TCNS 2024) -->
+        <article class="tech-card" data-category="robotics quant" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-research">IEEE TCNS 2024 Parity</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">MATLAB &middot; Python &middot; Simulink</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">SSL &amp; Formation DSGFA</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Simulator for IEEE TCNS 2024 paper "Simultaneous Source Localization and Formation via a Distributed Sign Gradient-Free Algorithm". Validates control laws, error bounds, and unicycle models with CoppeliaSim.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">MATLAB</span>
+            <span class="tech-pill">Simulink</span>
+            <span class="tech-pill">CoppeliaSim</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/SSL_n_F_DSGFA" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              GitHub &rarr;
+            </a>
+            <button onclick="openModal('dsgfa')" class="tech-pill" style="cursor: pointer; background: transparent;">
+              Theory Details
+            </button>
+          </div>
+        </article>
+
+        <!-- 10. Pixasso -->
+        <article class="tech-card" data-category="agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-protocol">Agent Skill</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Public Skill</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Pixasso</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            The complete end-to-end frontend engineering and design orchestrator for AI agents and developers. 16 pillars, MCP server, typography direction, and automated QA.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">MCP Server</span>
+            <span class="tech-pill">Design Systems</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/pixasso" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              GitHub &rarr;
+            </a>
+            <span class="font-mono" style="font-size: 0.72rem; color: var(--text-dim);">npx skills add Erebuzzz/pixasso</span>
+          </div>
+        </article>
+
+        <!-- 11. Confluxa -->
+        <article class="tech-card" data-category="infra" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-live">
+              <span class="pulse-dot"></span> Live Platform
+            </span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Next.js + Appwrite</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Confluxa</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Live application infrastructure layer with named realms, Appwrite Realtime websocket channels, LiveToast messaging fabric, and Bifrost gateway.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">Appwrite Realtime</span>
+            <span class="tech-pill">LiveToast</span>
+            <span class="tech-pill">Bifrost</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://www.confluxa.app" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--emerald); border-color: rgba(16, 185, 129, 0.3);">
+              confluxa.app &rarr;
+            </a>
+            <span class="font-mono" style="font-size: 0.72rem; color: var(--text-dim);">Private Repo</span>
+          </div>
+        </article>
+
+        <!-- 12. ascii-raw -->
+        <article class="tech-card" data-category="infra" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-protocol">Creative Canvas</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Canvas HUD</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">ascii-raw</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            A high-performance HTML5 Canvas ASCII camera with real-time RGB/CMYK pixel quantization, classic retro Bayer dithering, and 4K print-quality exports in an interactive cyberpunk HUD.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">HTML5 Canvas</span>
+            <span class="tech-pill">Bayer Dithering</span>
+            <span class="tech-pill">Web Audio</span>
+            <span class="tech-pill">TypeScript</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/ascii-raw" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              GitHub Repository &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 13. CodeGrandmaster -->
+        <article class="tech-card" data-category="agents" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-protocol">Agent Arena</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Python Sandbox</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">CodeGrandmaster</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Hierarchical multi-agent engine attacking competitive programming problems. Interns propose, seniors debate, CEO verifies inside an isolated sandbox with dynamic ELO progression.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Multi-Agent</span>
+            <span class="tech-pill">Codeforces API</span>
+            <span class="tech-pill">Docker</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <a href="https://github.com/Erebuzzz/CodeGrandmaster" target="_blank" rel="noopener noreferrer" class="tech-pill" style="color: var(--cyan); border-color: rgba(0, 230, 255, 0.3);">
+              GitHub Repository &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- 14. pulse -->
+        <article class="tech-card" data-category="infra" style="padding: 1.5rem; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+            <span class="tech-pill badge-protocol">Distributed Systems</span>
+            <span class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">Temporal.io + Python</span>
+          </div>
+          <h3 class="font-display" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Pulse</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.15rem; min-height: 4.2rem;">
+            Resilient distributed order orchestration system. Demonstrates fault-tolerant workflows, retries, signals, idempotent persistence, and child workflows built with Temporal and Python.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem;">
+            <span class="tech-pill">Temporal</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Workflows</span>
+            <span class="tech-pill">Distributed State</span>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.85rem;">
+            <button onclick="openModal('pulse')" class="tech-pill" style="cursor: pointer; color: var(--cyan); border-color: rgba(0, 230, 255, 0.3); background: transparent;">
+              System Spec &rarr;
+            </button>
+            <span class="font-mono" style="font-size: 0.72rem; color: var(--text-dim);">Private Repo</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" style="padding: 4.5rem 0; border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div style="margin-bottom: 2.5rem;">
+        <div class="font-mono" style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.3rem;">ENGINEERING INVENTORY</div>
+        <h2 class="font-display" style="font-size: 2.2rem; font-weight: 700;">Verified Technical Skills</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+          Technologies, frameworks, and toolchains with concrete production or research implementations.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        <!-- Languages -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--text); margin-bottom: 0.85rem;">Languages</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">Shell / Bash</span>
+            <span class="tech-pill">Rust</span>
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">SQL</span>
+          </div>
+        </div>
+
+        <!-- Web & Backend -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--text); margin-bottom: 0.85rem;">Web &amp; Infrastructure</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">Next.js 15</span>
+            <span class="tech-pill">Vite</span>
+            <span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">Cloudflare Workers</span>
+            <span class="tech-pill">Appwrite</span>
+            <span class="tech-pill">WebRTC</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Redis</span>
+            <span class="tech-pill">Celery</span>
+            <span class="tech-pill">PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- Quantitative Research -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--cyan); margin-bottom: 0.85rem;">Quantitative Research</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">Alpha Generation</span>
+            <span class="tech-pill">Signal Processing</span>
+            <span class="tech-pill">Risk Modeling</span>
+            <span class="tech-pill">Systematic Trading</span>
+            <span class="tech-pill">WorldQuant Brain</span>
+          </div>
+        </div>
+
+        <!-- AI & Tooling -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--text); margin-bottom: 0.85rem;">AI, Tooling &amp; Agents</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">PyTorch</span>
+            <span class="tech-pill">tree-sitter AST</span>
+            <span class="tech-pill">Model Context Protocol (MCP)</span>
+            <span class="tech-pill">LLM Multi-Agent Workflows</span>
+            <span class="tech-pill">scikit-learn</span>
+          </div>
+        </div>
+
+        <!-- Robotics & Systems -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--violet); margin-bottom: 0.85rem;">Robotics &amp; Controls</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">ROS2</span>
+            <span class="tech-pill">MuJoCo</span>
+            <span class="tech-pill">LQR-MPC</span>
+            <span class="tech-pill">MATLAB / Simulink</span>
+            <span class="tech-pill">Isaac Sim</span>
+            <span class="tech-pill">CoppeliaSim</span>
+          </div>
+        </div>
+
+        <!-- Embedded Systems -->
+        <div class="tech-card" style="padding: 1.5rem; border-radius: 6px;">
+          <h4 class="font-display" style="font-size: 1.1rem; color: var(--text); margin-bottom: 0.85rem;">Embedded &amp; Hardware</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <span class="tech-pill">Arduino</span>
+            <span class="tech-pill">ESP32</span>
+            <span class="tech-pill">Verilog</span>
+            <span class="tech-pill">FPGA</span>
+            <span class="tech-pill">Digital Signal Processing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lab Section -->
+  <section id="lab" style="padding: 4.5rem 0; border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="tech-card" style="padding: 2.5rem; border-radius: 8px; border-left: 3px solid var(--rose);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <span class="tech-pill badge-lab">Autonomous Lab</span>
+          <span class="font-mono" style="font-size: 0.8rem; color: var(--text-dim);">unstable-kernel.github.io</span>
+        </div>
+        <h3 class="font-display" style="font-size: 1.85rem; font-weight: 700; margin-bottom: 0.85rem;">
+          Unstable Kernel
+        </h3>
+        <p style="color: var(--text-muted); font-size: 1rem; max-width: 840px; margin-bottom: 1.5rem;">
+          Unstable Kernel is the foundational lab I run for robotics, autonomy, and AI-assisted engineering tooling. MIRAGE lives here. Student-budget, public-by-default where possible, still assembling the stack rather than pretending it is a finished company or platform.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+          <a href="https://unstable-kernel.github.io/docs" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--rose); border-color: var(--rose); color: white;">
+            Read Lab Docs &rarr;
+          </a>
+          <a href="https://github.com/Unstable-Kernel" target="_blank" rel="noopener noreferrer" class="btn btn-outline font-mono">
+            github.com/Unstable-Kernel
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Section -->
+  <section id="terminal" style="padding: 4.5rem 0; border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div style="margin-bottom: 2rem;">
+        <div class="font-mono" style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.3rem;">INTERACTIVE SHELL</div>
+        <h2 class="font-display" style="font-size: 2.2rem; font-weight: 700;">Diagnostic Terminal</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+          Run queries directly against this portfolio environment. Type <code style="color: var(--cyan);">help</code> for available commands.
+        </p>
+      </div>
+
+      <!-- Terminal Window -->
+      <div style="background: #05070a; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.8);">
+        <div style="background: var(--surface); padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; gap: 0.45rem;">
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></div>
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></div>
+            <div style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></div>
+          </div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--text-dim);">erebuzzz@arch-station: ~</div>
+          <div class="font-mono" style="font-size: 0.75rem; color: var(--cyan);">zsh</div>
+        </div>
+
+        <div id="terminalBody" class="font-mono" style="padding: 1.25rem; font-size: 0.85rem; min-height: 200px; max-height: 320px; overflow-y: auto; color: var(--text);">
+          <div style="color: var(--text-dim); margin-bottom: 0.75rem;">
+            Welcome to Erebuzzz Systems Terminal v2.4.0. Type <span style="color: var(--cyan);">'help'</span> for a list of commands.
+          </div>
+          <div id="terminalHistory"></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="color: var(--cyan);">erebuzzz@arch-station:~$</span>
+            <input type="text" id="terminalInput" autocomplete="off" spellcheck="false" 
+              style="flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer Section -->
+  <section id="contact" style="padding: 4.5rem 0 3.5rem;">
+    <div class="container">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto 3rem;">
+        <div class="font-mono" style="font-size: 0.8rem; color: var(--cyan); margin-bottom: 0.4rem;">SIGNAL CHANNELS</div>
+        <h2 class="font-display" style="font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem;">Let's Build Something Ridiculous</h2>
+        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.75rem;">
+          If you want to collaborate, build autonomous systems, or scream about a bug at 2 AM, ping me.
+        </p>
+
+        <!-- Direct Email Pill & Copy Button -->
+        <div style="display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 0.6rem 0.4rem 1rem; border-radius: 6px; gap: 0.75rem; margin-bottom: 2rem;">
+          <span class="font-mono" style="font-size: 0.9rem; color: var(--text);" id="emailText">kshitiz23kumar@gmail.com</span>
+          <button id="copyEmailBtn" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; font-family: 'JetBrains Mono';">
+            Copy
+          </button>
+        </div>
+
+        <!-- Social Badges -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem;">
+          <a href="https://www.linkedin.com/in/kksinha23" target="_blank" rel="noopener noreferrer" class="tech-pill" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;">
+            LinkedIn: kksinha23
+          </a>
+          <a href="https://x.com/erebuzzz" target="_blank" rel="noopener noreferrer" class="tech-pill" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;">
+            X: @erebuzzz
+          </a>
+          <a href="https://github.com/Erebuzzz" target="_blank" rel="noopener noreferrer" class="tech-pill" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;">
+            GitHub: Erebuzzz
+          </a>
+          <a href="https://instagram.com/artem.enies" target="_blank" rel="noopener noreferrer" class="tech-pill" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;">
+            Instagram: artem.enies
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom footer credits -->
+      <div style="border-top: 1px solid var(--border); padding-top: 2rem; display: flex; flex-direction: column; md-flex-direction: row; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-dim); gap: 0.75rem;">
+        <div>&copy; 2026 Erebuzzz / Kshitiz Kumar Sinha. MIT License.</div>
+        <div>Hosted on GitHub Pages &middot; Zero-bloat Static Engine</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Detail Modal -->
+  <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <h3 id="modalTitle" class="font-display" style="font-size: 1.35rem; font-weight: 700;">System Architecture</h3>
+        <button onclick="closeModalDirect()" style="background: transparent; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; line-height: 1;">&times;</button>
+      </div>
+      <div id="modalBody" style="padding: 1.5rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.7;">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side Logic -->
+  <script>
+    // Canvas background telemetry particles
+    (function initCanvas() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const particleCount = 45;
+
+      function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 1.5 + 0.5
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 130) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(0, 230, 255, ${0.12 * (1 - dist / 130)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw nodes
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = '#00e6ff';
+          ctx.fill();
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+        });
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+
+    // Bento grid category filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#projectsGrid .tech-card');
+    const searchInput = document.getElementById('projectSearch');
+
+    function applyFilters() {
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      const query = (searchInput.value || '').toLowerCase().trim();
+
+      cards.forEach(card => {
+        const categories = card.dataset.category || '';
+        const textContent = card.innerText.toLowerCase();
+
+        const matchesFilter = (activeFilter === 'all') || categories.includes(activeFilter);
+        const matchesQuery = !query || textContent.includes(query);
+
+        if (matchesFilter && matchesQuery) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilters();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyFilters);
+    }
+
+    // Modal data and handler
+    const modalData = {
+      muninn: {
+        title: "Muninn: Living Memory Companion Architecture",
+        body: `
+          <p><strong>Primary Goal:</strong> Solve technical context loss by recording ongoing conversations, extracting atomic verifiable claims into graph nodes, and resurfacing unblocked questions or tasks when related topics arise.</p>
+          <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid #1e293b; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+            Audio Stream (24kHz PCM16) &rarr; AssemblyAI WebSocket &rarr; Claim Extraction Agent &rarr; Neon pgvector Graph &rarr; Living Memory Chat &amp; Native Foreground Service
+          </div>
+          <p><strong>Stack &amp; Deployments:</strong></p>
+          <ul style="padding-left: 1.25rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+            <li><strong>Worker Gateway:</strong> Cloudflare Workers (TypeScript + Hono) running edge streaming.</li>
+            <li><strong>Vector Storage:</strong> Neon Serverless PostgreSQL with <code>pgvector</code> embeddings.</li>
+            <li><strong>Frontend:</strong> Next.js 15 studio interface.</li>
+            <li><strong>Mobile APK:</strong> Native Android foreground recording service with hardware wake locks.</li>
+          </ul>
+          <p><a href="https://github.com/Erebuzzz/Muninn" target="_blank" style="color: #00e6ff; text-decoration: none;">View full repository on GitHub &rarr;</a></p>
+        `
+      },
+      norn: {
+        title: "NORN (creance): Autonomous Multilateral Netting Protocol",
+        body: `
+          <p><strong>Core Thesis:</strong> As autonomous AI agents interact and consume machine-to-machine services (APIs, GPUs, data feeds), settling every raw invoice onchain incurs prohibitive gas fees. NORN cancels out cyclic obligations across agent graphs prior to epoch settlement.</p>
+          <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid #1e293b; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+            EIP-712 / x402 Obligations &rarr; Netting Graph Cancellation Engine &rarr; Arbitrum Stylus Rust Verifier &rarr; Onchain Net Settlement (Robinhood Chain / Arbitrum Sepolia)
+          </div>
+          <p><strong>Key Mechanism Invariants:</strong></p>
+          <ul style="padding-left: 1.25rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+            <li><strong>Cycle Reduction:</strong> Bilateral and multilateral loop cancellation reduces gross debt volume to net transfers.</li>
+            <li><strong>Stylus Rust Engine:</strong> Arbitrum Stylus programs run high-performance fixed-point math and crisis stress testing.</li>
+            <li><strong>Arena Console:</strong> Mission-control telemetry room for monitoring live obligation states.</li>
+          </ul>
+        `
+      },
+      uatu: {
+        title: "UATU: Universal Autonomous Triage & Upkeep",
+        body: `
+          <p><strong>System Blueprint:</strong> An autonomous platform that monitors GitHub repositories via webhooks, reproduces reported bugs in isolated sandboxes, executes Bedrock Nova Micro reasoning to formulate fixes, and opens verified pull requests.</p>
+          <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid #1e293b; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+            GitHub Webhook &rarr; AWS API Gateway &rarr; SQS Queue &rarr; Worker Lambda + Git Layer &rarr; Amazon Bedrock &rarr; Automated Pull Request
+          </div>
+          <p><strong>Cloud Architecture:</strong> Provisions API Gateway, Lambda with Git layer, DynamoDB, SQS queues with dead-letter protection, and S3 artifact buckets via AWS CDK.</p>
+          <p style="margin-top: 0.75rem;"><a href="https://uatu-beta.vercel.app" target="_blank" style="color: #10b981; text-decoration: none;">Launch Live Web Dashboard &rarr;</a></p>
+        `
+      },
+      dsgfa: {
+        title: "SSL & Formation DSGFA: IEEE TCNS 2024 Parity",
+        body: `
+          <p><strong>Paper Parity:</strong> Implements and validates the numerical and simulation results for <em>Simultaneous Source Localization and Formation via a Distributed Sign Gradient-Free Algorithm</em> (IEEE Transactions on Control of Network Systems 2024).</p>
+          <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid #1e293b; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+            Distributed Sign Gradient-Free Law &rarr; Bounded vs Gaussian Noise Sweeps &rarr; MATLAB/Simulink TurtleBot &rarr; CoppeliaSim Scene
+          </div>
+          <p>Features numerical integrator comparisons, topology variations, unicycle feedback linearization, and chatter-control verification.</p>
+          <p style="margin-top: 0.75rem;"><a href="https://github.com/Erebuzzz/SSL_n_F_DSGFA" target="_blank" style="color: #00e6ff; text-decoration: none;">View GitHub Repository &rarr;</a></p>
+        `
+      },
+      pulse: {
+        title: "Pulse: Distributed Order Orchestration System",
+        body: `
+          <p><strong>System Architecture:</strong> Distributed order processing engine built on top of Temporal.io and Python. Demonstrates rock-solid reliability across transient network failures and long-running distributed sagas.</p>
+          <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid #1e293b; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.8rem;">
+            Incoming Order &rarr; Temporal Workflow Engine &rarr; Idempotent Persistence &rarr; Child Sagas &rarr; Signal Handlers &amp; Compensations
+          </div>
+        `
+      }
+    };
+
+    function openModal(id) {
+      const data = modalData[id];
+      if (!data) return;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalBody').innerHTML = data.body;
+      document.getElementById('projectModal').classList.add('active');
+    }
+
+    function closeModalDirect() {
+      document.getElementById('projectModal').classList.remove('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'projectModal') {
+        closeModalDirect();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModalDirect();
+    });
+
+    // Copy email helper
+    const copyBtn = document.getElementById('copyEmailBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('kshitiz23kumar@gmail.com').then(() => {
+          copyBtn.innerText = 'Copied!';
+          copyBtn.style.color = '#00e6ff';
+          setTimeout(() => {
+            copyBtn.innerText = 'Copy';
+            copyBtn.style.color = '';
+          }, 2000);
+        });
+      });
+    }
+
+    // Interactive Terminal Logic
+    const termInput = document.getElementById('terminalInput');
+    const termHistory = document.getElementById('terminalHistory');
+    const termBody = document.getElementById('terminalBody');
+
+    const commands = {
+      help: "Available commands: whoami, builds, skills, quant, lab, contact, clear",
+      whoami: "Final-year ECE at IISER Bhopal (April 2027). Quantitative Research Consultant at WorldQuant. Founder of Unstable Kernel.",
+      builds: "Flagships: Muninn, NORN (creance), UATU, SynCine, CodeShield, SimWeaver, MIRAGE, LQR-MPC, SSL_n_F_DSGFA.",
+      skills: "Python, TypeScript, Rust, C, ROS2, LQR-MPC, Next.js, Cloudflare Workers, Appwrite, WebRTC, PyTorch, tree-sitter, MCP.",
+      quant: "WorldQuant QR Consultant: Alpha Generation, Signal Processing, Risk Modeling, Systematic Trading.",
+      lab: "Unstable Kernel: Foundational lab for robotics, autonomy, and EIR tooling (https://unstable-kernel.github.io/docs).",
+      contact: "Email: kshitiz23kumar@gmail.com | X: @erebuzzz | LinkedIn: in/kksinha23 | GitHub: Erebuzzz",
+      clear: "__CLEAR__"
+    };
+
+    if (termInput) {
+      termInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const val = termInput.value.trim().toLowerCase();
+          if (!val) return;
+
+          if (val === 'clear') {
+            termHistory.innerHTML = '';
+            termInput.value = '';
+            return;
+          }
+
+          const response = commands[val] || `Command not found: '${val}'. Type 'help' for available commands.`;
+
+          const row = document.createElement('div');
+          row.style.marginBottom = '0.5rem';
+          row.innerHTML = `
+            <div><span style="color: #00e6ff;">erebuzzz@arch-station:~$</span> ${termInput.value}</div>
+            <div style="color: #94a3b8; margin-top: 0.2rem; padding-left: 0.5rem;">${response}</div>
+          `;
+          termHistory.appendChild(row);
+
+          termInput.value = '';
+          termBody.scrollTop = termBody.scrollHeight;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
