@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,19 +15,20 @@
   <meta name="twitter:site" content="@erebuzzz">
 
   <!-- Geometrical Erebus SVG Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpolygon points='32,4 58,18 58,46 32,60 6,46 6,18' stroke='%233f3f46' stroke-width='1.5' fill='%2309090b'/%3E%3Cpolygon points='32,10 44,24 32,34 20,24' fill='%2327272a' stroke='%2352525b' stroke-width='1'/%3E%3Cpolygon points='32,34 44,24 52,38 32,54' fill='%2318181b' stroke='%233f3f46' stroke-width='1'/%3E%3Cpolygon points='32,34 20,24 12,38 32,54' fill='%23141416' stroke='%233f3f46' stroke-width='1'/%3E%3Cpolygon points='32,26 37,33 32,40 27,33' fill='%23fafafa' stroke='%23e4e4e7' stroke-width='1'/%3E%3Cpolygon points='32,29 34,33 32,37 30,33' fill='%2309090b'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpolygon points='32,4 58,18 58,46 32,60 6,46 6,18' stroke='%2352525b' stroke-width='1.5' fill='%2309090b'/%3E%3Cpolygon points='32,10 44,24 32,34 20,24' fill='%2327272a' stroke='%2371717a' stroke-width='1'/%3E%3Cpolygon points='32,34 44,24 52,38 32,54' fill='%2318181b' stroke='%233f3f46' stroke-width='1'/%3E%3Cpolygon points='32,34 20,24 12,38 32,54' fill='%23141416' stroke='%233f3f46' stroke-width='1'/%3E%3Cpolygon points='32,26 37,33 32,40 27,33' fill='%23fafafa' stroke='%23e4e4e7' stroke-width='1'/%3E%3Cpolygon points='32,29 34,33 32,37 30,33' fill='%2309090b'/%3E%3C/svg%3E">
 
-  <!-- Typography: Inter, Space Grotesk, JetBrains Mono -->
+  <!-- Typography: Space Grotesk, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    /* Theme Tokens: Erebus (Dark) & Hemera (Light) */
+    :root, [data-theme="dark"] {
       --bg: #09090b;
       --bg-sunken: #050507;
-      --surface: #0d0d10;
-      --surface-elevated: #141418;
+      --surface: #0e0e12;
+      --surface-elevated: #15151a;
       --border: #27272a;
       --border-subtle: #1c1c20;
       --border-bright: #3f3f46;
@@ -35,7 +36,40 @@
       --text-muted: #a1a1aa;
       --text-dim: #71717a;
       --emerald: #22c55e;
-      --amber: #f59e0b;
+      --spotlight-glow: rgba(255, 255, 255, 0.05);
+      --horizon-sky: rgba(14, 14, 18, 0.85);
+      --horizon-line: rgba(250, 250, 250, 0.35);
+      --horizon-halo: rgba(255, 255, 255, 0.08);
+      --grid-dot: rgba(255, 255, 255, 0.04);
+      --emblem-outer: #15151a;
+      --emblem-inner: #27272a;
+      --emblem-facet-a: #18181b;
+      --emblem-facet-b: #121214;
+      --emblem-core: #fafafa;
+    }
+
+    [data-theme="light"] {
+      --bg: #fbfaf8;
+      --bg-sunken: #f2f0eb;
+      --surface: #ffffff;
+      --surface-elevated: #f7f6f2;
+      --border: #e4e4e7;
+      --border-subtle: #eeece8;
+      --border-bright: #d4d4d8;
+      --text: #18181b;
+      --text-muted: #52525b;
+      --text-dim: #71717a;
+      --emerald: #16a34a;
+      --spotlight-glow: rgba(0, 0, 0, 0.035);
+      --horizon-sky: rgba(247, 246, 242, 0.85);
+      --horizon-line: rgba(24, 24, 27, 0.28);
+      --horizon-halo: rgba(180, 140, 90, 0.12);
+      --grid-dot: rgba(0, 0, 0, 0.04);
+      --emblem-outer: #f4f3ee;
+      --emblem-inner: #e4e4e7;
+      --emblem-facet-a: #d4d4d8;
+      --emblem-facet-b: #e2e0da;
+      --emblem-core: #18181b;
     }
 
     * {
@@ -51,14 +85,15 @@
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
       background-size: 24px 24px;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     .font-display { font-family: 'Space Grotesk', sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Framed container inspired by chanhdai.com and 10xshivam.dev */
+    /* Framed container */
     .frame-container {
       max-width: 920px;
       margin: 0 auto;
@@ -68,6 +103,7 @@
       position: relative;
       min-height: 100vh;
       padding: 0 1.5rem;
+      transition: border-color 0.25s ease, background-color 0.25s ease;
     }
 
     @media (min-width: 640px) {
@@ -80,12 +116,45 @@
     .divider {
       border-bottom: 1px dashed var(--border);
       margin: 2.25rem -1.5rem;
+      transition: border-color 0.25s ease;
     }
 
     @media (min-width: 640px) {
       .divider {
         margin: 2.75rem -2.5rem;
       }
+    }
+
+    /* Horizon Canvas Stage */
+    .horizon-stage {
+      position: relative;
+      margin: 0 -1.5rem;
+      padding: 3.5rem 1.5rem 1.5rem;
+      overflow: hidden;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    @media (min-width: 640px) {
+      .horizon-stage {
+        margin: 0 -2.5rem;
+        padding: 4rem 2.5rem 2rem;
+      }
+    }
+
+    #horizonCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    .horizon-content {
+      position: relative;
+      z-index: 1;
     }
 
     /* Rare UI Spotlight Card */
@@ -96,7 +165,7 @@
       border-radius: 8px;
       padding: 1.4rem;
       overflow: hidden;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.25s ease;
     }
 
     .spotlight-card::before {
@@ -104,9 +173,9 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(
-        500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-        rgba(255, 255, 255, 0.06),
-        transparent 40%
+        480px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        var(--spotlight-glow),
+        transparent 45%
       );
       pointer-events: none;
       border-radius: inherit;
@@ -125,7 +194,7 @@
 
     /* Technical badge pill */
     .tech-pill {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
       font-size: 0.75rem;
       padding: 0.2rem 0.55rem;
@@ -136,13 +205,12 @@
       align-items: center;
       gap: 0.35rem;
       text-decoration: none;
-      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+      transition: border-color 0.15s ease, color 0.15s ease, background-color 0.25s ease;
     }
 
     .tech-pill:hover {
       border-color: var(--text-muted);
       color: var(--text);
-      background: rgba(255, 255, 255, 0.06);
     }
 
     .live-dot {
@@ -175,41 +243,13 @@
 
     .filter-tab:hover {
       color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--surface-elevated);
     }
 
     .filter-tab.active {
       color: var(--text);
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--surface-elevated);
       border-color: var(--border);
-    }
-
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
-      background: #0d0d10;
-      border: 1px solid var(--border-bright);
-      max-width: 680px;
-      width: 100%;
-      max-height: 88vh;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95);
     }
 
     /* Bento Grid */
@@ -230,7 +270,7 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(9, 9, 11, 0.85);
+      background: var(--bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px dashed var(--border);
       margin: 0 -1.5rem;
@@ -238,6 +278,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
     @media (min-width: 640px) {
@@ -258,12 +299,15 @@
       transition: all 0.15s ease;
       cursor: pointer;
       background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     .nav-btn:hover {
       color: var(--text);
       border-color: var(--border);
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--surface-elevated);
     }
 
     /* Corner crosshairs */
@@ -280,6 +324,35 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      max-width: 680px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
   </style>
 </head>
 <body>
@@ -291,29 +364,39 @@
 
     <!-- Top Sticky Navigation -->
     <header class="top-nav">
-      <a href="#" class="font-display" style="text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.65rem;">
-        <!-- Mythological God Erebus Geometrical SVG Emblem -->
+      <a href="#" class="font-display sound-trigger" style="text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.65rem;">
+        <!-- Adaptive Geometrical Erebus SVG Emblem -->
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px; shrink-0;" aria-hidden="true" focusable="false">
-          <polygon points="32,4 58,18 58,46 32,60 6,46 6,18" stroke="#52525b" stroke-width="1.5" fill="#141418" />
-          <polygon points="32,10 44,24 32,34 20,24" fill="#27272a" stroke="#71717a" stroke-width="1" />
-          <polygon points="32,34 44,24 52,38 32,54" fill="#18181b" stroke="#3f3f46" stroke-width="1" />
-          <polygon points="32,34 20,24 12,38 32,54" fill="#141416" stroke="#3f3f46" stroke-width="1" />
-          <polygon points="32,26 37,33 32,40 27,33" fill="#fafafa" stroke="#e4e4e7" stroke-width="1" />
-          <polygon points="32,29 34,33 32,37 30,33" fill="#09090b" />
+          <polygon points="32,4 58,18 58,46 32,60 6,46 6,18" stroke="var(--border-bright)" stroke-width="1.5" fill="var(--emblem-outer)" />
+          <polygon points="32,10 44,24 32,34 20,24" fill="var(--emblem-inner)" stroke="var(--border-bright)" stroke-width="1" />
+          <polygon points="32,34 44,24 52,38 32,54" fill="var(--emblem-facet-a)" stroke="var(--border)" stroke-width="1" />
+          <polygon points="32,34 20,24 12,38 32,54" fill="var(--emblem-facet-b)" stroke="var(--border)" stroke-width="1" />
+          <polygon points="32,26 37,33 32,40 27,33" fill="var(--emblem-core)" stroke="var(--border-bright)" stroke-width="1" />
+          <polygon points="32,29 34,33 32,37 30,33" fill="var(--bg)" />
         </svg>
         <span class="font-mono" style="letter-spacing: -0.01em;">Erebuzzz</span>
       </a>
 
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <nav style="display: flex; gap: 0.25rem;">
+      <div style="display: flex; align-items: center; gap: 0.4rem;">
+        <nav style="display: flex; gap: 0.2rem;" class="nav-links">
           <a href="#builds" class="nav-btn sound-trigger">Builds</a>
           <a href="#skills" class="nav-btn sound-trigger">Skills</a>
           <a href="#lab" class="nav-btn sound-trigger">Lab</a>
           <a href="#contact" class="nav-btn sound-trigger">Contact</a>
         </nav>
 
+        <!-- Mythological Theme Switcher: Erebus (Night) <-> Hemera (Day) -->
+        <button id="themeToggle" class="nav-btn sound-trigger" style="border: 1px solid var(--border);" title="Switch Mythological Theme: Erebus (Night) / Hemera (Day)">
+          <!-- Celestial Horizon Icon -->
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 3v3m0 12v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M3 12h3m12 0h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+          <span id="themeLabel">Erebus</span>
+        </button>
+
         <!-- Web Audio UISFX Toggle -->
-        <button id="soundToggle" class="nav-btn" style="border: 1px solid var(--border); display: flex; align-items: center; gap: 0.35rem;" title="Toggle sensory audio clicks">
+        <button id="soundToggle" class="nav-btn sound-trigger" style="border: 1px solid var(--border);" title="Toggle tactile audio clicks">
           <span id="soundLabel">Audio: On</span>
         </button>
 
@@ -323,63 +406,69 @@
       </div>
     </header>
 
-    <!-- Profile & Hero Section -->
-    <section style="padding-top: 3.5rem;">
-      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-        
-        <!-- Live status bar -->
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
-          <div style="display: flex; align-items: center; gap: 0.55rem; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted);">
-            <span class="live-dot"></span>
-            <span>Bhopal, India</span>
-            <span style="color: var(--text-dim);">&middot;</span>
-            <span id="liveTime" style="color: var(--text);">--:-- IST</span>
+    <!-- Hero Section with Mathematical Horizon (Kshitiz) Animation -->
+    <section class="horizon-stage" id="heroStage">
+      <!-- Horizon Canvas: Celestial threshold where darkness meets light -->
+      <canvas id="horizonCanvas"></canvas>
+
+      <div class="horizon-content">
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          
+          <!-- Live status bar -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.55rem; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted);">
+              <span class="live-dot"></span>
+              <span>Bhopal, India</span>
+              <span style="color: var(--text-dim);">&middot;</span>
+              <span id="liveTime" style="color: var(--text);">--:-- IST</span>
+            </div>
+
+            <div class="tech-pill" style="border-color: var(--border);">
+              Available for systems &amp; research
+            </div>
           </div>
 
-          <div class="tech-pill" style="border-color: var(--border);">
-            Available for systems &amp; research
+          <!-- Mythological Horizon Concept & Heading -->
+          <div>
+            <div class="font-mono" style="font-size: 0.76rem; color: var(--text-dim); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.35rem;">
+              Kshitiz (Horizon) &middot; Personification of Erebus
+            </div>
+            <h1 class="font-display" style="font-size: clamp(2rem, 4.2vw, 2.85rem); font-weight: 700; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.4rem;">
+              Kshitiz Kumar Sinha
+            </h1>
+            <p class="font-mono" style="font-size: 0.92rem; color: var(--text-muted);">
+              Robotics &middot; Autonomous Systems &middot; Multi-Agent AI &middot; Quantitative Research
+            </p>
           </div>
+
+          <!-- Editorial bio quote -->
+          <div style="padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+            <span style="color: var(--text);">&gt; whoami</span><br/>
+            Final-year Electronics and Communication Engineering at IISER Bhopal (graduating April 2027). Quantitative Research Consultant at WorldQuant. Founder of Unstable Kernel. Most of my time goes into building software, compiler abstractions, robotics control stacks, and agent skills.
+          </div>
+
+          <!-- Metric highlights -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.85rem; padding-top: 0.25rem;">
+            <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);">
+              <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Quantitative Research</div>
+              <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">WorldQuant Consultant</div>
+            </div>
+            <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);">
+              <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Autonomy &amp; Robotics Lab</div>
+              <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">Unstable Kernel &middot; MIRAGE</div>
+            </div>
+            <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface);">
+              <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Education &amp; Cohort</div>
+              <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">IISER Bhopal &middot; Class '27</div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Identity & Heading -->
-        <div>
-          <h1 class="font-display" style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 0.4rem;">
-            Kshitiz Kumar Sinha
-          </h1>
-          <p class="font-mono" style="font-size: 0.92rem; color: var(--text-muted);">
-            Robotics &middot; Autonomous Systems &middot; Multi-Agent AI &middot; Quantitative Research
-          </p>
-        </div>
-
-        <!-- Editorial bio quote -->
-        <div style="padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          <span style="color: var(--text);">&gt; whoami</span><br/>
-          Final-year Electronics and Communication Engineering at IISER Bhopal (April 2027). Quantitative Research Consultant at WorldQuant. Founder of Unstable Kernel. Most of my time goes into building software, compiler abstractions, robotics control stacks, and agent skills.
-        </div>
-
-        <!-- Metric highlights -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.85rem; padding-top: 0.5rem;">
-          <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: rgba(255,255,255,0.015);">
-            <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Quantitative Research</div>
-            <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">WorldQuant Consultant</div>
-          </div>
-          <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: rgba(255,255,255,0.015);">
-            <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Robotics Lab</div>
-            <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">Unstable Kernel &middot; MIRAGE</div>
-          </div>
-          <div style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: rgba(255,255,255,0.015);">
-            <div class="font-mono" style="font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase;">Education &amp; Year</div>
-            <div class="font-display" style="font-size: 1.05rem; font-weight: 600; color: var(--text); margin-top: 0.25rem;">IISER Bhopal &middot; Class '27</div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <div class="divider"></div>
-
     <!-- Selected Engineering Builds -->
-    <section id="builds">
+    <section id="builds" style="padding-top: 2.5rem;">
       <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem;">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 0.75rem;">
           <div>
@@ -949,7 +1038,7 @@
         <!-- Direct Email Pill & Copy Button -->
         <div style="display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--border); padding: 0.35rem 0.55rem 0.35rem 0.85rem; border-radius: 6px; gap: 0.65rem; width: fit-content;">
           <span class="font-mono" style="font-size: 0.84rem; color: var(--text);" id="emailText">kshitiz23kumar@gmail.com</span>
-          <button id="copyEmailBtn" class="tech-pill sound-trigger" style="cursor: pointer; background: rgba(255,255,255,0.04);">
+          <button id="copyEmailBtn" class="tech-pill sound-trigger" style="cursor: pointer; background: var(--surface-elevated);">
             Copy
           </button>
         </div>
@@ -997,6 +1086,142 @@
   </div>
 
   <script>
+    // Theme Engine: Erebus (Dark) <-> Hemera (Light)
+    const htmlEl = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('erebuzzz:theme', theme);
+      if (themeLabel) {
+        themeLabel.textContent = theme === 'dark' ? 'Erebus' : 'Hemera';
+      }
+      if (window.updateHorizonColors) {
+        window.updateHorizonColors(theme);
+      }
+    }
+
+    const savedTheme = localStorage.getItem('erebuzzz:theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    applyTheme(savedTheme);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const current = htmlEl.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        playTactileClick();
+      });
+    }
+
+    // Mathematical Curved Horizon (Kshitiz) Canvas Animation
+    (function initHorizon() {
+      const canvas = document.getElementById('horizonCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let phase = 0;
+      let targetTiltY = 0;
+      let currentTiltY = 0;
+      let currentTheme = htmlEl.getAttribute('data-theme') || 'dark';
+
+      function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          const normY = (e.clientY - rect.top) / rect.height - 0.5;
+          targetTiltY = normY * 18;
+        }
+      });
+
+      window.updateHorizonColors = function(theme) {
+        currentTheme = theme;
+      };
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Smoothly interpolate tilt
+        currentTiltY += (targetTiltY - currentTiltY) * 0.05;
+
+        const isDark = currentTheme === 'dark';
+        const horizonY = height * 0.62 + currentTiltY;
+
+        // Atmospheric Twilight / Dawn Glow
+        const haloGrad = ctx.createRadialGradient(
+          width * 0.5, horizonY, 10,
+          width * 0.5, horizonY, width * 0.65
+        );
+
+        if (isDark) {
+          haloGrad.addColorStop(0, 'rgba(250, 250, 250, 0.1)');
+          haloGrad.addColorStop(0.35, 'rgba(161, 161, 170, 0.04)');
+          haloGrad.addColorStop(1, 'transparent');
+        } else {
+          haloGrad.addColorStop(0, 'rgba(180, 130, 70, 0.12)');
+          haloGrad.addColorStop(0.4, 'rgba(220, 190, 140, 0.05)');
+          haloGrad.addColorStop(1, 'transparent');
+        }
+
+        ctx.fillStyle = haloGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Celestial Curved Horizon Arc
+        ctx.beginPath();
+        const segments = 60;
+        const step = width / segments;
+
+        ctx.moveTo(0, height);
+        for (let i = 0; i <= segments; i++) {
+          const x = i * step;
+          // Convex circular curve + sine wave harmonics
+          const normX = (x / width) - 0.5;
+          const arc = Math.pow(normX * 2, 2) * -16;
+          const wave = Math.sin(x * 0.006 + phase) * 4.5 + Math.cos(x * 0.003 + phase * 0.7) * 2.5;
+          const y = horizonY + arc + wave;
+          if (i === 0) {
+            ctx.lineTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.lineTo(width, height);
+        ctx.closePath();
+
+        // Sky below horizon
+        ctx.fillStyle = isDark ? 'rgba(5, 5, 7, 0.45)' : 'rgba(242, 240, 235, 0.45)';
+        ctx.fill();
+
+        // Crisp Event Horizon Line
+        ctx.beginPath();
+        for (let i = 0; i <= segments; i++) {
+          const x = i * step;
+          const normX = (x / width) - 0.5;
+          const arc = Math.pow(normX * 2, 2) * -16;
+          const wave = Math.sin(x * 0.006 + phase) * 4.5 + Math.cos(x * 0.003 + phase * 0.7) * 2.5;
+          const y = horizonY + arc + wave;
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.strokeStyle = isDark ? 'rgba(250, 250, 250, 0.28)' : 'rgba(24, 24, 27, 0.22)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        phase += 0.015;
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+
     // Live IST Clock
     function updateClock() {
       const now = new Date();
@@ -1022,7 +1247,7 @@
       });
     });
 
-    // Web Audio UISFX (subtle mechanical tactile click)
+    // Web Audio UISFX (tactile mechanical click)
     let soundEnabled = true;
     let audioCtx = null;
 
@@ -1054,7 +1279,6 @@
       } catch (_) {}
     }
 
-    // Attach click SFX to buttons & links with .sound-trigger
     document.querySelectorAll('.sound-trigger').forEach(el => {
       el.addEventListener('click', () => playTactileClick());
     });
@@ -1104,7 +1328,6 @@
       searchInput.addEventListener('input', applyProjectFilter);
     }
 
-    // Keyboard shortcut '/' to focus search
     window.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement !== searchInput && document.activeElement.tagName !== 'INPUT') {
         e.preventDefault();
@@ -1118,7 +1341,7 @@
         title: "Muninn: Living Memory Architecture",
         body: `
           <p><strong>Thesis:</strong> Continuous context capture eliminates lost engineering momentum across long-running projects. It converts spoken audio turns into discrete verifiable claims and builds a relational knowledge graph.</p>
-          <div style="margin: 1rem 0; padding: 0.85rem; background: #050507; border: 1px solid #27272a; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
+          <div style="margin: 1rem 0; padding: 0.85rem; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
             Audio Stream (24kHz PCM16) &rarr; AssemblyAI WebSocket &rarr; Claim Extraction Gateway &rarr; Neon pgvector &rarr; Living Memory Chat &amp; Android Foreground Service
           </div>
           <p><strong>Stack &amp; Deployments:</strong></p>
@@ -1128,14 +1351,14 @@
             <li><strong>Frontend:</strong> Next.js 15 studio interface.</li>
             <li><strong>Mobile APK:</strong> Native Android foreground recording service with hardware wake locks.</li>
           </ul>
-          <p><a href="https://github.com/Erebuzzz/Muninn" target="_blank" style="color: #fafafa; text-decoration: underline;">View repository on GitHub &nearr;</a></p>
+          <p><a href="https://github.com/Erebuzzz/Muninn" target="_blank" style="color: var(--text); text-decoration: underline;">View repository on GitHub &nearr;</a></p>
         `
       },
       norn: {
         title: "NORN (creance): Multilateral Netting Protocol",
         body: `
           <p><strong>Thesis:</strong> As autonomous AI agents interact and consume machine-to-machine services (APIs, GPUs, data feeds), settling every raw invoice onchain incurs prohibitive gas fees. NORN cancels out cyclic obligations across agent graphs prior to epoch settlement.</p>
-          <div style="margin: 1rem 0; padding: 0.85rem; background: #050507; border: 1px solid #27272a; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
+          <div style="margin: 1rem 0; padding: 0.85rem; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
             EIP-712 / x402 Obligations &rarr; Netting Graph Cancellation Engine &rarr; Arbitrum Stylus Rust Verifier &rarr; Onchain Net Settlement (Robinhood Chain / Arbitrum Sepolia)
           </div>
           <p><strong>Invariants:</strong> Conservation of value, reserve thresholds, and bilateral/multilateral cycle reduction computed in Stylus Rust.</p>
@@ -1145,27 +1368,27 @@
         title: "UATU: Universal Autonomous Triage & Upkeep",
         body: `
           <p><strong>Blueprint:</strong> An autonomous platform that monitors GitHub repositories via webhooks, reproduces defects in isolated sandboxes, executes Bedrock Nova Micro reasoning to formulate fixes, and opens verified pull requests.</p>
-          <div style="margin: 1rem 0; padding: 0.85rem; background: #050507; border: 1px solid #27272a; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
+          <div style="margin: 1rem 0; padding: 0.85rem; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
             GitHub Webhook &rarr; AWS API Gateway &rarr; SQS Queue &rarr; Worker Lambda + Git Layer &rarr; Amazon Bedrock &rarr; Automated Pull Request
           </div>
-          <p style="margin-top: 0.75rem;"><a href="https://uatu-beta.vercel.app" target="_blank" style="color: #fafafa; text-decoration: underline;">Launch Live Dashboard &nearr;</a></p>
+          <p style="margin-top: 0.75rem;"><a href="https://uatu-beta.vercel.app" target="_blank" style="color: var(--text); text-decoration: underline;">Launch Live Dashboard &nearr;</a></p>
         `
       },
       dsgfa: {
         title: "SSL & Formation DSGFA: IEEE TCNS 2024 Parity",
         body: `
           <p><strong>Paper Parity:</strong> Implements and validates the numerical and simulation results for <em>Simultaneous Source Localization and Formation via a Distributed Sign Gradient-Free Algorithm</em> (IEEE Transactions on Control of Network Systems 2024).</p>
-          <div style="margin: 1rem 0; padding: 0.85rem; background: #050507; border: 1px solid #27272a; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
+          <div style="margin: 1rem 0; padding: 0.85rem; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
             Distributed Sign Gradient-Free Law &rarr; Bounded vs Gaussian Noise Sweeps &rarr; MATLAB/Simulink TurtleBot &rarr; CoppeliaSim Scene
           </div>
-          <p><a href="https://github.com/Erebuzzz/SSL_n_F_DSGFA" target="_blank" style="color: #fafafa; text-decoration: underline;">View GitHub Repository &nearr;</a></p>
+          <p><a href="https://github.com/Erebuzzz/SSL_n_F_DSGFA" target="_blank" style="color: var(--text); text-decoration: underline;">View GitHub Repository &nearr;</a></p>
         `
       },
       pulse: {
         title: "Pulse: Distributed Order Orchestration",
         body: `
           <p><strong>System Architecture:</strong> Distributed order processing engine built on top of Temporal.io and Python. Demonstrates resilient sagas across network failures and transient drops.</p>
-          <div style="margin: 1rem 0; padding: 0.85rem; background: #050507; border: 1px solid #27272a; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
+          <div style="margin: 1rem 0; padding: 0.85rem; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 0.78rem;">
             Incoming Order &rarr; Temporal Workflow Engine &rarr; Idempotent Persistence &rarr; Child Sagas &rarr; Signal Handlers &amp; Compensations
           </div>
         `
@@ -1214,12 +1437,13 @@
     const termBody = document.getElementById('terminalBody');
 
     const commands = {
-      help: "Commands: whoami, builds, skills, quant, lab, contact, clear",
+      help: "Commands: whoami, builds, skills, quant, lab, contact, theme, clear",
       whoami: "Final-year ECE at IISER Bhopal (April 2027). Quantitative Research Consultant at WorldQuant. Founder of Unstable Kernel.",
       builds: "Flagships: Muninn, NORN (creance), UATU, SynCine, CodeShield, SimWeaver, MIRAGE, LQR-MPC, SSL_n_F_DSGFA.",
       skills: "Python, TypeScript, Rust, C, ROS2, LQR-MPC, Next.js, Cloudflare Workers, Appwrite, WebRTC, PyTorch, tree-sitter, MCP.",
       quant: "WorldQuant QR Consultant: Alpha Generation, Signal Processing, Risk Modeling, Systematic Trading.",
       lab: "Unstable Kernel: Foundational lab for robotics, autonomy, and EIR tooling (https://unstable-kernel.github.io/docs).",
+      theme: "Themes: 'Erebus' (Primordial Night) and 'Hemera' (Daylight Dawn). Toggle via button in navbar.",
       contact: "Email: kshitiz23kumar@gmail.com | X: @erebuzzz | LinkedIn: in/kksinha23 | GitHub: Erebuzzz",
       clear: "__CLEAR__"
     };
@@ -1243,8 +1467,8 @@
           const row = document.createElement('div');
           row.style.marginBottom = '0.45rem';
           row.innerHTML = `
-            <div><span style="color: #71717a;">$</span> ${termInput.value}</div>
-            <div style="color: #a1a1aa; margin-top: 0.15rem; padding-left: 0.4rem;">${response}</div>
+            <div><span style="color: var(--text-dim);">$</span> ${termInput.value}</div>
+            <div style="color: var(--text-muted); margin-top: 0.15rem; padding-left: 0.4rem;">${response}</div>
           `;
           termHistory.appendChild(row);
 
