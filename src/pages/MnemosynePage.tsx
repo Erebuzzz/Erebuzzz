@@ -1,7 +1,12 @@
 import React from 'react';
-import { Feather, BookOpen, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { Feather, BookOpen, Sparkles, Image as ImageIcon, Swords } from 'lucide-react';
+import { ChessPuzzleWidget } from '../components/ChessPuzzleWidget';
 
-export const MnemosynePage: React.FC = () => {
+interface MnemosynePageProps {
+  theme?: 'dark' | 'light';
+}
+
+export const MnemosynePage: React.FC<MnemosynePageProps> = ({ theme = 'dark' }) => {
   return (
     <div className="space-y-10 animate-in fade-in duration-300 pt-6">
       
@@ -12,12 +17,23 @@ export const MnemosynePage: React.FC = () => {
           <span>Mnemosyne &middot; Chamber of Memory &amp; The Muses</span>
         </div>
         <h1 className="font-display font-bold text-2xl sm:text-4xl text-text tracking-tight shimmer-text">
-          Poetry, Artworks &amp; Field Inscriptions
+          Poetry, Artworks &amp; Tactical Mind
         </h1>
         <p className="text-xs sm:text-sm text-text-muted max-w-2xl leading-relaxed">
-          A personal repository for creative writing, algorithmic art, and reflective essays bridging the gap between mathematical rigor and human sentiment.
+          A personal sanctuary for creative writing, algorithmic art, chess strategy, and reflective field notes bridging mathematical rigor with human intuition.
         </p>
       </div>
+
+      {/* Interactive Chess Strategy Section: Ludus Strategicus */}
+      <section className="space-y-3">
+        <div className="flex items-center gap-2">
+          <Swords className="w-4 h-4 text-ember-600 dark:text-ember-400" />
+          <h2 className="font-display font-bold text-lg text-text">
+            Ludus Strategicus &middot; The Tactical Challenge
+          </h2>
+        </div>
+        <ChessPuzzleWidget theme={theme} />
+      </section>
 
       {/* Parchment Inscription Showcase */}
       <div className="relative p-6 sm:p-10 rounded-xl border border-dashed border-border bg-surface-elevated shadow-lg text-center overflow-hidden">
@@ -35,10 +51,10 @@ export const MnemosynePage: React.FC = () => {
 
           <div>
             <h2 className="font-display font-bold text-lg sm:text-xl text-text">
-              The Scrolls are Being Inscribed
+              The Folios are Being Inscribed
             </h2>
             <p className="font-mono text-xs sm:text-sm text-text-muted mt-2 leading-relaxed">
-              This space will host my original poetry, generative artworks, and essays on robotics, control stacks, and consciousness.
+              This space will host my original poetry, generative artworks, and essays on robotics, control stacks, and mathematical philosophy.
             </p>
           </div>
 

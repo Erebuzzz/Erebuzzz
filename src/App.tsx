@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ThreeCanvas } from './components/ThreeCanvas';
+import { AncientMythicCanvas } from './components/AncientMythicCanvas';
 import { Navbar } from './components/Navbar';
 import { MythicCodexFrame, PageRoute } from './components/MythicCodexFrame';
 import { GenesisPage } from './pages/GenesisPage';
@@ -18,15 +18,35 @@ export const App: React.FC = () => {
     return saved === 'light' ? 'light' : 'dark';
   });
 
-  const getInitialPage = (): PageRoute => {
+  const parseRouteFromUrl = (): PageRoute => {
+    // 1. Check query parameter from 404 SPA fallback redirect (?p=/pantheon or ?redirect=/pantheon)
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirect = urlParams.get('p') || urlParams.get('redirect');
+    if (redirect) {
+      const cleanRedirect = decodeURIComponent(redirect).toLowerCase().replace(/^\/+/, '');
+      if (cleanRedirect.startsWith('pantheon')) return 'pantheon';
+      if (cleanRedirect.startsWith('mnemosyne')) return 'mnemosyne';
+      if (cleanRedirect.startsWith('hermes')) return 'hermes';
+      if (cleanRedirect.startsWith('genesis')) return 'genesis';
+    }
+
+    // 2. Check window.location.pathname
+    const path = window.location.pathname.toLowerCase().replace(/^\/+/, '');
+    if (path.startsWith('pantheon')) return 'pantheon';
+    if (path.startsWith('mnemosyne')) return 'mnemosyne';
+    if (path.startsWith('hermes')) return 'hermes';
+    if (path.startsWith('genesis')) return 'genesis';
+
+    // 3. Fallback to hash if present
     const hash = window.location.hash.toLowerCase();
-    if (hash.includes('pantheon') || hash.includes('work') || hash.includes('builds')) return 'pantheon';
-    if (hash.includes('mnemosyne') || hash.includes('me') || hash.includes('blog')) return 'mnemosyne';
-    if (hash.includes('hermes') || hash.includes('connect') || hash.includes('book')) return 'hermes';
+    if (hash.includes('pantheon')) return 'pantheon';
+    if (hash.includes('mnemosyne')) return 'mnemosyne';
+    if (hash.includes('hermes')) return 'hermes';
+
     return 'genesis';
   };
 
-  const [activePage, setActivePage] = useState<PageRoute>(getInitialPage);
+  const [activePage, setActivePage] = useState<PageRoute>(parseRouteFromUrl);
   const [astrolabeElevation, setAstrolabeElevation] = useState<number>(145);
   const [unlockedBadges, setUnlockedBadges] = useState<Record<string, boolean>>(() => {
     try {
@@ -41,14 +61,27 @@ export const App: React.FC = () => {
   const [terminalPrefill, setTerminalPrefill] = useState<string | null>(null);
   const particleCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Sync route on hashchange
+  // Sync route on browser navigation (popstate) or legacy hashchange
   useEffect(() => {
-    const handleHashChange = () => {
-      setActivePage(getInitialPage());
+    const handleLocationChange = () => {
+      setActivePage(parseRouteFromUrl());
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
+
+  // Clean up redirect query parameters or hash from URL to provide pristine clean path
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('p') || urlParams.has('redirect') || window.location.hash) {
+      const cleanPath = activePage === 'genesis' ? '/' : `/${activePage}`;
+      window.history.replaceState(null, '', cleanPath);
+    }
+  }, [activePage]);
 
   // Sync theme attribute with document root
   useEffect(() => {
@@ -89,7 +122,8 @@ export const App: React.FC = () => {
 
   const handleNavigate = (page: PageRoute) => {
     setActivePage(page);
-    window.location.hash = `#/${page}`;
+    const targetPath = page === 'genesis' ? '/' : `/${page}`;
+    window.history.pushState(null, '', targetPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -128,8 +162,8 @@ export const App: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-bg text-text selection:bg-ember-500/30 selection:text-text transition-colors duration-300">
       
-      {/* 3D WebGL Canvas Background */}
-      <ThreeCanvas theme={theme} astrolabeElevation={astrolabeElevation} />
+      {/* Ancient Mythological Parchment Canvas with Sacred Geometry & Ink Dissipation */}
+      <AncientMythicCanvas theme={theme} astrolabeElevation={astrolabeElevation} />
 
       {/* Particle Canvas Overlay for Interactive Bursts */}
       <canvas 
@@ -137,7 +171,7 @@ export const App: React.FC = () => {
         className="fixed inset-0 pointer-events-none z-30"
       />
 
-      {/* Sticky Tactical Navbar with Route Synchronization */}
+      {/* Sticky Tactical Navbar with Clean Path Synchronization */}
       <Navbar
         activePage={activePage}
         onNavigate={handleNavigate}
@@ -180,7 +214,7 @@ export const App: React.FC = () => {
           )}
 
           {activePage === 'mnemosyne' && (
-            <MnemosynePage />
+            <MnemosynePage theme={theme} />
           )}
 
           {activePage === 'hermes' && (
