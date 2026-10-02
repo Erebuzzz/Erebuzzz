@@ -7,6 +7,7 @@ import { PantheonPage } from './pages/PantheonPage';
 import { MnemosynePage } from './pages/MnemosynePage';
 import { HermesPage } from './pages/HermesPage';
 import { ArtifactModal } from './components/ArtifactModal';
+import { PrimordialLogoIntro } from './components/PrimordialLogoIntro';
 import { Footer } from './components/Footer';
 import { PROJECTS } from './data/projects';
 import { soundManager } from './utils/audio';
@@ -47,7 +48,7 @@ export const App: React.FC = () => {
   };
 
   const [activePage, setActivePage] = useState<PageRoute>(parseRouteFromUrl);
-  const [astrolabeElevation, setAstrolabeElevation] = useState<number>(145);
+  const [playIntro, setPlayIntro] = useState<boolean>(false);
   const [unlockedBadges, setUnlockedBadges] = useState<Record<string, boolean>>(() => {
     try {
       const saved = localStorage.getItem('erebus-badges');
@@ -162,8 +163,14 @@ export const App: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-bg text-text selection:bg-ember-500/30 selection:text-text transition-colors duration-300">
       
-      {/* Ancient Mythological Parchment Canvas with Sacred Geometry & Ink Dissipation */}
-      <AncientMythicCanvas theme={theme} astrolabeElevation={astrolabeElevation} />
+      {/* Primordial Logo Emergence & Horizon Singularity Collapse Intro */}
+      <PrimordialLogoIntro 
+        forcePlay={playIntro} 
+        onComplete={() => setPlayIntro(false)} 
+      />
+
+      {/* Ancient Mythological Parchment Canvas with Marble Smoke Wash & Ink Dissipation */}
+      <AncientMythicCanvas theme={theme} />
 
       {/* Particle Canvas Overlay for Interactive Bursts */}
       <canvas 
@@ -180,6 +187,7 @@ export const App: React.FC = () => {
         unlockedCount={Object.keys(unlockedBadges).length}
         totalLabors={6}
         onOpenTerminal={() => handleOpenTerminalCmd('help')}
+        onReplayIntro={() => setPlayIntro(true)}
       />
 
       {/* The Master Codex / Manuscript Container */}
@@ -193,12 +201,9 @@ export const App: React.FC = () => {
         >
           {activePage === 'genesis' && (
             <GenesisPage
-              elevation={astrolabeElevation}
-              onElevationChange={(val) => {
-                setAstrolabeElevation(val);
-                handleUnlockBadge('cartographer', 'Celestial Cartographer');
-              }}
+              onSelectProject={handleSelectProject}
               onUnlockBadge={handleUnlockBadge}
+              theme={theme}
             />
           )}
 

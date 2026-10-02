@@ -160,8 +160,8 @@ export const MythicCodexFrame: React.FC<MythicCodexFrameProps> = ({
           }}
         />
 
-        {/* Parchment Inner Content Bed (with drafting grid texture) */}
-        <div className="p-4 sm:p-8 lg:p-10 drafting-grid min-h-[600px]">
+        {/* Parchment Inner Content Bed (with Hellenic marble parchment texture) */}
+        <div className="p-4 sm:p-8 lg:p-10 hellenic-parchment min-h-[600px]">
           {children}
         </div>
 

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="1" />
+      <stop offset="60%" stop-color="#ea580c" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#9a3412" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Outer Sacred Hexagon Frame -->
+  <polygon points="32,4 58,18 58,46 32,60 6,46 6,18" stroke="#ea580c" stroke-width="2" fill="#07080b" />
+  
+  <!-- Inner Faceted Geometry (The Obsidian Aegis) -->
+  <polygon points="32,10 44,24 32,34 20,24" fill="#181c26" stroke="#f59e0b" stroke-width="1.2" />
+  <polygon points="32,34 20,24 12,38 32,54" fill="#0d1017" stroke="#ea580c" stroke-width="1" />
+  <polygon points="32,34 44,24 52,38 32,54" fill="#131722" stroke="#ea580c" stroke-width="1" />
+  
+  <!-- Ambient Ember Core -->
+  <circle cx="32" cy="33" r="10" fill="url(#emberGlow)" />
+  
+  <!-- Center Primordial Singularity (Erebus Flame Core) -->
+  <polygon points="32,25 38,33 32,41 26,33" fill="#ea580c" stroke="#fed7aa" stroke-width="1" />
+  <circle cx="32" cy="33" r="2.5" fill="#ffffff" />
+</svg>

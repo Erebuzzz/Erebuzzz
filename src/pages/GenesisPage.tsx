@@ -1,27 +1,27 @@
 import React from 'react';
 import { HeroAstrolabe } from '../components/HeroAstrolabe';
+import { HeroRelicPreview } from '../components/HeroRelicPreview';
 import { OriginLabSection } from '../components/OriginLabSection';
 
 interface GenesisPageProps {
-  elevation: number;
-  onElevationChange: (val: number) => void;
+  onSelectProject: (id: string) => void;
   onUnlockBadge: (id: string, label: string) => void;
+  theme?: 'dark' | 'light';
 }
 
 export const GenesisPage: React.FC<GenesisPageProps> = ({
-  elevation,
-  onElevationChange,
-  onUnlockBadge
+  onSelectProject,
+  onUnlockBadge,
+  theme = 'dark'
 }) => {
   return (
     <div className="space-y-10 animate-in fade-in duration-300">
       
       {/* Hero Astrolabe Section */}
-      <HeroAstrolabe
-        elevation={elevation}
-        onElevationChange={onElevationChange}
-        onUnlockBadge={onUnlockBadge}
-      />
+      <HeroAstrolabe onUnlockBadge={onUnlockBadge} />
+
+      {/* Hero Relics & Systems Preview Deck (Echoes of Atlantis Inspiration) */}
+      <HeroRelicPreview onSelectProject={onSelectProject} theme={theme} />
 
       {/* Jackie Zhang Inspired "3 Things I Strongly Believe In" Pinned Notes */}
       <section className="pt-2">

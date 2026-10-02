@@ -11,6 +11,7 @@ interface NavbarProps {
   unlockedCount: number;
   totalLabors: number;
   onOpenTerminal: () => void;
+  onReplayIntro?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -20,7 +21,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleTheme,
   unlockedCount,
   totalLabors,
-  onOpenTerminal
+  onOpenTerminal,
+  onReplayIntro
 }) => {
   const [audioMuted, setAudioMuted] = useState(soundManager.isMuted());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -51,8 +53,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Brand & Geometrical Erebus Emblem */}
           <button 
-            onClick={() => navigateTo('genesis')}
+            onClick={() => {
+              navigateTo('genesis');
+              if (onReplayIntro) onReplayIntro();
+            }}
             className="flex items-center gap-2.5 sm:gap-3 group text-left"
+            title="Replay Primordial Entrance"
           >
             {/* Geometrical SVG Emblem of Mythological God Erebus */}
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-border bg-surface flex items-center justify-center group-hover:border-ember-600 transition-colors shadow-sm">

@@ -225,26 +225,27 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "tweakio",
-    title: "TweakIO SDK: Dynamic Application Configuration",
-    mythicCodename: "Prometheus Torch",
-    tagline: "Official PyPI package for dynamic remote application tuning and feature flags.",
-    description: "Official Python package on PyPI enabling real-time remote configuration, parameter tweaking, and metric harvesting for distributed applications without service redeployment.",
-    categories: ["ai", "security"],
-    tags: ["Python", "PyPI", "SDK", "Remote Config", "Observability"],
-    metric: "PyPI Package",
-    githubUrl: "https://github.com/Erebuzzz/tweakio-sdk",
-    pypiUrl: "https://pypi.org/project/tweakio-sdk/",
+    id: "pixasso",
+    title: "Pixasso: Frontend Engineering & Design Orchestrator",
+    mythicCodename: "The Daedalian Automaton",
+    tagline: "16-pillar frontend architecture, MCP server, typography direction, and automated QA for AI agents.",
+    description: "The complete end-to-end design orchestrator and MCP server for autonomous agents. Synthesizes Design Genomes, executes 16 frontend pillars, coordinates 3D WebGL, and enforces WCAG AA multi-viewport test automation.",
+    categories: ["flagship", "ai"],
+    tags: ["TypeScript", "npm", "MCP Server", "Tailwind CSS", "Design Systems", "Automated QA"],
+    metric: "npm v1.1.0 Released",
+    githubUrl: "https://github.com/Erebuzzz/pixasso",
+    npmUrl: "https://www.npmjs.com/package/pixasso-mcp",
+    liveUrl: "https://pixasso.erebuzzz.tech",
     blueprint: {
-      thesis: "Tuning machine learning hyperparameters and application parameters in production requires a zero-overhead SDK that syncs state changes without restarts.",
-      pipeline: "App Runtime -> Local In-Memory Cache -> Background Polling / WebSocket Sync -> Remote Control Gateway",
+      thesis: "AI coding assistants frequently generate generic purple gradients, Lucide icon flooding, and broken responsive layouts. Pixasso provides a machine-readable Design Genome schema and an MCP server that governs all 16 pillars of frontend architecture with rigorous automated testing.",
+      pipeline: "Agent Intent Discovery -> Design Genome YAML -> Task DAG -> 16 Architecture Pillars -> Automated Multi-Viewport QA",
       highlights: [
-        "Published official PyPI package 'tweakio-sdk'.",
-        "Sub-millisecond local variable reads with zero lock contention.",
-        "Thread-safe real-time hot reloading of configuration dictionaries.",
-        "Graceful fallback to local defaults on network partition."
+        "Published official npm package 'pixasso-mcp' with Model Context Protocol tooling.",
+        "Automated testing across 390px, 768px, 1024px, and 1440px viewports.",
+        "Full support for 3D WebGL, modern CSS typography scales, and sensory audio synthesis.",
+        "Deterministic design audit engine eliminating generic AI styling anti-patterns."
       ],
-      stack: "Python, PyPI, Threading, HTTP/WebSockets"
+      stack: "TypeScript, Node.js, MCP Protocol, npm, React, Tailwind CSS"
     }
   },
   {

@@ -137,10 +137,10 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
 
               <div className="p-2 rounded border border-border bg-surface">
                 <div className="flex items-center justify-between">
-                  <span className="text-text font-semibold">tweakio-sdk (PyPI)</span>
-                  <a href="https://pypi.org/project/tweakio-sdk/" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">pypi.org/project/tweakio-sdk &#8599;</a>
+                  <span className="text-text font-semibold">pixasso-mcp (npm)</span>
+                  <a href="https://www.npmjs.com/package/pixasso-mcp" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">npmjs.com/package/pixasso-mcp &#8599;</a>
                 </div>
-                <p className="text-[11px] text-text-dim mt-0.5">High-frequency parameter tuning and live telemetry injection client for robotics rigs.</p>
+                <p className="text-[11px] text-text-dim mt-0.5">End-to-end design orchestrator and Model Context Protocol server for AI agents.</p>
               </div>
             </div>
           </div>
