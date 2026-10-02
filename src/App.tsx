@@ -49,10 +49,22 @@ export const App: React.FC = () => {
 
   const [activePage, setActivePage] = useState<PageRoute>(parseRouteFromUrl);
   const [playIntro, setPlayIntro] = useState<boolean>(false);
+
+  // The 6 Canonical Labors of Autonomy
+  const CANONICAL_LABOR_IDS = ['cartographer', 'argo', 'aegis', 'hermes', 'delphi', 'hephaestus'] as const;
+
   const [unlockedBadges, setUnlockedBadges] = useState<Record<string, boolean>>(() => {
     try {
       const saved = localStorage.getItem('erebus-badges');
-      return saved ? JSON.parse(saved) : {};
+      if (!saved) return {};
+      const parsed = JSON.parse(saved);
+      // Cleanse obsolete or non-canonical keys to prevent badge inflation beyond 6
+      const cleaned: Record<string, boolean> = {};
+      for (const id of CANONICAL_LABOR_IDS) {
+        if (parsed[id]) cleaned[id] = true;
+      }
+      localStorage.setItem('erebus-badges', JSON.stringify(cleaned));
+      return cleaned;
     } catch {
       return {};
     }
@@ -129,6 +141,7 @@ export const App: React.FC = () => {
   };
 
   const handleUnlockBadge = (id: string, _label: string) => {
+    if (!CANONICAL_LABOR_IDS.includes(id as any)) return;
     if (!unlockedBadges[id]) {
       const updated = { ...unlockedBadges, [id]: true };
       setUnlockedBadges(updated);
@@ -160,6 +173,8 @@ export const App: React.FC = () => {
     ? PROJECTS.find((p) => p.id === selectedProjectId) || null
     : null;
 
+  const unlockedLaborsCount = CANONICAL_LABOR_IDS.filter((id) => !!unlockedBadges[id]).length;
+
   return (
     <div className="relative min-h-screen bg-bg text-text selection:bg-ember-500/30 selection:text-text transition-colors duration-300">
       
@@ -184,7 +199,7 @@ export const App: React.FC = () => {
         onNavigate={handleNavigate}
         theme={theme}
         onToggleTheme={handleToggleTheme}
-        unlockedCount={Object.keys(unlockedBadges).length}
+        unlockedCount={unlockedLaborsCount}
         totalLabors={6}
         onOpenTerminal={() => handleOpenTerminalCmd('help')}
         onReplayIntro={() => setPlayIntro(true)}
@@ -195,7 +210,7 @@ export const App: React.FC = () => {
         <MythicCodexFrame
           activePage={activePage}
           onNavigate={handleNavigate}
-          unlockedCount={Object.keys(unlockedBadges).length}
+          unlockedCount={unlockedLaborsCount}
           totalLabors={6}
           theme={theme}
         >

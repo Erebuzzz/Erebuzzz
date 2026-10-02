@@ -14,16 +14,14 @@ export const LaborsHUD: React.FC<LaborsHUDProps> = ({
   onOpenTerminalCmd,
   onUnlockBadge
 }) => {
-  const count = Object.keys(unlocked).length;
-
   const badges = [
     {
       id: 'cartographer',
       num: '01',
       title: 'Cartographer',
-      desc: 'Tune Astrolabe',
+      desc: 'Horizon Genesis',
       action: () => {
-        onUnlockBadge('cartographer', 'Celestial Cartographer: Tuned Horizon Astrolabe');
+        onUnlockBadge('cartographer', 'Celestial Cartographer: Explored Horizon Genesis');
       }
     },
     {
@@ -78,6 +76,8 @@ export const LaborsHUD: React.FC<LaborsHUDProps> = ({
     }
   ];
 
+  const count = badges.filter((b) => !!unlocked[b.id]).length;
+
   return (
     <div className="liquid-glass-card p-4 sm:p-5 mt-6 border-dashed" id="labors">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
@@ -109,8 +109,9 @@ export const LaborsHUD: React.FC<LaborsHUDProps> = ({
                   : 'border-border bg-surface hover:border-ember-600/50 opacity-70 hover:opacity-100'
               }`}
             >
-              <div className="font-mono text-[10px] text-ember-600 dark:text-ember-400">
-                [{b.num}] {isUnlocked ? '&#10003; UNLOCKED' : '&#9675; LOCKED'}
+              <div className="font-mono text-[10px] text-ember-600 dark:text-ember-400 flex items-center gap-1">
+                <span>[{b.num}]</span>
+                <span>{isUnlocked ? '\u2713 UNLOCKED' : '\u25CB LOCKED'}</span>
               </div>
               <div>
                 <div className="font-display font-semibold text-xs text-text truncate">

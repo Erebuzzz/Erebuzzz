@@ -112,7 +112,6 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
         break;
 
       case 'packages':
-        onUnlockBadge('packages', 'Artifact Curator: Examined Released PyPI & npm Packages');
         output = (
           <div className="space-y-2 text-xs font-mono">
             <p className="text-ember-600 dark:text-ember-400 font-semibold">

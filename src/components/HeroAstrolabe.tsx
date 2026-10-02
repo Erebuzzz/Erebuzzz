@@ -6,11 +6,18 @@ interface HeroAstrolabeProps {
   onUnlockBadge?: (id: string, label: string) => void;
 }
 
-export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = () => {
+export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = ({
+  onUnlockBadge
+}) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
+    // Unlock Cartographer Labor upon surveying Horizon Genesis
+    if (onUnlockBadge) {
+      onUnlockBadge('cartographer', 'Celestial Cartographer: Explored Horizon Genesis');
+    }
+
     // Anime.js entrance choreography
     anime({
       targets: heroRef.current,
@@ -28,7 +35,7 @@ export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = () => {
       duration: 800,
       easing: 'easeOutQuad'
     });
-  }, []);
+  }, [onUnlockBadge]);
 
   return (
     <section ref={heroRef} className="relative pt-6 sm:pt-8 pb-10 border-b border-dashed border-border" id="hero">
