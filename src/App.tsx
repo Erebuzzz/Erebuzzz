@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ThreeCanvas } from './components/ThreeCanvas';
 import { Navbar } from './components/Navbar';
-import { HeroAstrolabe } from './components/HeroAstrolabe';
-import { LaborsHUD } from './components/LaborsHUD';
-import { OriginLabSection } from './components/OriginLabSection';
-import { PantheonGrid } from './components/PantheonGrid';
-import { TerminalHUD } from './components/TerminalHUD';
+import { MythicCodexFrame, PageRoute } from './components/MythicCodexFrame';
+import { GenesisPage } from './pages/GenesisPage';
+import { PantheonPage } from './pages/PantheonPage';
+import { MnemosynePage } from './pages/MnemosynePage';
+import { HermesPage } from './pages/HermesPage';
 import { ArtifactModal } from './components/ArtifactModal';
 import { Footer } from './components/Footer';
 import { PROJECTS } from './data/projects';
@@ -18,6 +18,15 @@ export const App: React.FC = () => {
     return saved === 'light' ? 'light' : 'dark';
   });
 
+  const getInitialPage = (): PageRoute => {
+    const hash = window.location.hash.toLowerCase();
+    if (hash.includes('pantheon') || hash.includes('work') || hash.includes('builds')) return 'pantheon';
+    if (hash.includes('mnemosyne') || hash.includes('me') || hash.includes('blog')) return 'mnemosyne';
+    if (hash.includes('hermes') || hash.includes('connect') || hash.includes('book')) return 'hermes';
+    return 'genesis';
+  };
+
+  const [activePage, setActivePage] = useState<PageRoute>(getInitialPage);
   const [astrolabeElevation, setAstrolabeElevation] = useState<number>(145);
   const [unlockedBadges, setUnlockedBadges] = useState<Record<string, boolean>>(() => {
     try {
@@ -31,6 +40,15 @@ export const App: React.FC = () => {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [terminalPrefill, setTerminalPrefill] = useState<string | null>(null);
   const particleCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Sync route on hashchange
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActivePage(getInitialPage());
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Sync theme attribute with document root
   useEffect(() => {
@@ -69,6 +87,12 @@ export const App: React.FC = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const handleNavigate = (page: PageRoute) => {
+    setActivePage(page);
+    window.location.hash = `#/${page}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleUnlockBadge = (id: string, _label: string) => {
     if (!unlockedBadges[id]) {
       const updated = { ...unlockedBadges, [id]: true };
@@ -87,11 +111,14 @@ export const App: React.FC = () => {
   };
 
   const handleOpenTerminalCmd = (cmd: string) => {
+    handleNavigate('pantheon');
     setTerminalPrefill(cmd);
-    const terminalEl = document.getElementById('terminal');
-    if (terminalEl) {
-      terminalEl.scrollIntoView({ behavior: 'smooth' });
-    }
+    setTimeout(() => {
+      const terminalEl = document.getElementById('terminal');
+      if (terminalEl) {
+        terminalEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 150);
   };
 
   const selectedProject = selectedProjectId
@@ -110,8 +137,10 @@ export const App: React.FC = () => {
         className="fixed inset-0 pointer-events-none z-30"
       />
 
-      {/* Sticky Tactical Navbar */}
+      {/* Sticky Tactical Navbar with Route Synchronization */}
       <Navbar
+        activePage={activePage}
+        onNavigate={handleNavigate}
         theme={theme}
         onToggleTheme={handleToggleTheme}
         unlockedCount={Object.keys(unlockedBadges).length}
@@ -119,44 +148,45 @@ export const App: React.FC = () => {
         onOpenTerminal={() => handleOpenTerminalCmd('help')}
       />
 
-      {/* Main Workspace Container */}
-      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Hero Section with Interactive Horizon Astrolabe */}
-        <HeroAstrolabe
-          elevation={astrolabeElevation}
-          onElevationChange={(val) => {
-            setAstrolabeElevation(val);
-            handleUnlockBadge('cartographer', 'Celestial Cartographer');
-          }}
-          onUnlockBadge={handleUnlockBadge}
-        />
+      {/* The Master Codex / Manuscript Container */}
+      <main className="relative z-10">
+        <MythicCodexFrame
+          activePage={activePage}
+          onNavigate={handleNavigate}
+          unlockedCount={Object.keys(unlockedBadges).length}
+          totalLabors={6}
+          theme={theme}
+        >
+          {activePage === 'genesis' && (
+            <GenesisPage
+              elevation={astrolabeElevation}
+              onElevationChange={(val) => {
+                setAstrolabeElevation(val);
+                handleUnlockBadge('cartographer', 'Celestial Cartographer');
+              }}
+              onUnlockBadge={handleUnlockBadge}
+            />
+          )}
 
-        {/* The Labors of Autonomy HUD */}
-        <LaborsHUD
-          unlocked={unlockedBadges}
-          onSelectProject={handleSelectProject}
-          onOpenTerminalCmd={handleOpenTerminalCmd}
-          onUnlockBadge={handleUnlockBadge}
-        />
+          {activePage === 'pantheon' && (
+            <PantheonPage
+              unlockedBadges={unlockedBadges}
+              onSelectProject={handleSelectProject}
+              onOpenTerminalCmd={handleOpenTerminalCmd}
+              onUnlockBadge={handleUnlockBadge}
+              terminalPrefill={terminalPrefill}
+              onClearPrefill={() => setTerminalPrefill(null)}
+            />
+          )}
 
-        {/* Origin, Crucible & WorldQuant Residency */}
-        <OriginLabSection />
+          {activePage === 'mnemosyne' && (
+            <MnemosynePage />
+          )}
 
-        {/* Pantheon Constellation Matrix (Filterable Bento Grid) */}
-        <PantheonGrid
-          onSelectProject={handleSelectProject}
-          onUnlockBadge={handleUnlockBadge}
-        />
-
-        {/* Horizon Terminal Telemetry Diagnostic Shell */}
-        <TerminalHUD
-          onSelectProject={handleSelectProject}
-          onUnlockBadge={handleUnlockBadge}
-          prefillCmd={terminalPrefill}
-          onClearPrefill={() => setTerminalPrefill(null)}
-        />
-
+          {activePage === 'hermes' && (
+            <HermesPage />
+          )}
+        </MythicCodexFrame>
       </main>
 
       {/* Primordial Axiom & Socials Footer */}

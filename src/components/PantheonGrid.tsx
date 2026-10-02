@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../data/projects';
 import { soundManager } from '../utils/audio';
+import { Github, ExternalLink, Package, Box, BookOpen } from 'lucide-react';
 
 interface PantheonGridProps {
   onSelectProject: (id: string) => void;
@@ -157,15 +158,17 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                   Blueprint &rarr;
                 </button>
 
-                <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+                <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs">
                   {p.pypiUrl && (
                     <a
                       href={p.pypiUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-ember-600 dark:text-ember-400 hover:underline particle-trigger"
+                      className="w-7 h-7 rounded-md border border-border bg-surface flex items-center justify-center text-ember-600 dark:text-ember-400 hover:border-ember-600 hover:bg-ember-500/10 transition-colors particle-trigger"
+                      title="PyPI Package"
+                      aria-label="PyPI Package"
                     >
-                      PyPI &nearr;
+                      <Package className="w-3.5 h-3.5" />
                     </a>
                   )}
                   {p.npmUrl && (
@@ -173,9 +176,11 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                       href={p.npmUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-emerald-500 hover:underline particle-trigger"
+                      className="w-7 h-7 rounded-md border border-border bg-surface flex items-center justify-center text-emerald-500 hover:border-emerald-500 hover:bg-emerald-500/10 transition-colors particle-trigger"
+                      title="npm Package"
+                      aria-label="npm Package"
                     >
-                      npm &nearr;
+                      <Box className="w-3.5 h-3.5" />
                     </a>
                   )}
                   {p.liveUrl && (
@@ -183,9 +188,11 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                       href={p.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyan-500 hover:underline particle-trigger"
+                      className="w-7 h-7 rounded-md border border-border bg-surface flex items-center justify-center text-cyan-500 hover:border-cyan-500 hover:bg-cyan-500/10 transition-colors particle-trigger"
+                      title="Live Deployment"
+                      aria-label="Live Deployment"
                     >
-                      Live &nearr;
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
                   {p.docsUrl && !p.liveUrl && (
@@ -193,9 +200,11 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                       href={p.docsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-ember-600 dark:text-ember-400 hover:underline particle-trigger"
+                      className="w-7 h-7 rounded-md border border-border bg-surface flex items-center justify-center text-ember-600 dark:text-ember-400 hover:border-ember-600 hover:bg-ember-500/10 transition-colors particle-trigger"
+                      title="Documentation"
+                      aria-label="Documentation"
                     >
-                      Docs &nearr;
+                      <BookOpen className="w-3.5 h-3.5" />
                     </a>
                   )}
                   {p.githubUrl && (
@@ -203,9 +212,11 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                       href={p.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-text-muted hover:text-text particle-trigger"
+                      className="w-7 h-7 rounded-md border border-border bg-surface flex items-center justify-center text-text-muted hover:text-text hover:border-border-bright transition-colors particle-trigger"
+                      title="GitHub Repository"
+                      aria-label="GitHub Repository"
                     >
-                      Repo &nearr;
+                      <Github className="w-3.5 h-3.5" />
                     </a>
                   )}
                 </div>

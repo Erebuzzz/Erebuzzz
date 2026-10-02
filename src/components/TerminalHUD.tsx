@@ -137,14 +137,6 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
 
               <div className="p-2 rounded border border-border bg-surface">
                 <div className="flex items-center justify-between">
-                  <span className="text-text font-semibold">leanmcp (npm)</span>
-                  <a href="https://www.npmjs.com/package/leanmcp" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">npmjs.com/package/leanmcp &#8599;</a>
-                </div>
-                <p className="text-[11px] text-text-dim mt-0.5">Lightweight Zero-Dependency CLI for registering, launching, and managing MCP tools.</p>
-              </div>
-
-              <div className="p-2 rounded border border-border bg-surface">
-                <div className="flex items-center justify-between">
                   <span className="text-text font-semibold">tweakio-sdk (PyPI)</span>
                   <a href="https://pypi.org/project/tweakio-sdk/" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">pypi.org/project/tweakio-sdk &#8599;</a>
                 </div>
@@ -267,7 +259,9 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
         output = (
           <div className="space-y-1.5 text-xs font-mono text-text-muted">
             <p className="text-ember-600 dark:text-ember-400 font-semibold">Communication Channels:</p>
-            <p>Email: <a href="mailto:contact@erebuzzz.me" className="text-text hover:underline">contact@erebuzzz.me</a></p>
+            <p>Email: <a href="mailto:kshitiz23kumar@gmail.com" className="text-text hover:underline">kshitiz23kumar@gmail.com</a></p>
+            <p>Discord: <span className="text-text font-semibold">erebus.0</span> (ID: 1206267175267074049)</p>
+            <p>Cal.com Quickmeet: <a href="https://cal.com/kksinha/quickmeet" target="_blank" rel="noreferrer" className="text-ember-600 hover:underline">cal.com/kksinha/quickmeet &#8599;</a></p>
             <p>GitHub: <a href="https://github.com/Erebuzzz" target="_blank" rel="noreferrer" className="text-text hover:underline">github.com/Erebuzzz &#8599;</a></p>
             <p>Unstable Kernel Lab: <a href="https://unstable-kernel.github.io/docs" target="_blank" rel="noreferrer" className="text-text hover:underline">unstable-kernel.github.io/docs &#8599;</a></p>
           </div>

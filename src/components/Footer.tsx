@@ -80,12 +80,12 @@ export const Footer: React.FC = () => {
               <span>Unstable Kernel Docs</span>
             </a>
             <a
-              href="mailto:contact@erebuzzz.me"
+              href="mailto:kshitiz23kumar@gmail.com"
               onClick={() => soundManager.playClick()}
               className="hover:text-ember-600 transition-colors flex items-center gap-1"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>contact@erebuzzz.me</span>
+              <span>kshitiz23kumar@gmail.com</span>
             </a>
           </div>
 

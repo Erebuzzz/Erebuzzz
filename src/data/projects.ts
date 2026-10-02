@@ -115,30 +115,6 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "leanmcp",
-    title: "LeanMCP: TypeScript Model Context Protocol SDK",
-    mythicCodename: "Hermes Conduit",
-    tagline: "Lightweight TypeScript SDK for building production MCP servers with auth and elicitation.",
-    description: "TypeScript SDK for building Model Context Protocol servers with first-class support for authentication, conversational elicitation, and interactive MCP-Apps (including ChatGPT Apps).",
-    categories: ["flagship", "ai"],
-    tags: ["TypeScript", "MCP", "SDK", "Auth", "Elicitation"],
-    metric: "npm Package",
-    githubUrl: "https://github.com/Erebuzzz/leanmcp-sdk",
-    npmUrl: "https://www.npmjs.com/package/leanmcp",
-    docsUrl: "https://leanmcp.com",
-    blueprint: {
-      thesis: "Building Model Context Protocol servers currently requires heavy boilerplate and lacked native mechanisms for user elicitation, secure token auth, and client-side webviews. LeanMCP packages all protocol primitives into a composable developer experience.",
-      pipeline: "Tool & Resource Declaration -> Type-Safe Schemas -> Auth Interceptor -> Dynamic Elicitation Flow -> Standard JSON-RPC 2.0 / SSE Stream",
-      highlights: [
-        "Published on npm as 'leanmcp'.",
-        "Built-in authentication adapters and session management.",
-        "Native conversational elicitation mechanics for interactive agent queries.",
-        "Full support for ChatGPT and Claude Desktop MCP applications."
-      ],
-      stack: "TypeScript, Node.js, JSON-RPC, SSE, Zod"
-    }
-  },
-  {
     id: "worldquant",
     title: "WorldQuant Brain Quantitative Alphas",
     mythicCodename: "The Delphic Oracle",
@@ -185,7 +161,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "norn",
-    title: "NORN (creance): Multilateral Netting Protocol",
+    title: "NORN: Network for Obligation Routing & Netting",
     mythicCodename: "The Fates' Ledger",
     tagline: "Multilateral debt netting protocol for autonomous AI agent economies.",
     description: "As autonomous AI agents consume machine-to-machine APIs and services, settling every transaction onchain incurs prohibitive gas fees. NORN compresses cyclic obligations across agent debt graphs before settlement epochs.",

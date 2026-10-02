@@ -14,17 +14,17 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
   const horizonMeshRef = useRef<THREE.Mesh | null>(null);
   const starsRef = useRef<THREE.Points | null>(null);
   const constellationRef = useRef<THREE.LineSegments | null>(null);
+  const celestialGroupRef = useRef<THREE.Group | null>(null);
 
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
 
-    // Viewport-adaptive parameters
     const width = window.innerWidth;
     const isMobile = width < 768;
     const isTablet = width >= 768 && width < 1024;
 
-    const starCount = isMobile ? 480 : (isTablet ? 850 : 1400);
+    const starCount = isMobile ? 500 : (isTablet ? 900 : 1500);
     const segmentsX = isMobile ? 32 : (isTablet ? 48 : 64);
     const segmentsZ = isMobile ? 24 : (isTablet ? 36 : 48);
     const pixelRatioLimit = isMobile ? 1.25 : 2.0;
@@ -50,7 +50,7 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     rendererRef.current = renderer;
     container.appendChild(renderer.domElement);
 
-    // 1. Starfield (Adaptive point count)
+    // 1. Adaptive Starfield
     const starGeometry = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
@@ -60,20 +60,16 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       starPositions[i * 3 + 1] = Math.random() * 400 - 50;
       starPositions[i * 3 + 2] = (Math.random() - 0.5) * 800;
 
-      // Color variation: ember orange, cyan, starlight white
       const colorRoll = Math.random();
       if (colorRoll > 0.7) {
-        // Orange / Ember
         starColors[i * 3] = 0.92;
         starColors[i * 3 + 1] = 0.35;
         starColors[i * 3 + 2] = 0.05;
       } else if (colorRoll > 0.4) {
-        // Cyan
         starColors[i * 3] = 0.0;
         starColors[i * 3 + 1] = 0.9;
         starColors[i * 3 + 2] = 1.0;
       } else {
-        // Pure Starlight
         starColors[i * 3] = 0.95;
         starColors[i * 3 + 1] = 0.95;
         starColors[i * 3 + 2] = 0.98;
@@ -95,10 +91,10 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     scene.add(starField);
     starsRef.current = starField;
 
-    // 2. Mythic Constellation Wireframe Segments
+    // 2. Mythic Constellations
     const constellationGeo = new THREE.BufferGeometry();
     const constellationPoints: number[] = [];
-    const maxConstellations = isMobile ? 18 : (isTablet ? 28 : 40);
+    const maxConstellations = isMobile ? 18 : 36;
     const poolSize = Math.min(200, starCount);
 
     for (let i = 0; i < maxConstellations; i++) {
@@ -146,6 +142,77 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     scene.add(horizonMesh);
     horizonMeshRef.current = horizonMesh;
 
+    // 4. Gameified 3D Interactive Floating Celestial Artifacts
+    const celestialGroup = new THREE.Group();
+    scene.add(celestialGroup);
+    celestialGroupRef.current = celestialGroup;
+
+    const emberColor = theme === 'dark' ? 0xea580c : 0xc2410c;
+
+    // A. Gyroscope Ring 1 (Torus)
+    const ring1Geo = new THREE.TorusGeometry(isMobile ? 14 : 20, 0.25, 16, 64);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: emberColor,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.24
+    });
+    const ring1 = new THREE.Mesh(ring1Geo, ringMat);
+    ring1.position.set(isMobile ? 0 : 38, isMobile ? 22 : 18, -35);
+    ring1.rotation.x = Math.PI / 3;
+    celestialGroup.add(ring1);
+
+    // B. Gyroscope Ring 2 (Inner Ring)
+    const ring2Geo = new THREE.TorusGeometry(isMobile ? 10 : 14, 0.2, 16, 64);
+    const ring2 = new THREE.Mesh(ring2Geo, ringMat);
+    ring1.add(ring2);
+
+    // C. Platonic Icosahedron (The Athena Core)
+    const icosaGeo = new THREE.IcosahedronGeometry(isMobile ? 5 : 7, 1);
+    const icosaMat = new THREE.MeshBasicMaterial({
+      color: emberColor,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    });
+    const icosa = new THREE.Mesh(icosaGeo, icosaMat);
+    icosa.position.set(isMobile ? -24 : -42, isMobile ? 8 : 12, -30);
+    celestialGroup.add(icosa);
+
+    // D. Platonic Octahedron (The Delphic Core)
+    const octaGeo = new THREE.OctahedronGeometry(isMobile ? 3.5 : 5, 0);
+    const octaMat = new THREE.MeshBasicMaterial({
+      color: emberColor,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3
+    });
+    const octa = new THREE.Mesh(octaGeo, octaMat);
+    octa.position.set(isMobile ? 22 : 36, isMobile ? -6 : -8, -25);
+    celestialGroup.add(octa);
+
+    // Mouse Tracking for 3D Camera Parallax
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetCameraX = 0;
+    let targetCameraY = 15;
+    let targetCameraZ = isMobile ? 75 : 60;
+    let targetMeshRotY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    // Click impulse on celestial objects
+    const handleCanvasClick = () => {
+      if (icosa) icosa.rotation.y += 1.8;
+      if (octa) octa.rotation.x += 2.0;
+      if (ring1) ring1.rotation.z += 1.5;
+    };
+    window.addEventListener('click', handleCanvasClick, { passive: true });
+
     // Resize handler
     const handleResize = () => {
       if (!cameraRef.current || !rendererRef.current) return;
@@ -161,17 +228,12 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     };
     window.addEventListener('resize', handleResize);
 
-    // Scroll mapping for spatial camera tracking
-    let targetCameraY = 15;
-    let targetCameraZ = isMobile ? 75 : 60;
-    let targetMeshRotY = 0;
-
+    // Scroll mapping
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollProgress = docHeight > 0 ? scrollY / docHeight : 0;
 
-      // Glide camera forward and downward through the constellation field
       const baseZ = window.innerWidth < 768 ? 75 : 60;
       targetCameraY = 15 - scrollProgress * 18;
       targetCameraZ = baseZ - scrollProgress * 28;
@@ -187,20 +249,37 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth camera interpolation
-      camera.position.y += (targetCameraY - camera.position.y) * 0.05;
+      // 3D Mouse Parallax
+      targetCameraX = mouseX * 6;
+      camera.position.x += (targetCameraX - camera.position.x) * 0.04;
+      camera.position.y += (targetCameraY + mouseY * 4 - camera.position.y) * 0.04;
       camera.position.z += (targetCameraZ - camera.position.z) * 0.05;
       camera.lookAt(0, 0, -20);
 
-      // Rotate starfield slowly
-      if (starField) {
-        starField.rotation.y = elapsedTime * 0.012;
+      // Rotate Starfield and Constellations
+      if (starField) starField.rotation.y = elapsedTime * 0.012;
+      if (constellationLines) constellationLines.rotation.y = elapsedTime * 0.012;
+
+      // Animate Celestial Game Polyhedra
+      if (ring1) {
+        ring1.rotation.y = elapsedTime * 0.25;
+        ring1.rotation.z = Math.sin(elapsedTime * 0.4) * 0.3;
       }
-      if (constellationLines) {
-        constellationLines.rotation.y = elapsedTime * 0.012;
+      if (ring2) {
+        ring2.rotation.x = elapsedTime * -0.4;
+      }
+      if (icosa) {
+        icosa.rotation.x = elapsedTime * 0.35;
+        icosa.rotation.y = elapsedTime * 0.25;
+        icosa.position.y = (isMobile ? 8 : 12) + Math.sin(elapsedTime * 0.8) * 1.5;
+      }
+      if (octa) {
+        octa.rotation.y = elapsedTime * 0.45;
+        octa.rotation.z = elapsedTime * 0.2;
+        octa.position.y = (isMobile ? -6 : -8) + Math.cos(elapsedTime * 0.9) * 1.2;
       }
 
-      // Animate horizon mesh vertices with mathematical wave harmonics
+      // Animate Wave Harmonics
       if (horizonMesh) {
         horizonMesh.rotation.y += (targetMeshRotY - horizonMesh.rotation.y) * 0.05;
         const posAttr = horizonGeo.attributes.position;
@@ -208,7 +287,6 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
           const u = posAttr.getX(i);
           const v = posAttr.getZ(i);
 
-          // Convex curvature + moving wave harmonics
           const normX = u / (planeWidth * 0.5);
           const curvature = -Math.pow(normX, 2) * 5;
           const wave =
@@ -227,6 +305,8 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleCanvasClick);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       if (container.contains(renderer.domElement)) {
@@ -239,10 +319,17 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       horizonMat.dispose();
       constellationGeo.dispose();
       constellationMat.dispose();
+      ring1Geo.dispose();
+      ring2Geo.dispose();
+      ringMat.dispose();
+      icosaGeo.dispose();
+      icosaMat.dispose();
+      octaGeo.dispose();
+      octaMat.dispose();
     };
   }, []);
 
-  // Update Three.js materials when theme or astrolabe changes
+  // Update materials on theme/astrolabe change
   useEffect(() => {
     if (!horizonMeshRef.current || !starsRef.current || !constellationRef.current) return;
 
@@ -260,7 +347,6 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     constMat.color.setHex(emberColor);
     constMat.opacity = isDark ? 0.35 : 0.2;
 
-    // Shift horizon position by astrolabe elevation
     if (horizonMeshRef.current) {
       horizonMeshRef.current.position.y = -12 + (astrolabeElevation - 35) * 0.08;
     }
