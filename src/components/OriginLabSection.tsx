@@ -17,7 +17,7 @@ export const OriginLabSection: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         
         {/* Card 1: Unstable Kernel Lab */}
         <div className="liquid-glass-card p-5 rounded-xl border border-border flex flex-col justify-between hover:border-ember-600/60 transition-all duration-300">
@@ -93,7 +93,7 @@ export const OriginLabSection: React.FC = () => {
         </div>
 
         {/* Card 3: IISER Bhopal DSCL */}
-        <div className="liquid-glass-card p-5 rounded-xl border border-border flex flex-col justify-between hover:border-ember-600/60 transition-all duration-300">
+        <div className="liquid-glass-card p-5 rounded-xl border border-border flex flex-col justify-between hover:border-ember-600/60 transition-all duration-300 md:col-span-2 lg:col-span-1">
           <div>
             <div className="flex items-center justify-between mb-3">
               <span className="w-8 h-8 rounded-lg bg-ember-500/10 border border-ember-600/30 flex items-center justify-center text-ember-600">

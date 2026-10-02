@@ -93,7 +93,7 @@ export const LaborsHUD: React.FC<LaborsHUDProps> = ({
         Interact with the workstation, explore system blueprints, or run terminal routines to earn mythic telemetry badges.
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
         {badges.map((b) => {
           const isUnlocked = !!unlocked[b.id];
           return (
@@ -103,20 +103,22 @@ export const LaborsHUD: React.FC<LaborsHUDProps> = ({
                 soundManager.playClick();
                 b.action();
               }}
-              className={`p-2.5 rounded-lg border text-left flex flex-col gap-1 transition-all duration-200 particle-trigger ${
+              className={`p-3 rounded-lg border text-left flex flex-col justify-between min-h-[76px] transition-all duration-200 particle-trigger ${
                 isUnlocked
                   ? 'border-ember-600 bg-ember-500/10 shadow-[0_0_12px_rgba(234,88,12,0.18)] opacity-100'
-                  : 'border-border bg-surface hover:border-ember-600/50 opacity-60 hover:opacity-100'
+                  : 'border-border bg-surface hover:border-ember-600/50 opacity-70 hover:opacity-100'
               }`}
             >
               <div className="font-mono text-[10px] text-ember-600 dark:text-ember-400">
-                [{b.num}] {isUnlocked ? '&#10003;' : '&#9675;'}
+                [{b.num}] {isUnlocked ? '&#10003; UNLOCKED' : '&#9675; LOCKED'}
               </div>
-              <div className="font-display font-semibold text-xs text-text truncate">
-                {b.title}
-              </div>
-              <div className="font-mono text-[10px] text-text-muted truncate">
-                {b.desc}
+              <div>
+                <div className="font-display font-semibold text-xs text-text truncate">
+                  {b.title}
+                </div>
+                <div className="font-mono text-[10px] text-text-muted truncate">
+                  {b.desc}
+                </div>
               </div>
             </button>
           );

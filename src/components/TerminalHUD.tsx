@@ -374,7 +374,7 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
         </div>
 
         {/* Command Output Buffer */}
-        <div className="p-4 sm:p-5 font-mono text-xs space-y-4 max-h-[380px] overflow-y-auto bg-bg-sunken/90">
+        <div className="p-4 sm:p-5 font-mono text-xs space-y-4 max-h-[300px] sm:max-h-[380px] overflow-y-auto bg-bg-sunken/90">
           {logs.map((log) => (
             <div key={log.id} className="space-y-1.5">
               <div className="flex items-center gap-2 text-text">
@@ -387,14 +387,14 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
           <div ref={terminalEndRef} />
         </div>
 
-        {/* Quick Command Chips */}
-        <div className="p-2 sm:px-4 sm:py-2.5 bg-surface border-t border-border flex flex-wrap items-center gap-1.5">
-          <span className="font-mono text-[10px] text-text-dim uppercase tracking-wider mr-1">Routines:</span>
+        {/* Quick Command Chips (Horizontally Scrollable on Mobile) */}
+        <div className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface border-t border-border flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+          <span className="font-mono text-[10px] text-text-dim uppercase tracking-wider mr-1 whitespace-nowrap">Routines:</span>
           {['whoami', 'pantheon', 'packages', 'quant', 'skills', 'labors', 'delphi', 'contact'].map((cmd) => (
             <button
               key={cmd}
               onClick={() => executeCommand(cmd)}
-              className="px-2 py-0.5 rounded border border-border bg-surface-elevated font-mono text-[11px] text-text-muted hover:text-ember-600 dark:hover:text-ember-400 hover:border-ember-600/50 transition-colors"
+              className="whitespace-nowrap px-2.5 py-1 rounded border border-border bg-surface-elevated font-mono text-[11px] text-text-muted hover:text-ember-600 dark:hover:text-ember-400 hover:border-ember-600/50 transition-colors"
             >
               {cmd}
             </button>
@@ -407,15 +407,17 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
           <input
             ref={inputRef}
             type="text"
+            id="terminal-input"
+            name="command"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type a command (try 'whoami', 'packages', 'quant', 'help')..."
-            className="flex-1 bg-transparent font-mono text-xs text-text outline-none placeholder:text-text-dim"
+            placeholder="Type a command (try 'whoami', 'packages', 'quant')..."
+            className="flex-1 bg-transparent font-mono text-sm sm:text-xs text-text outline-none placeholder:text-text-dim"
           />
           <button
             type="submit"
-            className="text-text-muted hover:text-ember-600 transition-colors ml-2"
+            className="text-text-muted hover:text-ember-600 transition-colors ml-2 p-1"
             aria-label="Send command"
           >
             <CornerDownLeft className="w-4 h-4" />

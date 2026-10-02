@@ -19,6 +19,16 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     const container = mountRef.current;
     if (!container) return;
 
+    // Viewport-adaptive parameters
+    const width = window.innerWidth;
+    const isMobile = width < 768;
+    const isTablet = width >= 768 && width < 1024;
+
+    const starCount = isMobile ? 480 : (isTablet ? 850 : 1400);
+    const segmentsX = isMobile ? 32 : (isTablet ? 48 : 64);
+    const segmentsZ = isMobile ? 24 : (isTablet ? 36 : 48);
+    const pixelRatioLimit = isMobile ? 1.25 : 2.0;
+
     // Scene
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -30,18 +40,17 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       0.1,
       2000
     );
-    camera.position.set(0, 15, 60);
+    camera.position.set(0, 15, isMobile ? 75 : 60);
     cameraRef.current = camera;
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatioLimit));
     renderer.setSize(window.innerWidth, window.innerHeight);
     rendererRef.current = renderer;
     container.appendChild(renderer.domElement);
 
-    // 1. Starfield (1400 Stars)
-    const starCount = 1400;
+    // 1. Starfield (Adaptive point count)
     const starGeometry = new THREE.BufferGeometry();
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
@@ -51,7 +60,7 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       starPositions[i * 3 + 1] = Math.random() * 400 - 50;
       starPositions[i * 3 + 2] = (Math.random() - 0.5) * 800;
 
-      // Color variation: ember orange, gold, cyan, white
+      // Color variation: ember orange, cyan, starlight white
       const colorRoll = Math.random();
       if (colorRoll > 0.7) {
         // Orange / Ember
@@ -75,7 +84,7 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
     const starMaterial = new THREE.PointsMaterial({
-      size: 2.2,
+      size: isMobile ? 1.8 : 2.2,
       vertexColors: true,
       transparent: true,
       opacity: theme === 'dark' ? 0.85 : 0.45,
@@ -89,9 +98,11 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     // 2. Mythic Constellation Wireframe Segments
     const constellationGeo = new THREE.BufferGeometry();
     const constellationPoints: number[] = [];
-    // Generate connecting lines between nearby star clusters
-    for (let i = 0; i < 40; i++) {
-      const idxA = Math.floor(Math.random() * 200);
+    const maxConstellations = isMobile ? 18 : (isTablet ? 28 : 40);
+    const poolSize = Math.min(200, starCount);
+
+    for (let i = 0; i < maxConstellations; i++) {
+      const idxA = Math.floor(Math.random() * (poolSize - 10));
       const idxB = idxA + Math.floor(Math.random() * 8) + 1;
       const x1 = starPositions[idxA * 3];
       const y1 = starPositions[idxA * 3 + 1];
@@ -119,10 +130,8 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     constellationRef.current = constellationLines;
 
     // 3. Mathematical Convex Horizon Wave Mesh
-    const planeWidth = 240;
-    const planeDepth = 160;
-    const segmentsX = 64;
-    const segmentsZ = 48;
+    const planeWidth = isMobile ? 180 : 240;
+    const planeDepth = isMobile ? 120 : 160;
     const horizonGeo = new THREE.PlaneGeometry(planeWidth, planeDepth, segmentsX, segmentsZ);
     horizonGeo.rotateX(-Math.PI / 2);
 
@@ -140,15 +149,21 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
     // Resize handler
     const handleResize = () => {
       if (!cameraRef.current || !rendererRef.current) return;
-      cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      const newIsMobile = newWidth < 768;
+
+      cameraRef.current.aspect = newWidth / newHeight;
+      cameraRef.current.position.z = newIsMobile ? 75 : 60;
       cameraRef.current.updateProjectionMatrix();
-      rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+      rendererRef.current.setSize(newWidth, newHeight);
+      rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, newIsMobile ? 1.25 : 2.0));
     };
     window.addEventListener('resize', handleResize);
 
-    // Scroll mapping for Yuki Asakura spatial camera tracking
+    // Scroll mapping for spatial camera tracking
     let targetCameraY = 15;
-    let targetCameraZ = 60;
+    let targetCameraZ = isMobile ? 75 : 60;
     let targetMeshRotY = 0;
 
     const handleScroll = () => {
@@ -157,8 +172,9 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
       const scrollProgress = docHeight > 0 ? scrollY / docHeight : 0;
 
       // Glide camera forward and downward through the constellation field
+      const baseZ = window.innerWidth < 768 ? 75 : 60;
       targetCameraY = 15 - scrollProgress * 18;
-      targetCameraZ = 60 - scrollProgress * 28;
+      targetCameraZ = baseZ - scrollProgress * 28;
       targetMeshRotY = scrollProgress * 0.45;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -194,10 +210,10 @@ export const ThreeCanvas: React.FC<ThreeCanvasProps> = ({ theme, astrolabeElevat
 
           // Convex curvature + moving wave harmonics
           const normX = u / (planeWidth * 0.5);
-          const curvature = -Math.pow(normX, 2) * 6;
+          const curvature = -Math.pow(normX, 2) * 5;
           const wave =
-            Math.sin(u * 0.08 + elapsedTime * 1.2) * 2.2 +
-            Math.cos(v * 0.06 + elapsedTime * 0.8) * 1.5;
+            Math.sin(u * 0.08 + elapsedTime * 1.2) * 2.0 +
+            Math.cos(v * 0.06 + elapsedTime * 0.8) * 1.4;
 
           posAttr.setY(i, curvature + wave);
         }

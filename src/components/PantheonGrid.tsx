@@ -35,9 +35,9 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
   };
 
   return (
-    <section className="pt-12" id="builds">
+    <section className="pt-10 sm:pt-12" id="builds">
       <div className="flex flex-col gap-4 mb-6">
-        <div className="flex flex-wrap justify-between items-end gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
           <div>
             <div className="font-mono text-xs text-ember-600 dark:text-ember-500 uppercase tracking-wider font-semibold mb-1">
               Pantheon Constellation Matrix
@@ -54,16 +54,18 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
           <div className="w-full sm:w-72">
             <input
               type="text"
+              id="project-search"
+              name="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by tech, myth, or tag..."
-              className="w-full bg-surface border border-border px-3 py-1.5 rounded-md font-mono text-xs text-text outline-none focus:border-ember-600 transition-colors"
+              placeholder="Search tech, myth, or tag..."
+              className="w-full bg-surface border border-border px-3 py-2 rounded-md font-mono text-xs text-text outline-none focus:border-ember-600 transition-colors"
             />
           </div>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 border-b border-border pb-3">
+        {/* Horizontally Scrollable Filter Tabs (Mobile-Friendly) */}
+        <div className="flex items-center gap-2 border-b border-border pb-3 overflow-x-auto no-scrollbar py-1">
           {[
             { id: 'all', label: 'All Constellations' },
             { id: 'flagship', label: 'Flagships' },
@@ -77,7 +79,7 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                 soundManager.playClick();
                 setFilter(tab.id as typeof filter);
               }}
-              className={`px-3 py-1.5 rounded-md font-mono text-xs transition-all particle-trigger ${
+              className={`whitespace-nowrap px-3 py-1.5 rounded-md font-mono text-xs transition-all particle-trigger ${
                 filter === tab.id
                   ? 'bg-surface-elevated text-text border border-ember-600 shadow-[0_0_10px_rgba(234,88,12,0.2)]'
                   : 'bg-surface text-text-muted border border-border hover:border-ember-600/50 hover:text-text'
@@ -89,8 +91,8 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
         </div>
       </div>
 
-      {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Responsive Bento Grid (1 col on mobile, 2 col on tablet, 3 col on desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProjects.map((p) => {
           const isFeatured = p.categories.includes('flagship');
 
@@ -98,31 +100,31 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
             <article
               key={p.id}
               onMouseMove={handleMouseMove}
-              className={`liquid-glass-card p-5 flex flex-col justify-between ${
+              className={`liquid-glass-card p-5 rounded-xl flex flex-col justify-between ${
                 isFeatured ? 'border-beam-card' : ''
               }`}
             >
               <div>
                 {/* Card Top Meta */}
                 <div className="flex justify-between items-center mb-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono border border-ember-600/30 text-ember-600 dark:text-ember-400 bg-ember-500/10">
+                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono border border-ember-600/30 text-ember-600 dark:text-ember-400 bg-ember-500/10">
                     <span className="w-1.5 h-1.5 rounded-full bg-ember-600 dark:bg-ember-400"></span>
                     {p.mythicCodename}
                   </span>
                   {p.metric && (
-                    <span className="font-mono text-xs text-text-dim">
+                    <span className="font-mono text-[11px] sm:text-xs text-text-dim">
                       {p.metric}
                     </span>
                   )}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-semibold text-lg text-text mb-1 tracking-tight">
+                <h3 className="font-display font-semibold text-base sm:text-lg text-text mb-1 tracking-tight">
                   {p.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm text-text-muted leading-relaxed mb-4 min-h-[4rem]">
+                <p className="text-xs sm:text-sm text-text-muted leading-relaxed mb-4 min-h-[3.5rem] sm:min-h-[4rem]">
                   {p.description}
                 </p>
 
@@ -131,7 +133,7 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-surface-elevated border border-border text-text-muted"
+                      className="px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono bg-surface-elevated border border-border text-text-muted"
                     >
                       {t}
                     </span>
@@ -150,12 +152,12 @@ export const PantheonGrid: React.FC<PantheonGridProps> = ({
                     if (p.id === 'mirage') onUnlockBadge('hephaestus', 'Hephaestus: Analyzed Mirage Multi-Agent Framework');
                     if (p.id === 'syncine') onUnlockBadge('hermes', 'Hermes Post: Tested SynCine WebRTC');
                   }}
-                  className="px-3 py-1 rounded text-xs font-mono border border-border bg-surface hover:border-ember-600 hover:text-text transition-colors particle-trigger"
+                  className="px-3 py-1.5 rounded text-xs font-mono border border-border bg-surface hover:border-ember-600 hover:text-text transition-colors particle-trigger"
                 >
                   Blueprint &rarr;
                 </button>
 
-                <div className="flex items-center gap-2 font-mono text-xs">
+                <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
                   {p.pypiUrl && (
                     <a
                       href={p.pypiUrl}
