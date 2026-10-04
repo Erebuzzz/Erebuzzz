@@ -20,6 +20,7 @@ interface RelicItem {
   npmPackage?: string;
   pypiPackage?: string;
   githubUrl: string;
+  liveUrl?: string;
 }
 
 export const HeroRelicPreview: React.FC<HeroRelicPreviewProps> = ({
@@ -75,11 +76,12 @@ export const HeroRelicPreview: React.FC<HeroRelicPreviewProps> = ({
       greekTitle: "\u039a\u039b\u03a9\u0398\u03a9 \u039a\u0391\u0399 \u039b\u0391\u03a7\u0395\u03a3\u0399\u03a3",
       systemName: "NORN Protocol",
       tagline: "Multilateral obligation routing and off-chain circular netting on Arbitrum Stylus.",
-      provenance: "Distributed Finance &middot; Rust &amp; WASM Contract",
-      metrics: "80% Settlement Compression &middot; Zero-Gas Netting",
-      tags: ["Rust", "Arbitrum Stylus", "WASM", "EIP-712"],
+      provenance: "Dual-Chain Protocol &middot; Arbitrum Stylus &amp; Robinhood Chain",
+      metrics: "Dual-Chain Clearing &middot; 80% Compression",
+      tags: ["TypeScript", "Rust", "Arbitrum Stylus", "Robinhood Chain", "EIP-712"],
       icon: <Layers className="w-6 h-6" />,
-      githubUrl: "https://github.com/Erebuzzz/norn"
+      githubUrl: "https://github.com/Erebuzzz/norn",
+      liveUrl: "https://norn-network.vercel.app"
     },
     {
       id: "muninn",
@@ -258,6 +260,19 @@ export const HeroRelicPreview: React.FC<HeroRelicPreviewProps> = ({
                 <span>Inspect Blueprint</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
+
+              {currentRelic.liveUrl && (
+                <a
+                  href={currentRelic.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundManager.playClick()}
+                  className="w-full py-2 px-3 rounded-lg border border-ember-600/40 bg-ember-500/10 hover:bg-ember-500/20 text-ember-600 dark:text-ember-400 font-mono text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <span>Launch Live Platform</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
 
               <a
                 href={currentRelic.githubUrl}

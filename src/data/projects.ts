@@ -165,20 +165,22 @@ export const PROJECTS: Project[] = [
     mythicCodename: "The Fates' Ledger",
     tagline: "Multilateral debt netting protocol for autonomous AI agent economies.",
     description: "As autonomous AI agents consume machine-to-machine APIs and services, settling every transaction onchain incurs prohibitive gas fees. NORN compresses cyclic obligations across agent debt graphs before settlement epochs.",
-    categories: ["quant", "security"],
-    tags: ["Rust", "Arbitrum Stylus", "Graph Netting", "EIP-712", "x402"],
-    metric: "Stylus Rust Contract",
+    categories: ["flagship", "quant", "security"],
+    tags: ["TypeScript", "Rust", "Arbitrum Stylus", "Robinhood Chain", "EIP-712", "x402", "Solidity", "QuickNode"],
+    metric: "Dual-Chain Clearing",
     githubUrl: "https://github.com/Erebuzzz/norn",
+    liveUrl: "https://norn-network.vercel.app",
+    docsUrl: "https://norn-network.vercel.app/arena",
     blueprint: {
-      thesis: "In high-frequency autonomous agent service networks, circular financial obligations (Agent A owes B, B owes C, C owes A) can be netted off-chain and verified via formal zero-knowledge or Stylus WASM proofs, compressing total settlement transactions by up to 80%.",
-      pipeline: "EIP-712 Signed Obligations -> Cyclic Graph Cancellation Engine -> Arbitrum Stylus Rust Contract -> Compressed Settlement Batch",
+      thesis: "In high-frequency autonomous agent service networks, circular financial obligations (Agent A owes B, B owes C, C owes A) can be netted off-chain and verified via formal Stylus WASM proofs and EVM contracts, compressing total settlement transactions by up to 80%.",
+      pipeline: "EIP-712 Signed Obligations -> Cyclic Graph Cancellation Engine -> Arbitrum Stylus Rust & Robinhood Chain Solidity ClearingHouse -> Compressed Settlement Batch -> QuickNode Telemetry",
       highlights: [
-        "Rust smart contract compiled to WebAssembly via Arbitrum Stylus.",
-        "Bilateral and multilateral cycle reduction algorithms.",
-        "Conservation-of-value invariants mathematically verified.",
-        "Zero-gas off-chain netting with on-chain cryptographic settlement proofs."
+        "Live platform deployed at norn-network.vercel.app with Mission Control Arena at norn-network.vercel.app/arena.",
+        "Dual-chain clearing architecture: Arbitrum Stylus (Rust WASM) and Robinhood Chain (Solidity ClearingHouse.sol).",
+        "Bilateral and multilateral cycle reduction algorithms achieving up to 80% transaction compression.",
+        "EIP-712 signed obligations, x402 payment headers, and QuickNode RPC telemetry."
       ],
-      stack: "Rust, Arbitrum Stylus, WASM, EIP-712, Graph Theory"
+      stack: "TypeScript, Rust, Arbitrum Stylus, Solidity, Robinhood Chain, EIP-712, QuickNode"
     }
   },
   {

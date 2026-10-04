@@ -251,6 +251,7 @@ export const App: React.FC = () => {
       <ArtifactModal
         project={selectedProject}
         onClose={() => setSelectedProjectId(null)}
+        theme={theme}
       />
 
     </div>
