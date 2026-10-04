@@ -87,11 +87,9 @@ export const CosmosHUD: React.FC<CosmosHUDProps> = ({
 
   // Botanical type labels
   const botanicalLabels: Record<string, string> = {
-    taproot: "Primordial Taproot Nexus",
-    bough: "Major Subterranean Bough",
-    tendril: "Vascular Root Tendril",
-    leaf: "Golden Laurel Leaf",
-    bulb: "Amber Seed Pod"
+    trunk: "Sacred Heartwood Knot",
+    leaf: "Golden Laurel Leaf Cluster",
+    fruit: "Hanging Amber Fruit"
   };
 
   return (

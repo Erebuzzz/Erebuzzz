@@ -15,7 +15,7 @@ export interface RepoGraphNode {
   codeSnippet?: string;
   position: [number, number, number];
   color: string;
-  botanicalType: 'taproot' | 'bough' | 'tendril' | 'leaf' | 'bulb';
+  botanicalType: 'trunk' | 'leaf' | 'fruit';
   size: number;
 }
 
@@ -68,10 +68,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
         ],
         details: "Runs strongly connected components and minimum-cut flow reductions to dissolve transitive obligations before any blockchain transaction is submitted.",
         codeSnippet: "fn resolve_cycles(graph: &mut DebtGraph) -> NettingReceipt {\n  let scc = tarjan_scc(graph);\n  scc.into_iter().fold(NettingReceipt::new(), |acc, cycle| {\n    acc.compress(cycle)\n  })\n}",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "norn-stylus",
@@ -86,10 +86,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
         ],
         details: "Leverages Stylus WASM execution speed to verify 256-node cycle netting batches with sub-millisecond execution latency.",
         codeSnippet: "#[stylus_sdk::entrypoint]\npub fn execute_netted_batch(\n  &mut self,\n  compressed_proof: Bytes\n) -> Result<(), Vec<u8>> {\n  self.verify_conservation_invariants(&compressed_proof)\n}",
-        position: [2.8, 1.2, -0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "norn-robinhood",
@@ -104,10 +104,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
         ],
         details: "Atomically disburses collateral adjustments across agent balances in a single rebalancing transaction.",
         codeSnippet: "function settleNettedEpoch(\n  uint256 epochId,\n  BalanceDelta[] calldata deltas,\n  bytes calldata authorityProof\n) external nonReentrant returns (bool) { ... }",
-        position: [-2.6, 1.4, 0.5],
+        position: [-2.2, 0.7, 0.4],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "norn-eip712",
@@ -121,10 +121,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Replay Immunity", value: 100, unit: "%" }
         ],
         details: "Structured typed data hashing ensuring autonomous agent obligations are cryptographically non-repudiable.",
-        position: [1.9, -2.1, 0.8],
+        position: [1.6, 2.0, 0.3],
         color: "#a855f7",
         botanicalType: "leaf",
-        size: 0.54
+        size: 0.6
       },
       {
         id: "norn-x402",
@@ -138,10 +138,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Throughput", value: 1250, unit: "/min" }
         ],
         details: "Allows autonomous AI agents to negotiate, serve, and clear API calls without per-call onchain transactions.",
-        position: [-2.1, -1.8, -1.0],
+        position: [-1.6, 1.9, -0.3],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "norn-quicknode",
@@ -155,10 +155,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Event Stream", value: 8500, unit: "evt/s" }
         ],
         details: "Dedicated QuickNode endpoint synchronization guaranteeing zero missed chain events during netting epochs.",
-        position: [0.3, 2.9, 1.2],
+        position: [0.3, 2.8, 0.2],
         color: "#e879f9",
-        botanicalType: "leaf",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "norn-arena",
@@ -172,20 +172,19 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Simulation FPS", value: 60, unit: "fps" }
         ],
         details: "Live graph visualization of debts, active cycle cancellations, and instant proof submission triggers.",
-        position: [-0.2, -3.1, -0.6],
+        position: [-0.2, 3.5, -0.2],
         color: "#facc15",
-        botanicalType: "bough",
-        size: 0.55
+        botanicalType: "fruit",
+        size: 0.62
       }
     ],
     edges: [
       { source: "norn-kernel", target: "norn-stylus", label: "WASM Proof Dispatch", strength: 1.0, color: "#38bdf8" },
       { source: "norn-kernel", target: "norn-robinhood", label: "EVM Clearing Settlement", strength: 0.9, color: "#34d399" },
-      { source: "norn-kernel", target: "norn-eip712", label: "Signature Verification", strength: 0.85, color: "#a855f7" },
-      { source: "norn-eip712", target: "norn-x402", label: "Voucher Ingestion", strength: 0.8, color: "#fb923c" },
-      { source: "norn-stylus", target: "norn-quicknode", label: "RPC Block Sync", strength: 0.75, color: "#e879f9" },
-      { source: "norn-robinhood", target: "norn-arena", label: "Settlement Broadcast", strength: 0.85, color: "#facc15" },
-      { source: "norn-kernel", target: "norn-arena", label: "Telemetry Stream", strength: 0.9, color: "#f59e0b" }
+      { source: "norn-stylus", target: "norn-eip712", label: "Signature Verification", strength: 0.85, color: "#a855f7" },
+      { source: "norn-robinhood", target: "norn-x402", label: "Voucher Ingestion", strength: 0.8, color: "#fb923c" },
+      { source: "norn-eip712", target: "norn-quicknode", label: "RPC Block Sync", strength: 0.75, color: "#e879f9" },
+      { source: "norn-quicknode", target: "norn-arena", label: "Settlement Broadcast", strength: 0.85, color: "#facc15" }
     ]
   },
 
@@ -213,10 +212,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Grammar Coverage", value: 12, unit: "langs" }
         ],
         details: "Direct C ABI bindings compile syntax trees in sub-millisecond timeframes without spawning external subprocesses.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "cs-cfg",
@@ -230,10 +229,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Branch Parity", value: 100, unit: "%" }
         ],
         details: "Converts conditional branches, exception handlers, and asynchronous event loops into rigorous mathematical digraphs.",
-        position: [2.6, 1.4, -0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "cs-dfg",
@@ -247,10 +246,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Lifetime Resolution", value: 3.2, unit: "ms", formatDecimals: 1 }
         ],
         details: "Deterministic SSA form mapping ensuring precise variable lineage tracking without heuristics.",
-        position: [-2.5, 1.3, 0.6],
+        position: [-2.2, 0.7, 0.4],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "cs-taint",
@@ -264,10 +263,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "False Positive", value: 0, unit: "%" }
         ],
         details: "Constructs reachability matrices over the DFG to guarantee that no sanitized variable bypasses guardrails.",
-        position: [1.8, -2.1, 0.8],
+        position: [1.6, 2.0, 0.3],
         color: "#a855f7",
         botanicalType: "leaf",
-        size: 0.56
+        size: 0.6
       },
       {
         id: "cs-mcp",
@@ -281,10 +280,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Hook Overhead", value: 1.2, unit: "ms", formatDecimals: 1 }
         ],
         details: "Enables autonomous coding agents to self-audit their generated patches before executing shell commands.",
-        position: [-2.0, -1.9, -0.9],
+        position: [-1.6, 2.0, -0.3],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.54
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "cs-pypi",
@@ -298,19 +297,18 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Package Version", value: 1.0, unit: "v", formatDecimals: 1 }
         ],
         details: "Lightweight zero-dependency binary runtime with instant terminal reporting and SARIF output.",
-        position: [0.2, 3.0, 1.1],
+        position: [0.0, 3.0, 0.1],
         color: "#e879f9",
-        botanicalType: "bough",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
       { source: "cs-kernel", target: "cs-cfg", label: "AST -> CFG Blocks", strength: 1.0, color: "#38bdf8" },
       { source: "cs-kernel", target: "cs-dfg", label: "AST -> DFG Def-Use", strength: 1.0, color: "#34d399" },
       { source: "cs-cfg", target: "cs-taint", label: "Branch Control Constraints", strength: 0.85, color: "#a855f7" },
-      { source: "cs-dfg", target: "cs-taint", label: "Variable Flow Matrix", strength: 0.9, color: "#a855f7" },
-      { source: "cs-taint", target: "cs-mcp", label: "Security Guardrails", strength: 0.85, color: "#fb923c" },
-      { source: "cs-mcp", target: "cs-pypi", label: "Package Distribution", strength: 0.8, color: "#e879f9" }
+      { source: "cs-dfg", target: "cs-mcp", label: "Variable Flow Matrix", strength: 0.9, color: "#fb923c" },
+      { source: "cs-taint", target: "cs-pypi", label: "Security Guardrails", strength: 0.85, color: "#e879f9" }
     ]
   },
 
@@ -338,10 +336,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Update Rate", value: 200, unit: "Hz" }
         ],
         details: "Feeds kinematic constraints and goal states into the dual-layer control architecture.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "lqr-riccati",
@@ -355,10 +353,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "CPU Consumption", value: 2.1, unit: "%", formatDecimals: 1 }
         ],
         details: "Stabilizes the robotic platform with infinite gain margin under linear conditions, freeing computation for threat monitoring.",
-        position: [2.6, 1.3, -0.6],
+        position: [-2.2, 0.6, 0.4],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "lqr-cbf",
@@ -372,10 +370,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Threat Trigger", value: 0.85, unit: "threshold", formatDecimals: 2 }
         ],
         details: "Guarantees formal collision avoidance without incurring the high computational burden of running continuous MPC.",
-        position: [-2.5, 1.4, 0.5],
+        position: [2.2, 0.7, -0.3],
         color: "#a855f7",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "lqr-casadi",
@@ -389,10 +387,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Previous Latency", value: 180, unit: "ms" }
         ],
         details: "Formulates sparse quadratic programs optimized with operator splitting methods to meet real-time deadlines.",
-        position: [1.8, -2.1, 0.7],
+        position: [-1.5, 2.0, -0.3],
         color: "#34d399",
         botanicalType: "leaf",
-        size: 0.58
+        size: 0.6
       },
       {
         id: "lqr-ros2",
@@ -406,10 +404,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Topic Frequency", value: 200, unit: "Hz" }
         ],
         details: "Zero-copy IPC pub/sub pipeline ensuring actuator commands never lag control output.",
-        position: [-2.0, -1.9, -0.9],
+        position: [1.6, 2.0, 0.3],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "lqr-gazebo",
@@ -423,18 +421,17 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Crash Incidents", value: 0, unit: "events" }
         ],
         details: "Extensive simulation proving complete absence of safety barrier violations under erratic obstacles.",
-        position: [0.2, 2.9, 1.2],
+        position: [0.0, 3.0, 0.1],
         color: "#e879f9",
-        botanicalType: "bough",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
       { source: "lqr-kernel", target: "lqr-riccati", label: "Nominal State Feedback", strength: 1.0, color: "#38bdf8" },
       { source: "lqr-kernel", target: "lqr-cbf", label: "Barrier Evaluation", strength: 0.95, color: "#a855f7" },
-      { source: "lqr-cbf", target: "lqr-casadi", label: "Risk Trigger Activation", strength: 0.9, color: "#34d399" },
-      { source: "lqr-casadi", target: "lqr-ros2", label: "Constrained Control Commands", strength: 0.85, color: "#fb923c" },
-      { source: "lqr-riccati", target: "lqr-ros2", label: "Baseline Control Commands", strength: 0.85, color: "#fb923c" },
+      { source: "lqr-riccati", target: "lqr-casadi", label: "Risk Trigger Activation", strength: 0.9, color: "#34d399" },
+      { source: "lqr-cbf", target: "lqr-ros2", label: "Constrained Control Commands", strength: 0.85, color: "#fb923c" },
       { source: "lqr-ros2", target: "lqr-gazebo", label: "Actuation Telemetry", strength: 0.8, color: "#e879f9" }
     ]
   },
@@ -463,10 +460,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Semantic Parity", value: 100, unit: "%" }
         ],
         details: "Prevents AI design hallucinations by bounding styling decisions to a verified mathematical design genome.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "pix-pillars",
@@ -480,10 +477,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Accessibility Tier", value: 100, unit: "% AA" }
         ],
         details: "Enforces strict production quality standards eliminating generic AI tropes (purple gradients, Lucide flood).",
-        position: [2.7, 1.2, -0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "pix-mcp",
@@ -497,10 +494,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "npm Releases", value: 3, unit: "versions" }
         ],
         details: "Provides instant commands: pixasso_discover_intent, pixasso_generate_genome, and pixasso_audit_design.",
-        position: [-2.6, 1.3, 0.6],
+        position: [-2.2, 0.7, 0.4],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.58
+        botanicalType: "fruit",
+        size: 0.65
       },
       {
         id: "pix-qa",
@@ -514,10 +511,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "DOM Overflow", value: 0, unit: "leaks" }
         ],
         details: "Ensures responsive bulletproofing across mobile phones, tablets, laptops, and ultra-wide desktop monitors.",
-        position: [1.8, -2.1, 0.8],
+        position: [1.6, 2.0, 0.3],
         color: "#a855f7",
-        botanicalType: "tendril",
-        size: 0.56
+        botanicalType: "leaf",
+        size: 0.6
       },
       {
         id: "pix-sensory",
@@ -531,17 +528,17 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Audio Cues", value: 6, unit: "presets" }
         ],
         details: "Supplies crisp chimes, parchment page turns, and ceramic clicks without external audio assets.",
-        position: [-1.9, -1.9, -0.9],
+        position: [-0.4, 2.8, 0.2],
         color: "#e879f9",
-        botanicalType: "leaf",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
       { source: "pix-genome", target: "pix-pillars", label: "Token Compilation", strength: 1.0, color: "#38bdf8" },
       { source: "pix-genome", target: "pix-mcp", label: "Agent Tool Invocation", strength: 0.95, color: "#fb923c" },
       { source: "pix-pillars", target: "pix-qa", label: "Design Validation Audit", strength: 0.9, color: "#a855f7" },
-      { source: "pix-pillars", target: "pix-sensory", label: "Micro-Interaction Feedback", strength: 0.8, color: "#e879f9" }
+      { source: "pix-mcp", target: "pix-sensory", label: "Micro-Interaction Feedback", strength: 0.8, color: "#e879f9" }
     ]
   },
 
@@ -569,10 +566,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Compilation Speed", value: 18, unit: "ms" }
         ],
         details: "Bridges the semantic gap between LLMs and low-level physics engines, eliminating format translation bugs.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "mirage-llm",
@@ -586,10 +583,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Reasoning Time", value: 6.8, unit: "s", formatDecimals: 1 }
         ],
         details: "Decouples autonomous robotics workflows from single vendor APIs with standardized JSON-RPC connectors.",
-        position: [2.6, 1.3, -0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "mirage-sim",
@@ -603,10 +600,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Collision Accuracy", value: 99.7, unit: "%", formatDecimals: 1 }
         ],
         details: "Direct C/Python bindings to MuJoCo XML and NVIDIA Isaac Sim USD pipelines.",
-        position: [-2.5, 1.4, 0.5],
+        position: [-2.2, 0.7, 0.4],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "mirage-ros",
@@ -620,10 +617,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Deployment Speed", value: 45, unit: "ms" }
         ],
         details: "Facilitates seamless sim-to-real transfer with standard ROS 2 control interfaces.",
-        position: [1.8, -2.1, 0.8],
+        position: [1.6, 2.0, 0.3],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.54
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "mirage-matlab",
@@ -637,17 +634,17 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Phase Margin", value: 58.4, unit: "deg", formatDecimals: 1 }
         ],
         details: "Formal mathematical verification preventing unstable controllers from reaching physical hardware.",
-        position: [-2.0, -1.9, -0.9],
+        position: [-1.5, 2.0, -0.3],
         color: "#a855f7",
-        botanicalType: "leaf",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
       { source: "mirage-eir", target: "mirage-llm", label: "Semantic Specification", strength: 1.0, color: "#38bdf8" },
       { source: "mirage-eir", target: "mirage-sim", label: "Physics Ingestion", strength: 0.95, color: "#34d399" },
-      { source: "mirage-sim", target: "mirage-matlab", label: "Telemetry & Stability Check", strength: 0.85, color: "#a855f7" },
-      { source: "mirage-llm", target: "mirage-ros", label: "Controller Synthesis", strength: 0.9, color: "#fb923c" }
+      { source: "mirage-llm", target: "mirage-ros", label: "Controller Synthesis", strength: 0.9, color: "#fb923c" },
+      { source: "mirage-sim", target: "mirage-matlab", label: "Telemetry & Stability Check", strength: 0.85, color: "#a855f7" }
     ]
   },
 
@@ -664,21 +661,38 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
     ],
     nodes: [
       {
+        id: "mun-claims",
+        label: "Atomic Claim Compiler",
+        sublabel: "Proposition Extractor",
+        cluster: "kernel",
+        role: "Extracts atomic, verifiable technical statements from natural language streams, flagging contradictions.",
+        mythicSigil: "\u03a9",
+        metrics: [
+          { label: "Claim Precision", value: 94.2, unit: "%", formatDecimals: 1 },
+          { label: "Deduplication", value: 88, unit: "%" }
+        ],
+        details: "Converts amorphous conversation into structured factual assertions with temporal timestamps.",
+        position: [0, -0.6, 0],
+        color: "#f59e0b",
+        botanicalType: "trunk",
+        size: 0.8
+      },
+      {
         id: "mun-audio",
         label: "24kHz PCM Audio Ingest",
         sublabel: "Android Background Sentinel",
         cluster: "interface",
         role: "Captures ambient developer speech with hardware wake locks and low-power audio streaming.",
-        mythicSigil: "\u03a9",
+        mythicSigil: "\u039b",
         metrics: [
           { label: "Sample Rate", value: 24, unit: "kHz" },
           { label: "Buffer Latency", value: 32, unit: "ms" }
         ],
         details: "Maintains persistent audio capture without draining mobile device battery life.",
-        position: [0, 0.2, 0],
-        color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        position: [-2.2, 0.7, 0.4],
+        color: "#fb923c",
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "mun-transcribe",
@@ -692,27 +706,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Word Accuracy", value: 96.8, unit: "%", formatDecimals: 1 }
         ],
         details: "Direct WebSocket transport with automatic reconnection and local audio buffering.",
-        position: [2.6, 1.3, -0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
-      },
-      {
-        id: "mun-claims",
-        label: "Atomic Claim Compiler",
-        sublabel: "Proposition Extractor",
-        cluster: "kernel",
-        role: "Extracts atomic, verifiable technical statements from natural language streams, flagging contradictions.",
-        mythicSigil: "\u0394",
-        metrics: [
-          { label: "Claim Precision", value: 94.2, unit: "%", formatDecimals: 1 },
-          { label: "Deduplication", value: 88, unit: "%" }
-        ],
-        details: "Converts amorphous conversation into structured factual assertions with temporal timestamps.",
-        position: [-2.5, 1.4, 0.5],
-        color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "mun-pgvector",
@@ -726,10 +723,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Embedding Dims", value: 1536, unit: "dims" }
         ],
         details: "HNSW indexing allows instant semantic retrieval across months of historical developer discussions.",
-        position: [1.8, -2.1, 0.8],
+        position: [-1.5, 2.0, -0.3],
         color: "#a855f7",
-        botanicalType: "leaf",
-        size: 0.56
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "mun-cf",
@@ -737,23 +734,23 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
         sublabel: "Edge Compute API",
         cluster: "execution",
         role: "Global edge routing distributing search queries and websocket audio streams with sub-millisecond cold starts.",
-        mythicSigil: "\u039b",
+        mythicSigil: "\u0394",
         metrics: [
           { label: "Edge Latency", value: 8, unit: "ms" },
           { label: "Cold Start", value: 0, unit: "ms" }
         ],
         details: "Serverless edge architecture eliminates fixed hosting infrastructure overhead.",
-        position: [-2.0, -1.9, -0.9],
-        color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.52
+        position: [1.5, 2.0, 0.3],
+        color: "#34d399",
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
-      { source: "mun-audio", target: "mun-transcribe", label: "PCM16 WebSocket Stream", strength: 1.0, color: "#38bdf8" },
-      { source: "mun-transcribe", target: "mun-claims", label: "Transcript Segments", strength: 0.95, color: "#34d399" },
-      { source: "mun-claims", target: "mun-pgvector", label: "Vector Embeddings", strength: 0.9, color: "#a855f7" },
-      { source: "mun-cf", target: "mun-pgvector", label: "Edge Query Routing", strength: 0.85, color: "#fb923c" }
+      { source: "mun-claims", target: "mun-audio", label: "Audio Ingestion", strength: 1.0, color: "#fb923c" },
+      { source: "mun-claims", target: "mun-transcribe", label: "Speech Transcription", strength: 0.95, color: "#38bdf8" },
+      { source: "mun-claims", target: "mun-pgvector", label: "HNSW Indexing", strength: 0.9, color: "#a855f7" },
+      { source: "mun-transcribe", target: "mun-cf", label: "Edge Relay", strength: 0.85, color: "#34d399" }
     ]
   },
 
@@ -781,10 +778,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Architecture", value: 100, unit: "% P2P" }
         ],
         details: "Direct peer-to-peer data channels eliminate expensive centralized media server relays.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "syn-appwrite",
@@ -798,10 +795,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Room Capacity", value: 50, unit: "users" }
         ],
         details: "Lightweight cloud control plane maintaining reliable session state across reloads.",
-        position: [2.6, 1.3, -0.6],
+        position: [-2.2, 0.7, 0.4],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "syn-webrtc",
@@ -815,10 +812,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Packet Loss", value: 0.1, unit: "%", formatDecimals: 1 }
         ],
         details: "Decentralized mesh topology adapting dynamically to fluctuating network bandwidth.",
-        position: [-2.5, 1.4, 0.5],
+        position: [2.2, 0.6, -0.3],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "syn-drift",
@@ -832,10 +829,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Correction Rate", value: 0.05, unit: "x/s", formatDecimals: 2 }
         ],
         details: "Micro-adjusts video playback rate (0.98x - 1.02x) smoothly without perceptible audio pitch shifts.",
-        position: [1.8, -2.1, 0.8],
+        position: [0.0, 2.6, 0.1],
         color: "#a855f7",
-        botanicalType: "leaf",
-        size: 0.56
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
@@ -858,38 +855,38 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
     ],
     nodes: [
       {
-        id: "wq-lake",
-        label: "Tick & Fundamental Data Lake",
-        sublabel: "Cross-Sectional Market Ingest",
-        cluster: "storage",
-        role: "Processes historical price volumes, quarterly filings, and sentiment indicators across thousands of equities.",
-        mythicSigil: "\u03a9",
-        metrics: [
-          { label: "Equities Tracked", value: 3000, unit: "assets" },
-          { label: "Data Quality", value: 99.9, unit: "%", formatDecimals: 1 }
-        ],
-        details: "High-throughput data cleaning pipeline filtering out survivorship bias and split distortions.",
-        position: [0, 0.2, 0],
-        color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
-      },
-      {
         id: "wq-alpha",
         label: "Non-Linear Alpha Operators",
         sublabel: "Mathematical Rank Transforms",
         cluster: "kernel",
         role: "Constructs predictive factor models using rolling rank, ts_decay_linear, and cross-sectional z-scoring.",
-        mythicSigil: "\u03a8",
+        mythicSigil: "\u03a9",
         metrics: [
           { label: "Approved Alphas", value: 60, unit: "signals" },
           { label: "Mean Turnover", value: 12.4, unit: "%", formatDecimals: 1 }
         ],
         details: "Formulates mathematically rigorous predictive signals designed for persistent statistical edges.",
-        position: [2.6, 1.3, -0.6],
+        position: [0, -0.6, 0],
+        color: "#f59e0b",
+        botanicalType: "trunk",
+        size: 0.8
+      },
+      {
+        id: "wq-lake",
+        label: "Tick & Fundamental Data Lake",
+        sublabel: "Cross-Sectional Market Ingest",
+        cluster: "storage",
+        role: "Processes historical price volumes, quarterly filings, and sentiment indicators across thousands of equities.",
+        mythicSigil: "\u03a8",
+        metrics: [
+          { label: "Equities Tracked", value: 3000, unit: "assets" },
+          { label: "Data Quality", value: 99.9, unit: "%", formatDecimals: 1 }
+        ],
+        details: "High-throughput data cleaning pipeline filtering out survivorship bias and split distortions.",
+        position: [-2.2, 0.7, 0.4],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "wq-neutral",
@@ -903,10 +900,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Sector Neutrality", value: 99.2, unit: "%", formatDecimals: 1 }
         ],
         details: "Orthogonalizes factor vectors against known Fama-French style factors.",
-        position: [-2.5, 1.4, 0.5],
+        position: [2.2, 0.6, -0.3],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "wq-sharpe",
@@ -920,14 +917,14 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Max Drawdown", value: 4.8, unit: "%", formatDecimals: 1 }
         ],
         details: "Rigorous simulation tests certifying signals for live institutional tracking.",
-        position: [1.8, -2.1, 0.8],
+        position: [0.0, 2.6, 0.1],
         color: "#a855f7",
-        botanicalType: "leaf",
-        size: 0.56
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
-      { source: "wq-lake", target: "wq-alpha", label: "Dataset Ingestion", strength: 1.0, color: "#38bdf8" },
+      { source: "wq-alpha", target: "wq-lake", label: "Dataset Ingestion", strength: 1.0, color: "#38bdf8" },
       { source: "wq-alpha", target: "wq-neutral", label: "Raw Factor Signal", strength: 0.95, color: "#34d399" },
       { source: "wq-neutral", target: "wq-sharpe", label: "Neutralized Exposure", strength: 0.9, color: "#a855f7" }
     ]
@@ -958,10 +955,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
         ],
         details: "Conducted during summer research internship (May - July) at DSCL, Electrical Engineering Dept, IIT Jodhpur under Prof. Anoop Jain.",
         codeSnippet: "function u_i = dsgfa_control(x_i, neighbors, sensor_val)\n  sign_grad = sign(sensor_val - prev_sensor);\n  formation_force = compute_voronoi_containment(x_i, neighbors);\n  u_i = -k_v * sign_grad + formation_force;\nend",
-        position: [0, -0.4, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: "dsgfa-voronoi",
@@ -975,10 +972,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Allocation Lag", value: 16, unit: "ms" }
         ],
         details: "Prevents team clustering and guarantees complete spatial coverage across moving emitters.",
-        position: [2.6, 1.2, -0.6],
+        position: [-2.2, 0.7, 0.4],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "dsgfa-iss",
@@ -992,10 +989,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Max Tracking Lag", value: 0.14, unit: "m", formatDecimals: 2 }
         ],
         details: "Formal mathematical proof guaranteeing bounded trajectory error for constant-velocity targets.",
-        position: [-2.5, 1.3, 0.6],
+        position: [2.2, 0.6, -0.3],
         color: "#a855f7",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: "dsgfa-turtlebot",
@@ -1009,10 +1006,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Formation Jitter", value: 0.04, unit: "m", formatDecimals: 2 }
         ],
         details: "Maintains rigid equidistant encirclement while tracking the estimated signal source position.",
-        position: [1.8, -2.0, 0.8],
+        position: [-1.5, 2.0, -0.3],
         color: "#fb923c",
-        botanicalType: "leaf",
-        size: 0.54
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: "dsgfa-sim",
@@ -1026,10 +1023,10 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
           { label: "Monte Carlo Runs", value: 500, unit: "trials" }
         ],
         details: "Simulated in MATLAB and CoppeliaSim with sensor noise, transport delays, and non-holonomic drive dynamics.",
-        position: [-2.0, -1.9, -0.9],
+        position: [1.5, 2.0, 0.3],
         color: "#34d399",
-        botanicalType: "bulb",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
@@ -1043,7 +1040,7 @@ export const REPO_GRAPHS: Record<string, RepoGraph> = {
 
 /**
  * Fallback generator for projects that do not have an explicitly handcrafted graph.
- * Synthesizes a balanced 5-node mythic graph based on the project's metadata.
+ * Synthesizes a balanced 5-node botanical tree based on the project's metadata.
  */
 export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGraph {
   if (REPO_GRAPHS[projectId]) {
@@ -1051,7 +1048,7 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
   }
 
   const title = fallbackProject?.title || projectId.toUpperCase();
-  const mythic = fallbackProject?.mythicCodename || "Cosmic Shard";
+  const mythic = fallbackProject?.mythicCodename || "Sacred Bough";
   const tags: string[] = fallbackProject?.tags || ["Core", "Module", "Interface"];
 
   return {
@@ -1069,7 +1066,7 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
       {
         id: `${projectId}-core`,
         label: `${title.split(':')[0]} Core`,
-        sublabel: "Primordial Kernel",
+        sublabel: "Primordial Heartwood",
         cluster: "kernel",
         role: fallbackProject?.description || "Central orchestration engine governing primary system throughput.",
         mythicSigil: "\u03a9",
@@ -1078,14 +1075,14 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
           { label: "Throughput", value: 1850, unit: "ops/s" }
         ],
         details: fallbackProject?.blueprint?.thesis || "Primary computational node.",
-        position: [0, 0.2, 0],
+        position: [0, -0.6, 0],
         color: "#f59e0b",
-        botanicalType: "taproot",
-        size: 0.75
+        botanicalType: "trunk",
+        size: 0.8
       },
       {
         id: `${projectId}-engine`,
-        label: tags[0] ? `${tags[0]} Engine` : "Execution Layer",
+        label: tags[0] ? `${tags[0]} Bough` : "Execution Layer",
         sublabel: "State Processor",
         cluster: "execution",
         role: "Processes operational tasks, state changes, and pipeline computation.",
@@ -1095,14 +1092,14 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
           { label: "Efficiency", value: 98.2, unit: "%", formatDecimals: 1 }
         ],
         details: "High-speed execution module maintaining low-latency state transitions.",
-        position: [2.6, 1.3, -0.6],
+        position: [-2.2, 0.7, 0.4],
         color: "#38bdf8",
-        botanicalType: "bough",
-        size: 0.6
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: `${projectId}-bridge`,
-        label: tags[1] ? `${tags[1]} Bridge` : "Protocol Bridge",
+        label: tags[1] ? `${tags[1]} Branch` : "Protocol Bridge",
         sublabel: "Network Transport",
         cluster: "interface",
         role: "Maintains inter-service communication, RPC interfaces, and data transport.",
@@ -1112,10 +1109,10 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
           { label: "Data Rate", value: 1200, unit: "msg/s" }
         ],
         details: "Reliable communication gateway connecting local and remote subsystems.",
-        position: [-2.5, 1.4, 0.5],
+        position: [2.2, 0.6, -0.3],
         color: "#34d399",
-        botanicalType: "tendril",
-        size: 0.58
+        botanicalType: "leaf",
+        size: 0.65
       },
       {
         id: `${projectId}-security`,
@@ -1129,10 +1126,10 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
           { label: "Fault Isolation", value: 0, unit: "leaks" }
         ],
         details: "Safety certificate ensuring complete fault isolation under stress.",
-        position: [1.8, -2.1, 0.8],
+        position: [-1.5, 2.0, -0.3],
         color: "#a855f7",
-        botanicalType: "leaf",
-        size: 0.56
+        botanicalType: "fruit",
+        size: 0.58
       },
       {
         id: `${projectId}-telemetry`,
@@ -1146,10 +1143,10 @@ export function getRepoGraph(projectId: string, fallbackProject?: any): RepoGrap
           { label: "Trace Buffer", value: 512, unit: "KB" }
         ],
         details: "Provides real-time feedback and diagnostic telemetry for the workstation.",
-        position: [-2.0, -1.9, -0.9],
+        position: [1.5, 2.0, 0.3],
         color: "#fb923c",
-        botanicalType: "bulb",
-        size: 0.52
+        botanicalType: "fruit",
+        size: 0.58
       }
     ],
     edges: [
