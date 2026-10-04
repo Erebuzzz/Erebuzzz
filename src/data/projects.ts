@@ -52,13 +52,13 @@ export const PROJECTS: Project[] = [
     title: "Risk-Aware Hybrid LQR-MPC Navigation",
     mythicCodename: "The Argo Navis",
     tagline: "Predictive risk filtering cutting optimization latency from 180 ms to 4.7 ms.",
-    description: "Hybrid Linear Quadratic Regulator (LQR) baseline paired with predictive risk assessment that activates Model Predictive Control selectively under dynamic constraints in obstacle-ridden corridors.",
+    description: "Developed at IISER Bhopal: Hybrid Linear Quadratic Regulator (LQR) baseline paired with predictive risk assessment that activates Model Predictive Control selectively under dynamic constraints in obstacle-ridden corridors.",
     categories: ["flagship", "robotics"],
     tags: ["Python", "ROS 2 Jazzy", "Gazebo", "CasADi", "OSQP", "IPOPT"],
     metric: "4.7 ms Latency",
-    githubUrl: "https://github.com/Erebuzzz/control-systems",
+    githubUrl: "https://github.com/Erebuzzz/Risk-Aware-Hybrid-LQR-MPC-Navigation-for-Autonomous-Systems",
     blueprint: {
-      thesis: "Nonlinear Model Predictive Control (MPC) delivers optimal trajectories but suffers prohibitive latency spikes (180ms) when navigating fast dynamic obstacles. This architecture runs an ultra-lean LQR controller as baseline, activating a constrained quadratic-programming MPC risk filter only when safety barrier certificates approach zero.",
+      thesis: "Nonlinear Model Predictive Control (MPC) delivers optimal trajectories but suffers prohibitive latency spikes (180ms) when navigating fast dynamic obstacles. Developed at IISER Bhopal, this architecture runs an ultra-lean LQR controller as baseline, activating a constrained quadratic-programming MPC risk filter only when safety barrier certificates approach zero.",
       pipeline: "State Vector x_k -> LQR Riccati Gain K -> Barrier Function Check gamma(x) >= 0 -> CasADi/OSQP Quadratic Program (4.7 ms) -> ROS 2 Jazzy Actuation",
       highlights: [
         "Slashed optimization solve latency from 180 ms to 4.7 ms in Monte Carlo Gazebo tests.",
@@ -97,13 +97,13 @@ export const PROJECTS: Project[] = [
     title: "Multi-Robot Source Localization & Formation",
     mythicCodename: "The Daedalus Lab",
     tagline: "Distributed sign gradient-free multi-source localization and formation.",
-    description: "Research intern at DSCL IIT Jodhpur under Prof. Anoop Jain: Extended distributed sign gradient-free laws to multi-source and non-stationary targets with Voronoi basin containment and ISS tracking bounds.",
+    description: "Research internship (May - July) at DSCL (Distributed Systems and Control Laboratory), Department of Electrical Engineering, IIT Jodhpur under Prof. Anoop Jain: Extended distributed sign gradient-free laws to multi-source and non-stationary targets with Voronoi basin containment and ISS tracking bounds.",
     categories: ["robotics"],
     tags: ["MATLAB", "Simulink", "Voronoi", "ISS Bounds", "TurtleBot"],
     metric: "IEEE TCNS Parity",
     githubUrl: "https://github.com/Erebuzzz/SSL_n_F_DSGFA",
     blueprint: {
-      thesis: "Extends Simultaneous Source Localization and Formation (IEEE Transactions on Control of Network Systems 2024) to non-stationary and multi-source environments without direct gradient communication.",
+      thesis: "Conducted during summer research internship (May - July) at DSCL, Electrical Engineering Dept, IIT Jodhpur under Prof. Anoop Jain. Extends Simultaneous Source Localization and Formation (IEEE Transactions on Control of Network Systems 2024) to non-stationary and multi-source environments without direct gradient communication.",
       pipeline: "Distributed Sign Gradient-Free Law -> Decentralized Robot-Team Allocation -> Voronoi Basin Containment -> ISS Tracking Bound -> MATLAB & CoppeliaSim Verification",
       highlights: [
         "Derived Input-to-State Stability (ISS) tracking bound separating sensing noise from source motion error.",

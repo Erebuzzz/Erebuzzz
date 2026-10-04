@@ -45,7 +45,7 @@ export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 font-mono text-xs text-text-muted">
           <div className="flex flex-wrap items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse"></span>
-            <span className="text-text font-bold tracking-wider">IISER BHOPAL DSCL</span>
+            <span className="text-text font-bold tracking-wider">IISER BHOPAL &middot; DSCL IIT JODHPUR</span>
             <span className="text-text-dim">&middot;</span>
             <span className="text-ember-600 dark:text-ember-400 font-semibold flex items-center gap-1">
               <Flame className="w-3.5 h-3.5 text-ember-600 animate-bounce" />
@@ -86,7 +86,7 @@ export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = ({
             <span className="text-[11px] text-text-dim font-normal font-sans">Curator of Autonomous Architectures</span>
           </div>
           <p>
-            Final-year Electronics and Communication Engineering at <strong>IISER Bhopal</strong> (graduating April 2027). Quantitative Research Consultant at <strong>WorldQuant Brain</strong> (60+ benchmark-approved alphas). Control theory research alum at <strong>DSCL IIT Jodhpur</strong> under Prof. Anoop Jain (multi-robot source localization &amp; formation). Founder of <strong>Unstable Kernel</strong> (Mirage robotics compiler, CodeShield AST verification, and autonomous agent infrastructure).
+            Final-year Electronics and Communication Engineering at <strong>IISER Bhopal</strong> (graduating April 2027). Quantitative Research Consultant at <strong>WorldQuant Brain</strong> (60+ benchmark-approved alphas). Summer research intern (May - July) at <strong>DSCL (Distributed Systems and Control Laboratory), Department of Electrical Engineering, IIT Jodhpur</strong> under Prof. Anoop Jain (multi-robot source localization &amp; formation). Founder of <strong>Unstable Kernel</strong> (Mirage robotics compiler, CodeShield AST verification, and autonomous agent infrastructure).
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export const HeroAstrolabe: React.FC<HeroAstrolabeProps> = ({
               DSCL IIT Jodhpur
             </div>
             <div className="font-mono text-xs text-text-muted mt-1">
-              Under Prof. Anoop Jain
+              Research Intern (May - July) &middot; EE Dept &middot; Prof. Anoop Jain
             </div>
           </div>
 

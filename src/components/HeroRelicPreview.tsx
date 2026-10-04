@@ -64,11 +64,11 @@ export const HeroRelicPreview: React.FC<HeroRelicPreviewProps> = ({
       greekTitle: "\u0391\u03a1\u0393\u03a9 \u039d\u0391\u03a5\u03a3",
       systemName: "Hybrid LQR-MPC Navigation",
       tagline: "Predictive risk filtering cutting optimization solve latency from 180 ms to 4.7 ms.",
-      provenance: "DSCL Robotics Lab &middot; ROS 2 Jazzy &amp; CasADi",
+      provenance: "IISER Bhopal Robotics &middot; ROS 2 Jazzy &amp; CasADi",
       metrics: "4.7 ms Latency &middot; Zero Barrier Violations",
       tags: ["Python", "ROS 2", "CasADi", "OSQP", "Gazebo"],
       icon: <Navigation className="w-6 h-6" />,
-      githubUrl: "https://github.com/Erebuzzz/control-systems"
+      githubUrl: "https://github.com/Erebuzzz/Risk-Aware-Hybrid-LQR-MPC-Navigation-for-Autonomous-Systems"
     },
     {
       id: "norn",

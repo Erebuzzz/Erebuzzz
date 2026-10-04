@@ -110,12 +110,12 @@ export const OriginLabSection: React.FC = () => {
               B.S. in Electronics &amp; Communication Engineering
             </p>
             <p className="text-xs text-text-muted leading-relaxed">
-              Final-year undergrad focusing on dynamic control systems, embedded firmware, Kalman filtering, AST parsers, and computer architecture. Research at Dynamical Systems and Control Lab (DSCL).
+              Final-year undergrad focusing on dynamic control systems, embedded firmware, Kalman filtering, AST parsers, and computer architecture. Research internship alum at DSCL (Department of Electrical Engineering, IIT Jodhpur).
             </p>
           </div>
 
           <div className="mt-5 pt-3 border-t border-border flex items-center justify-between font-mono text-xs text-text-muted">
-            <span>ECE &middot; DSCL Lab</span>
+            <span>ECE &middot; Autonomous Control</span>
             <span className="text-ember-600 font-semibold">Bhopal, India</span>
           </div>
         </div>

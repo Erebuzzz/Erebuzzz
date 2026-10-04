@@ -35,7 +35,7 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
             [EREBUS-OS v4.2.0] Horizon Terminal Telemetry Initialized.
           </p>
           <p>
-            Connected to IISER Bhopal DSCL &middot; WorldQuant Alpha Mesh &middot; Unstable Kernel Lab.
+            Connected to IISER Bhopal &middot; DSCL IIT Jodhpur &middot; WorldQuant Alpha Mesh &middot; Unstable Kernel Lab.
           </p>
           <p className="text-text-dim">
             Type <span className="text-ember-600 dark:text-ember-400 font-semibold">help</span> to view available routines, or click any command chip below.
@@ -98,7 +98,7 @@ export const TerminalHUD: React.FC<TerminalHUDProps> = ({
               Kshitiz Kumar Sinha (alias Erebuzzz / Horizon)
             </p>
             <p>
-              Final-year Electronics and Communication Engineering at IISER Bhopal, graduating April 2027.
+              Final-year Electronics and Communication Engineering at IISER Bhopal, graduating April 2027. Summer research intern (May - July) at DSCL (Distributed Systems and Control Laboratory), Department of Electrical Engineering, IIT Jodhpur under Prof. Anoop Jain.
               Most of my time goes into building software, tools, and robotics: products that ship, agent skills, and control stacks that should honestly not work as well as they do.
             </p>
             <p>

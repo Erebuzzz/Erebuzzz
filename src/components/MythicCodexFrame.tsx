@@ -114,7 +114,7 @@ export const MythicCodexFrame: React.FC<MythicCodexFrameProps> = ({
             </span>
             <span className="text-text-dim">&middot;</span>
             <span className="font-mono text-[10px] text-text-muted hidden md:inline">
-              IISER Bhopal DSCL &middot; WorldQuant Brain
+              IISER Bhopal &middot; DSCL IIT Jodhpur &middot; WorldQuant Brain
             </span>
           </div>
 
